@@ -1,13 +1,128 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+/* AppPlanTravel */
+
+.main::after {
+  content: '';
+  background-image: url('/public/img/map.webp');
+  height: 100vh;
+  position: fixed;
+  top:0;
+  right: 0;
+  width: 100vw;
+  z-index: -1;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* PlanTravelComponent */
+
+.parent {
+  font-family: 'Aladin', cursive;
+  font-size: 30px;
+  margin-top: -10px;
+}
+
+.palm {
+  font-size: 50px;
+  padding: 10px;
+}
+
+.link {
+  font-size: 26px;
+  color: forestgreen;
+}
+
+.city {
+  padding: 10px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* HeaderComponent */
+
+.header {
+  background-color: lightslategrey;
+  height: 4rem;
+}
+
+.icon {
+  position: relative;
+  top: -30px;
+  height: 30px;
+  font-size: 60px;
+  margin-left: 10px;
+}
+
+.name {
+  font-family: 'Aladin', cursive;
+  font-size: 40px;
+  color: yellow;
+  padding: 20px;
+  text-decoration: none;
+}
+
+.log {
+  font-family: 'Aladin', cursive;
+  font-size: 24px;
+  color: yellow;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid yellow;
+  border-radius: 5px;
+}
+
+.log:hover, .log:focus {
+  color: rgb(204, 234, 207)
+}
+
+/* FooterComponent */
+
+.footer {
+  background-color: lightslategrey;
+  height: 4rem;
+  position: absolute  ;
+  bottom: 0;
+  width: 100vw;
+}
+
+.git {
+  font-size: 20px;
+}
+
+.israel {
+  color: white;
+  font-size: 20px;
+}
+
+.me {
+  height: 50px;
+}
+
+/* RegisterComponent */
+
+.error {
+  color: red;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+/* PeriodComponent */
+
+.period {
+  font-family: 'Aladin', cursive;
+  font-size: 30px;
+  margin-top: -10px;
+}
+
+.tree {
+  font-size: 50px;
+  margin: 0 10px;
+}
+
+/* CityBox */
+
+.city-name {
+  font-family: 'Aladin', cursive;
+  color: black;
+  font-size: 30px;
+  margin-top: -15px;
 }
