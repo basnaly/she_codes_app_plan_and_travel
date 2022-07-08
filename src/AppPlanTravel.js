@@ -7,6 +7,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import ContentRouting from "./ContentRouting";
 
+import { app } from './firebase-config';
+
 const theme = createTheme({
     palette: {
         neutral: {
@@ -55,7 +57,7 @@ const theme = createTheme({
 
 const AppPlanTravel = () => {
 
-
+    
     return (
         <ThemeProvider theme={theme}>
             <div className="main">

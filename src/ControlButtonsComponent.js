@@ -12,7 +12,6 @@ const SaveDiscardButtons = styled(Button)({
     padding: '1px 10px',
 })
 
-
 const ControlButtonsComponent = () => {
     
     return (

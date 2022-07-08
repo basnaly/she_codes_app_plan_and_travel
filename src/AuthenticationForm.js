@@ -1,7 +1,6 @@
 import React from "react";
 
-import { BrowserRouter as Router, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import Box from '@mui/material/Box';
 import { Button, Typography } from "@mui/material";
@@ -9,7 +8,6 @@ import { styled } from "@mui/material";
 import TextField from '@mui/material/TextField';
 
 import PasswordInputComponent from "./PasswordInputComponent";
-
 
 const SubmitButton = styled(Button)({
     textTransform: 'none',
@@ -44,28 +42,37 @@ const style = {
     backgroundColor: '#ffffff60',
 };
 
-const AuthenticationForm = ({Submit, title }) => {
+const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        let authToken = sessionStorage.getItem('Auth Token')
-
-        if (authToken) {
-            navigate('/home')
-        }
-    }, [])
-
     const Cancel = () => {
         setEmail('');
         setPassword('');
         setError('');
         setLoading(false);
+    }
+
+    const setPasswordWithValidation = password => { 
+        
+        const passValidation = validatePassword(password);
+        const validationError = 'The password must contain lower and upper case letters, numbers and symbols, 6-10 letters';
+
+        if (!passValidation) {
+            setError(validationError)
+        } else {
+            setError('')
+        }
+        setPassword(password) 
+        
+    }
+
+    const setEmailWithErrorClean = email => {
+        setError('') 
+        setEmail(email) 
     }
 
     return (
@@ -85,12 +92,12 @@ const AuthenticationForm = ({Submit, title }) => {
                         label="Email"
                         color="success"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => setEmailWithErrorClean(e.target.value)}
                     />
                 </Typography>
 
                 <PasswordInputComponent password={password}
-                                    setPassword={setPassword} />
+                                    setPassword={setPasswordWithValidation} />
 
             </div>
 
@@ -110,9 +117,6 @@ const AuthenticationForm = ({Submit, title }) => {
             </div>
 
         </Box>
-
-
-
     )
 }
 

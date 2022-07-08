@@ -1,8 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { getAuth } from 'firebase/auth';
+import LogoutComponent from "./LogoutComponent";
 
 const AuthenticationButtons = () => {
 
+        const auth = getAuth();
+        console.log(auth.currentUser)     
+    
+    if (auth.currentUser) {
+        return <LogoutComponent />
+    }
 
     return (
         <React.Fragment>
