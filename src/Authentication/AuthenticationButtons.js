@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getAuth } from 'firebase/auth';
+import { useSelector } from "react-redux";
+
 import LogoutComponent from "./LogoutComponent";
 
 const AuthenticationButtons = () => {
 
-        const auth = getAuth();
-        console.log(auth.currentUser)     
+    const userId = useSelector(state => state.auth.userId);
     
-    if (auth.currentUser) {
+    if (userId) {
         return <LogoutComponent />
     }
 

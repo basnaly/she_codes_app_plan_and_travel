@@ -1,12 +1,15 @@
-import React, { useMemo } from "react";
-import { BrowserRouter as Router, Route, Link, Routes, useLocation } from "react-router-dom";
+import React from "react";
+import { Route, Link, Routes } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import ControlButtonsComponent from "./ControlButtonsComponent";
-
-import AuthenticationButtons from './AuthenticationButtons';
+import ControlButtonsComponent from "../Body/ControlButtonsComponent";
+import AuthenticationButtons from '../Authentication/AuthenticationButtons';
 
 const HeaderComponent = () => {
 
+    const userId = useSelector(state => state.auth.userId)
+
+    const linkTo = userId ? '/home' : '/'
 
     return (
         <div className="header d-flex align-items-center justify-content-between">
@@ -14,7 +17,7 @@ const HeaderComponent = () => {
                 <div className="icon">🗺</div>
 
                 <div>
-                    <Link className="name" to='/'>Plan & Travel</Link>
+                    <Link className="name" to={ linkTo }>Plan & Travel</Link>
                 </div>
             </div>
             <div className="d-flex align-items-center ps-5">

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import TextField from '@mui/material/TextField';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
@@ -6,7 +8,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import Box from '@mui/material/Box';
 
-import { cityStyle } from "./styles/MuiStyles";
+import { cityStyle } from "../styles/MuiStyles";
 
 const style = {
     position: 'absolute',
@@ -26,6 +28,17 @@ const PlanTravelComponent = () => {
     const [city, setCity] = useState('');
     const [from, setFrom] = useState(new Date());
     const [to, setTo] = useState(new Date());
+
+    const userId = useSelector(state => state.auth.userId);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+
+        if (userId) {
+            navigate('/home')
+        }
+    }, [userId])
 
     const handleChangeFrom = newFrom => setFrom(newFrom);
     const handleChangeTo = newTo => setTo(newTo);
@@ -58,7 +71,6 @@ const PlanTravelComponent = () => {
                             OpenPickerButtonProps={{style:{color:'forestgreen', transform: 'scale(1.3)'}}}
                             label="Date from:"
                             inputFormat="DD/MM/yyyy"
-                            
                             value={from}
                             onChange={handleChangeFrom}
                             renderInput={(params) => <TextField color="success" {...params} />}
@@ -67,7 +79,7 @@ const PlanTravelComponent = () => {
 
                         <DesktopDatePicker
                             OpenPickerButtonProps={{style:{color:'forestgreen', transform: 'scale(1.3)'}}}
-                            label="Date till:"
+                            label="Date to:"
                             inputFormat="DD/MM/yyyy"
                             value={to}
                             onChange={handleChangeTo}

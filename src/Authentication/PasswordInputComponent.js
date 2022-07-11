@@ -46,7 +46,6 @@ const PasswordInputComponent = ({password, setPassword}) => {
             />
         </FormControl>
     )
-
 }
 
 export default PasswordInputComponent;

@@ -5,11 +5,29 @@ import AppPlanTravel from './AppPlanTravel';
 import reportWebVitals from './reportWebVitals';
 
 import "bootstrap/dist/css/bootstrap.css";
+import { applyMiddleware, compose, createStore } from "redux";
+import { Provider} from "react-redux";
+import { createLogger } from 'redux-logger';
+import thunk from "redux-thunk";
+import AllReducers from './Reducers/AllRedicers';
+
+const logger = createLogger({
+});
+
+const store = createStore(
+  AllReducers,
+  compose(
+    applyMiddleware(logger, thunk),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Provider store={ store }>
       <AppPlanTravel />
+    </Provider>
   </React.StrictMode>
 );
 

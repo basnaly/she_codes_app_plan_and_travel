@@ -1,6 +1,7 @@
 import React from "react";
-
-import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 import { Button, Typography } from "@mui/material";
@@ -8,6 +9,7 @@ import { styled } from "@mui/material";
 import TextField from '@mui/material/TextField';
 
 import PasswordInputComponent from "./PasswordInputComponent";
+import { SetAuthError } from "../Actions/AuthenticationAction";
 
 const SubmitButton = styled(Button)({
     textTransform: 'none',
@@ -44,16 +46,28 @@ const style = {
 
 const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => {
 
+    const userId = useSelector(state => state.auth.userId);
+    const authError = useSelector(state => state.auth.authError);
+    const isAuthLoading = useSelector(state => state.auth.isAuthLoading);
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+    
+    const dispatch = useDispatch();
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+
+        if (userId) {
+            navigate('/home')
+        }
+    }, [userId])
+    
     const Cancel = () => {
         setEmail('');
         setPassword('');
-        setError('');
-        setLoading(false);
+        dispatch(SetAuthError(''));
     }
 
     const setPasswordWithValidation = password => { 
@@ -62,17 +76,20 @@ const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => 
         const validationError = 'The password must contain lower and upper case letters, numbers and symbols, 6-10 letters';
 
         if (!passValidation) {
-            setError(validationError)
+            dispatch(SetAuthError(validationError))
         } else {
-            setError('')
+            if (authError !== ''){
+                dispatch(SetAuthError(''))
+            }
         }
-        setPassword(password) 
-        
+        setPassword(password)    
     }
 
     const setEmailWithErrorClean = email => {
-        setError('') 
-        setEmail(email) 
+        if (authError !== ''){
+            dispatch(SetAuthError('')) // remove the error
+        }
+        setEmail(email) // typing into email field
     }
 
     return (
@@ -82,7 +99,7 @@ const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => 
                 { title }
             </Typography>
 
-            <div className="error d-flex mb-2">{error}</div>
+            <div className="error d-flex mb-2">{authError}</div>
 
             <div className="d-flex">
                 <Typography className="d-flex align-items-center justify-content-center"
@@ -90,6 +107,7 @@ const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => 
                     <TextField className="regist mx-3"
                         id="outlined-helperText"
                         label="Email"
+                        type="email"
                         color="success"
                         value={email}
                         onChange={(e) => setEmailWithErrorClean(e.target.value)}
@@ -98,14 +116,14 @@ const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => 
 
                 <PasswordInputComponent password={password}
                                     setPassword={setPasswordWithValidation} />
-
             </div>
 
             <div>
                 <SubmitButton
                     variant={'outlined'}
                     className="mt-4 mx-3"
-                    onClick={() => Submit(email, password, setPassword, setLoading, setError)}>
+                    disabled={authError}
+                    onClick={() => Submit(email, password, setPassword)}>
                     Submit
                 </SubmitButton>
 
@@ -115,7 +133,6 @@ const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => 
                     Cancel
                 </CancelButton>
             </div>
-
         </Box>
     )
 }

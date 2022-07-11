@@ -59,6 +59,10 @@
   text-decoration: none;
 }
 
+.name:hover {
+  color:lightgreen;
+}
+
 .log {
   font-family: 'Aladin', cursive;
   font-size: 24px;
@@ -69,8 +73,10 @@
   border-radius: 5px;
 }
 
-.log:hover, .log:focus {
-  color: rgb(204, 234, 207)
+.log:hover, .log:focus  {
+  color:lightgreen;
+  outline: 1px solid lightgreen;
+  border: 1px solid transparent;
 }
 
 /* FooterComponent */
@@ -105,24 +111,14 @@
 }
 
 
-/* PeriodComponent */
 
-.period {
+
+/* MainScreen */
+
+.no-trips {
   font-family: 'Aladin', cursive;
-  font-size: 30px;
-  margin-top: -10px;
-}
-
-.tree {
-  font-size: 50px;
-  margin: 0 10px;
-}
-
-/* CityBox */
-
-.city-name {
-  font-family: 'Aladin', cursive;
-  color: black;
-  font-size: 30px;
-  margin-top: -15px;
+  font-size: 40px;
+  color: forestgreen;
+  text-shadow: 1px 1px black;
+  margin: 20px;
 }
