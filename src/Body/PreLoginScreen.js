@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +9,9 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import Box from '@mui/material/Box';
 
 import { cityStyle } from "../styles/MuiStyles";
+import { ChangePreLoginTripCity, 
+        ChangePreLoginTripDateFrom, 
+        ChangePreLoginTripDateTo } from '../Actions/PlanTravelAction';
 
 const style = {
     position: 'absolute',
@@ -25,11 +28,12 @@ const style = {
 
 const PlanTravelComponent = () => {
 
-    const [city, setCity] = useState('');
-    const [from, setFrom] = useState(new Date());
-    const [to, setTo] = useState(new Date());
-
+    const city = useSelector(state => state?.main?.preLoginTrip.city);
+    const from = useSelector(state => state?.main?.preLoginTrip.dateFrom);
+    const to = useSelector(state => state?.main?.preLoginTrip.dateTo);
     const userId = useSelector(state => state.auth.userId);
+
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
@@ -40,8 +44,8 @@ const PlanTravelComponent = () => {
         }
     }, [userId])
 
-    const handleChangeFrom = newFrom => setFrom(newFrom);
-    const handleChangeTo = newTo => setTo(newTo);
+    const handleChangeFrom = newFrom => dispatch(ChangePreLoginTripDateFrom(newFrom));
+    const handleChangeTo = newTo => dispatch(ChangePreLoginTripDateTo(newTo));
 
     let formatedCity = city.toLowerCase().trim().replace(/\s/g, '_')
 
@@ -56,10 +60,11 @@ const PlanTravelComponent = () => {
 
                     <TextField id="outlined-basic" label="City"
                         inputProps={ {style: cityStyle}}
+                        className="input-pt" 
                         variant="outlined"
                         color="success"
                         value={city}
-                        onChange={(e) => setCity(e.target.value)}
+                        onChange={(e) => dispatch(ChangePreLoginTripCity(e.target.value))}
                     />
 
                     <div className="d-flex align-items-center mt-3 mb-1">
@@ -104,7 +109,6 @@ const PlanTravelComponent = () => {
             </Box>
         </LocalizationProvider>
     )
-
 }
 
 export default PlanTravelComponent;

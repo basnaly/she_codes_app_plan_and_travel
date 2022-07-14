@@ -1,4 +1,5 @@
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { SaveInitialTrip } from './PlanTravelAction';
 
 export const SaveUser = (userId, userEmail) => {
     return {
@@ -24,6 +25,7 @@ export const SigninWithFirebase = (email, password) => {
                 let userEmail = response.user.email
 
                 dispatch(SaveUser(userId, userEmail));
+                dispatch(SaveInitialTrip(userId))
             })
             .catch((error) => {
                 let authError = '';
@@ -68,6 +70,7 @@ export const RegisterWithFirebase = (email, password) => {
                 let userEmail = response.user.email
 
                 dispatch(SaveUser(userId, userEmail))
+                dispatch(SaveInitialTrip(userId))
             })
             .catch((error) => {
                 let authError = '';

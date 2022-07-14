@@ -102,6 +102,16 @@
   height: 50px;
 }
 
+/* CityBox */
+
+.city-name {
+  font-family: 'Aladin', cursive;
+  color: black;
+  font-size: 30px;
+  margin-top: -15px;
+  text-transform: capitalize;
+}
+
 /* RegisterComponent */
 
 .error {
