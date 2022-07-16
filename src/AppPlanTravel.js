@@ -2,8 +2,9 @@ import React, { useState, useEffect} from "react";
 import FooterComponent from "./Footer/FooterComponent";
 import HeaderComponent from "./Header/HeaderComponent";
 import { BrowserRouter as Router } from "react-router-dom";
+import {myTheme} from "./styles/MuiTheme";
 
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 
 import ContentRouting from "./Body/ContentRouting";
 
@@ -13,52 +14,6 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { CircularProgress } from '@mui/material';
 
 import { app } from './firebase-config';
-
-const theme = createTheme({
-    palette: {
-        neutral: {
-          main: 'transparent',
-          contrastText: '#fff',
-        },
-      },
-    components: {
-        MuiInputLabel: {
-            styleOverrides: {
-                root: {
-                    fontFamily: 'Aladin, cursive',
-                    fontSize: '20px',
-                    color: 'black',
-                }
-            }
-        },
-        MuiTypography: {
-            styleOverrides: {
-                root: {
-                    fontFamily: 'Aladin, cursive',
-                    fontSize: '30px',
-                    marginTop: '-10px',
-                }
-            }
-        },
-        MuiInputBase: {
-            styleOverrides: {  
-                input: {
-                    fontFamily: 'Aladin, cursive',
-                    fontSize: '22px',
-                    color: 'black',
-                }
-            }
-        },
-        MuiOutlinedInput: {
-            styleOverrides: {  
-                notchedOutline: {
-                    color: 'forestgreen',
-                }
-            }
-        },
-    }
-});
-
 
 const AppPlanTravel = () => {
 
@@ -81,7 +36,7 @@ const AppPlanTravel = () => {
 
     
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={myTheme}>
             <div className="main">
                 <Router>
                     <HeaderComponent />

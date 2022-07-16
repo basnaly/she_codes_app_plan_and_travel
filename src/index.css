@@ -106,10 +106,11 @@
 
 .city-name {
   font-family: 'Aladin', cursive;
-  color: black;
+  color: forestgreen;
   font-size: 30px;
   margin-top: -15px;
   text-transform: capitalize;
+  text-shadow: 1px 1px black;
 }
 
 /* RegisterComponent */
@@ -131,4 +132,13 @@
   color: forestgreen;
   text-shadow: 1px 1px black;
   margin: 20px;
+}
+
+/* ViewComponent */
+
+.period-view {
+  font-family: 'Aladin', cursive;
+  font-size: 26px;
+  color: forestgreen;
+  font-weight: bold;
 }
