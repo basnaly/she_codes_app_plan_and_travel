@@ -5,20 +5,12 @@ import Box from '@mui/material/Box';
 import { Button } from "@mui/material";
 import { styled } from "@mui/material";
 
+import DeleteDialog from "./DeleteDialog";
+import ViewComponent from "./ViewComponent";
 
 const EditViewButton = styled(Button)({
     textTransform: 'none',
     color: 'forestgreen',
-    border: '1px solid black',
-    fontSize: '20px',
-    backgroundColor: 'lightgray',
-    padding: '3px 12px',
-    fontFamily: 'Aladin',
-})
-
-const DeleteButton = styled(Button)({
-    textTransform: 'none',
-    color: 'red',
     border: '1px solid black',
     fontSize: '20px',
     backgroundColor: 'lightgray',
@@ -51,11 +43,7 @@ const CityBox = ({ el }) => {
             </div>
 
             <div className="d-flex align-items-center mt-3">
-                <EditViewButton
-                    variant={'outlined'}
-                    className=" mx-3" >
-                    View
-                </EditViewButton>
+                <ViewComponent el={ el }/>
 
                 <EditViewButton
                     variant={'outlined'}
@@ -63,11 +51,7 @@ const CityBox = ({ el }) => {
                     Edit
                 </EditViewButton>
 
-                <DeleteButton 
-                    variant={'outlined'}
-                    className=" mx-3" >
-                    Delete
-                </DeleteButton>
+                <DeleteDialog el={el}/>
             </div>
         </Box>
     )

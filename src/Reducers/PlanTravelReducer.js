@@ -8,6 +8,8 @@ const initState = {
     },
     isLoading: false,
     error: '',
+    trip: {},
+    isLoadingTrip: false,
     cities: [], // [{id:'jjj', city:'new jersey'}]
 }
 
@@ -58,6 +60,19 @@ const PlanTravelReducer = (state = initState, action) => {
                 ...state,
                 cities: action.cities,
                 isLoading: false
+            }
+
+        case 'SET_IS_LOADING_TRIP':
+            return {
+                ...state,
+                isLoadingTrip: action.isLoadingTrip
+            }
+
+        case 'LOADED_TRIP_DATA':
+            return {
+                ...state,
+                trip: action.trip,
+                isLoadingTrip: false
             }
 
         default:

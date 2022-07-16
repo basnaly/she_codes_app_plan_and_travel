@@ -26,7 +26,7 @@ const style = {
     p: 4,
 };
 
-const PlanTravelComponent = () => {
+const PreLoginScreen = () => {
 
     const city = useSelector(state => state?.main?.preLoginTrip.city);
     const from = useSelector(state => state?.main?.preLoginTrip.dateFrom);
@@ -111,4 +111,4 @@ const PlanTravelComponent = () => {
     )
 }
 
-export default PlanTravelComponent;
+export default PreLoginScreen;
