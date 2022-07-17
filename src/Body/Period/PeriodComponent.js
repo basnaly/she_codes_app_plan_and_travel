@@ -6,18 +6,18 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Field } from "formik";
 import FormikDateInput from "../InputComponents/FormikDateInput";
 
-import { TabContentBox } from "../../styles/MuiStyles";
+import { PeriodTitle, TabContentBox } from "../../styles/MuiStyles";
 
 const PeriodComponent = () => {
 
     return (
         <LocalizationProvider dateAdapter={AdapterMoment}>
 
-            <TabContentBox boxShadow={24} p={4} className="d-flex align-items-center">
-                <div className="parent d-flex flex-column align-items-center">
-                    <div className="d-flex align-items-center mb-2">
+            <TabContentBox boxShadow={24} p={4} className="d-flex flex-column align-items-center mx-auto">
+                <div className="d-flex flex-column align-items-center">
+                    <PeriodTitle className="d-flex align-items-center mb-4">
                         I'd like to travel?
-                    </div>
+                    </PeriodTitle>
 
                     <div className="d-flex align-items-center">
 

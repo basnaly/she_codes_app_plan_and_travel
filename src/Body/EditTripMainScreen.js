@@ -78,7 +78,10 @@ const EditTripMainScreen = () => {
 
                 </Routes>
 
-                <ControlButtonsComponent />
+                <div className="d-flex align-items-center mx-auto">
+                    <ControlButtonsComponent />
+                </div>
+                
             </React.Fragment>
 
         </Formik>

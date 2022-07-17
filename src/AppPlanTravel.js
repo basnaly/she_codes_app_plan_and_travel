@@ -37,7 +37,7 @@ const AppPlanTravel = () => {
     
     return (
         <ThemeProvider theme={myTheme}>
-            <div className="main">
+            <div className="main d-flex flex-column flex-column overflow-auto vh-100">
                 <Router>
                     <HeaderComponent />
                     {
