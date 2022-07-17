@@ -3,12 +3,6 @@ import { createTheme } from '@mui/material/styles';
 import { checkboxClasses } from '@mui/material/Checkbox';
 
 export const myTheme = createTheme({
-    palette: {
-        neutral: {
-            main: 'transparent',
-            contrastText: '#fff',
-        },
-    },
     components: {
         MuiDialog: {
             styleOverrides: {
@@ -137,15 +131,6 @@ export const myTheme = createTheme({
                 },
             },
         },
-        // MuiTable:{
-        //     styleOverrides: {
-        //         root: {
-        //             backgroundColor: 'lightgray',
-        //             border: '1px solid white',
-                    
-        //         }
-        //     }
-        // },
         MuiDataGrid: {
             styleOverrides: {
                 root: {
@@ -184,6 +169,35 @@ export const myTheme = createTheme({
                     color: 'forestgreen',
                     fontFamily: 'Aladin, cursive',
                     fontSize: '18px',
+                }
+            }
+        },
+        MuiTab: {
+            styleOverrides: {
+                root: {
+                    fontFamily: 'Aladin, cursive',
+                    fontSize: '24px',
+                    color: 'black',
+                    textTransform: 'none',
+                    "&.Mui-selected": {
+                        color: 'forestgreen',
+                        textDecoration: 'underline',
+                    },
+                    "&.Mui-disabled": {
+                        color: 'forestgreen',
+                        textShadow: '1px 1px black',
+                        fontSize: '26px',
+                    },
+                },
+            },
+        },
+        MuiTabs: {
+            styleOverrides: {
+                flexContainer: {
+                    justifyContent: "space-between",
+                },
+                indicator: {
+                    backgroundColor: 'transparent',
                 }
             }
         },

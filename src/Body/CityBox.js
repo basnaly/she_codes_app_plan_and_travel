@@ -2,21 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import Box from '@mui/material/Box';
-import { Button } from "@mui/material";
-import { styled } from "@mui/material";
 
 import DeleteDialog from "./DeleteDialog";
 import ViewComponent from "./ViewComponent";
-
-const EditViewButton = styled(Button)({
-    textTransform: 'none',
-    color: 'forestgreen',
-    border: '1px solid black',
-    fontSize: '20px',
-    backgroundColor: 'lightgray',
-    padding: '3px 12px',
-    fontFamily: 'Aladin',
-})
+import { CityTitleStyled, GreenButton } from "../styles/MuiStyles";
 
 const style = {
     position: 'relative',
@@ -38,18 +27,19 @@ const CityBox = ({ el }) => {
 
     return (
         <Box sx={style} className="d-flex flex-column align-items-center m-3">
-            <div className="city-name d-flex align-items-center">
+            <CityTitleStyled className="d-flex align-items-center">
                 {el.city}
-            </div>
+            </CityTitleStyled>
 
             <div className="d-flex align-items-center mt-3">
                 <ViewComponent el={ el }/>
 
-                <EditViewButton
+                <GreenButton
                     variant={'outlined'}
-                    className=" mx-3" >
+                    className=" mx-3" 
+                    onClick={editTrip}>
                     Edit
-                </EditViewButton>
+                </GreenButton>
 
                 <DeleteDialog el={el}/>
             </div>

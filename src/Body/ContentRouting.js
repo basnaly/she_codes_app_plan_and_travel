@@ -7,6 +7,8 @@ import RegisterComponent from "../Authentication/RegisterComponent";
 import PreLoginScreen from "./PreLoginScreen";
 import MainScreen from "./MainScreen";
 
+import EditTripMainScreen from "./EditTripMainScreen";
+
 const HomeSwitch = () => {
 
     const userId = useSelector(state => state.auth.userId);
@@ -31,9 +33,10 @@ const ContentRouting = () => {
             <Route path='/register' element={ <RegisterComponent /> } />
             <Route path='/login' element={ <LoginComponent />} />  
             <Route path='/home' element={ <HomeSwitch /> } />  
+            <Route path='/:id/*' element={ <EditTripMainScreen /> } />
             <Route path='/' element={ <PreLoginScreen /> } />
             <Route exact path="*" 
-                element={<Navigate replace to="/" />} />
+                element={ <Navigate replace to="/" /> } />
         </Routes>
     )
 }

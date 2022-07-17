@@ -3,40 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import moment from 'moment';
 
-import Button from '@mui/material/Button';
-import { styled } from "@mui/material";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
-
 import { GetTripData } from '../Actions/PlanTravelAction';
+
+import { CityTitleStyled, GreenButton } from "../styles/MuiStyles";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="down" ref={ref} {...props} />;
 });
-
-const CloseButton = styled(Button)({
-	textTransform: 'none',
-	color: 'forestgreen',
-	border: '1px solid black',
-	fontSize: '20px',
-	backgroundColor: 'lightgray',
-	padding: '3px 12px',
-	fontFamily: 'Aladin',
-})
-
-const ViewButton = styled(Button)({
-	textTransform: 'none',
-	color: 'forestgreen',
-	border: '1px solid black',
-	fontSize: '20px',
-	backgroundColor: 'lightgray',
-	padding: '3px 12px',
-	fontFamily: 'Aladin',
-})
 
 const ViewComponent = ({ el }) => {
 
@@ -53,18 +32,18 @@ const ViewComponent = ({ el }) => {
 	}
 	const closeViewDialog = () => setIsViewDialogOpen(false);
 
-	const tripFrom = moment.unix(trip.period.from).format('DD/MM/YYYY');
-	const tripTo = moment.unix(trip.period.to).format('DD/MM/YYYY');
+	const tripFrom = moment.unix(trip?.period?.from).format('DD/MM/YYYY');
+	const tripTo = moment.unix(trip?.period?.to).format('DD/MM/YYYY');
 
 	return (
 
 		<React.Fragment>
-			<ViewButton
+			<GreenButton
 				variant={'outlined'}
 				className=" mx-3"
 				onClick={openViewDialog} >
 				View
-			</ViewButton>
+			</GreenButton>
 
 			<Dialog maxWidth='md' fullWidth
 				open={isViewDialogOpen}
@@ -75,8 +54,10 @@ const ViewComponent = ({ el }) => {
 				aria-describedby="alert-dialog-description"
 			>
 				<DialogTitle id="modal-modal-title" variant="h6" component="h2"
-					className='city-name pb-1 m-1'>
-					{trip.city}
+					className='pb-1 m-1'>
+						<CityTitleStyled >
+							{trip.city}
+						</CityTitleStyled>
 				</DialogTitle>
 
 				<hr className='mx-2 my-0' />
@@ -102,13 +83,13 @@ const ViewComponent = ({ el }) => {
 				</DialogContent>
 
 				<DialogActions className="d-flex align-items-center mt-0 mb-3">
-					<CloseButton
+					<GreenButton
 					variant={'outlined'}
 					className=" mx-3"
 					onClick={closeViewDialog}
 					>
 					Close
-					</CloseButton>
+					</GreenButton>
 				</DialogActions>
 			</Dialog>
 		</React.Fragment >

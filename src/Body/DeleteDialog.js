@@ -1,40 +1,20 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { styled } from "@mui/material";
 import Slide from '@mui/material/Slide';
 
 import { DeleteCity } from '../Actions/PlanTravelAction';
 
+import { CityTitleStyled, GreenButton, RedButton } from '../styles/MuiStyles';
+
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="down" ref={ref} {...props} />;
 });
-
-const DeleteCityButton = styled(Button)({
-    textTransform: 'none',
-    color: 'red',
-    border: '1px solid black',
-    fontSize: '20px',
-    backgroundColor: 'lightgray',
-    padding: '3px 12px',
-    fontFamily: 'Aladin',
-})
-
-const CloseButton = styled(Button)({
-    textTransform: 'none',
-    color: 'forestgreen',
-    border: '1px solid black',
-    fontSize: '20px',
-    backgroundColor: 'lightgray',
-    padding: '3px 12px',
-    fontFamily: 'Aladin',
-})
 
 const DeleteDialog = ({ el }) => {
 
@@ -52,12 +32,12 @@ const DeleteDialog = ({ el }) => {
 
     return (
         <React.Fragment>
-            <DeleteCityButton
+            <RedButton
                 variant={'outlined'}
                 className=" mx-3"
                 onClick={openDeleteDialog}>
                 Delete
-            </DeleteCityButton>
+            </RedButton>
 
             <Dialog
                 open={isDialogOpen}
@@ -70,11 +50,13 @@ const DeleteDialog = ({ el }) => {
                 <DialogTitle id="modal-modal-title" variant="h6" component="h2"
                     className='pb-1 m-1'>
                     Delete trip to 
-                    <span className='city-name ps-2 d-inline-block'> 
+                    <CityTitleStyled className='ps-2 d-inline-block'> 
                         {el.city}
-                    </span>
+                    </CityTitleStyled>
                 </DialogTitle>
+
                 <hr className='mx-2 my-0' />
+
                 <DialogContent className='pb-3'>
                     <DialogContentText id="alert-dialog-slide-description"
                         className='mt-0 mb-0'>
@@ -83,20 +65,20 @@ const DeleteDialog = ({ el }) => {
                 </DialogContent>
 
                 <DialogActions className="d-flex align-items-center mt-0 mb-3">
-                <CloseButton
+                    <GreenButton
                         variant={'outlined'}
                         className=" mx-3"
                         onClick={closeDeleteDialog}
                     >
                         Cancel
-                    </CloseButton>
+                    </GreenButton>
 
-                    <DeleteCityButton
+                    <RedButton
                         variant={'outlined'}
                         className=" mx-3"
                         onClick={DeleteCityDialog}>
                         Delete
-                    </DeleteCityButton>
+                    </RedButton>
                 </DialogActions>
             </Dialog>
         </React.Fragment>

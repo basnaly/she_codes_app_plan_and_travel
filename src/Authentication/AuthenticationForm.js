@@ -4,32 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
-import { Button, Typography } from "@mui/material";
-import { styled } from "@mui/material";
+import { Typography } from "@mui/material";
 import TextField from '@mui/material/TextField';
 
 import PasswordInputComponent from "./PasswordInputComponent";
 import { SetAuthError } from "../Actions/AuthenticationAction";
-
-const SubmitButton = styled(Button)({
-    textTransform: 'none',
-    color: 'forestgreen',
-    border: '1px solid black',
-    fontSize: '20px',
-    backgroundColor: 'lightgray',
-    padding: '3px 12px',
-    fontFamily: 'Aladin',
-})
-
-const CancelButton = styled(Button)({
-    textTransform: 'none',
-    color: 'red',
-    border: '1px solid black',
-    fontSize: '20px',
-    backgroundColor: 'lightgray',
-    padding: '3px 12px',
-    fontFamily: 'Aladin',
-})
+import { GreenButton, RedButton } from "../styles/MuiStyles";
 
 const style = {
     position: 'absolute',
@@ -119,19 +99,19 @@ const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => 
             </div>
 
             <div>
-                <SubmitButton
+                <GreenButton
                     variant={'outlined'}
                     className="mt-4 mx-3"
                     disabled={authError}
                     onClick={() => Submit(email, password, setPassword)}>
                     Submit
-                </SubmitButton>
+                </GreenButton>
 
-                <CancelButton onClick={Cancel}
+                <RedButton onClick={Cancel}
                     variant={'outlined'}
                     className="mt-4 mx-3">
                     Cancel
-                </CancelButton>
+                </RedButton>
             </div>
         </Box>
     )

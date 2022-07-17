@@ -1,21 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import TextField from '@mui/material/TextField';
-import { Button } from "@mui/material";
-import { styled } from "@mui/material";
-import { cityStyle } from "../styles/MuiStyles";
-import { useDispatch } from "react-redux";
-import { AddNewCity } from "../Actions/PlanTravelAction";
 
-const AddCityButton = styled(Button)({
-    textTransform: 'none',
-    color: 'forestgreen',
-    border: '1px solid black',
-    fontSize: '20px',
-    backgroundColor: 'lightgray',
-    padding: '3px 12px',
-    fontFamily: 'Aladin',
-})
+import { cityStyle, GreenButton } from "../styles/MuiStyles";
+
+import { AddNewCity } from "../Actions/PlanTravelAction";
 
 const AddCity = () => {
 
@@ -42,13 +32,13 @@ const AddCity = () => {
                 onChange={(e) => setCity(e.target.value)}
             />
 
-            <AddCityButton
+            <GreenButton
                 variant={'outlined'}
                 className="ms-2"
                 disabled={!city}
                 onClick={AddCity}>
                 Add new city
-            </AddCityButton>
+            </GreenButton>
         </div>
     )
 }

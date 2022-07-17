@@ -1,32 +1,22 @@
 import React from "react";
 
-import { Button } from "@mui/material";
-import { styled } from "@mui/material";
-
-const SaveDiscardButtons = styled(Button)({
-    textTransform: 'none',
-    color: 'yellow',
-    border: '1px solid yellow',
-    fontSize: '16px',
-    backgroundColor: "transparent",
-    padding: '1px 10px',
-})
+import { YellowButton } from "../styles/MuiStyles";
 
 const ControlButtonsComponent = () => {
     
     return (
         <React.Fragment>
-            <SaveDiscardButtons
+            <YellowButton
                 variant={'outlined'}
-                className="m-3">
+                className="log m-3 me-2">
                 Save
-            </SaveDiscardButtons>
+            </YellowButton>
             
-            <SaveDiscardButtons
+            <YellowButton
                 variant={'outlined'}
-                className="m-3">
+                className="log m-3 me-4 ">
                 Discard
-            </SaveDiscardButtons>
+            </YellowButton>
         </React.Fragment>
     )
 }

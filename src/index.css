@@ -89,29 +89,12 @@
   width: 100vw;
 }
 
-.git {
-  font-size: 20px;
-}
-
-.israel {
-  color: white;
-  font-size: 20px;
-}
-
 .me {
   height: 50px;
 }
 
 /* CityBox */
 
-.city-name {
-  font-family: 'Aladin', cursive;
-  color: forestgreen;
-  font-size: 30px;
-  margin-top: -15px;
-  text-transform: capitalize;
-  text-shadow: 1px 1px black;
-}
 
 /* RegisterComponent */
 
