@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import moment from 'moment';
-
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { GetTripData } from '../Actions/PlanTravelAction';
+import { CircularProgress } from '@mui/material';
 
 import { CityTitleStyled, GreenButton } from "../styles/MuiStyles";
+import ViewTripDates from './ViewInternalComponents/ViewTripDates';
+import TransportationsViewList from './ViewInternalComponents/TransportationsViewList';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="down" ref={ref} {...props} />;
@@ -21,7 +21,8 @@ const ViewComponent = ({ el }) => {
 
 	const [isViewDialogOpen, setIsViewDialogOpen] = useState(false);
 
-	const trip = useSelector(state => state?.main?.trip)
+	const trip = useSelector(state => state?.main?.trip);
+	const isLoadingTrip = useSelector(state => state.main.isLoadingTrip);
 
 	const dispatch = useDispatch();
 
@@ -31,9 +32,6 @@ const ViewComponent = ({ el }) => {
 		setIsViewDialogOpen(true)
 	}
 	const closeViewDialog = () => setIsViewDialogOpen(false);
-
-	const tripFrom = moment.unix(trip?.period?.from).format('DD/MM/YYYY');
-	const tripTo = moment.unix(trip?.period?.to).format('DD/MM/YYYY');
 
 	return (
 
@@ -55,40 +53,34 @@ const ViewComponent = ({ el }) => {
 			>
 				<DialogTitle id="modal-modal-title" variant="h6" component="h2"
 					className='pb-1 m-1'>
-						<CityTitleStyled >
-							{trip.city}
-						</CityTitleStyled>
+					<CityTitleStyled >
+						{trip.city}
+					</CityTitleStyled>
 				</DialogTitle>
 
 				<hr className='mx-2 my-0' />
 
-				<DialogContent className='d-flex flex-column align-items-center pt-1 pb-3'>
+				{isLoadingTrip ? <CircularProgress color="success" /> :
 
-					<div className='period-view mt-2 mb-2'>
-						Date of trip:
-					</div>
 
-					<div className='date-view d-flex align-items-center'>
-						<DialogContentText id="alert-dialog-slide-description"
-							className='me-2 mt-0 mb-2'>
-							from: {tripFrom}
-						</DialogContentText>
+					<DialogContent className='d-flex flex-column align-items-center pt-1 pb-3'>
 
-						<DialogContentText id="alert-dialog-slide-description"
-							className='mt-0 mb-2'>
-							to: {tripTo}
-						</DialogContentText>
-					</div>
-			
-				</DialogContent>
+						<ViewTripDates period={trip.period} />
+
+
+						<TransportationsViewList transportations={trip.transportations} />
+
+					</DialogContent>
+
+				}
 
 				<DialogActions className="d-flex align-items-center mt-0 mb-3">
 					<GreenButton
-					variant={'outlined'}
-					className=" mx-3"
-					onClick={closeViewDialog}
+						variant={'outlined'}
+						className=" mx-3"
+						onClick={closeViewDialog}
 					>
-					Close
+						Close
 					</GreenButton>
 				</DialogActions>
 			</Dialog>
