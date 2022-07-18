@@ -6,11 +6,11 @@ const initState = {
         dateFrom: moment(),
         dateTo: moment(),
     },
-    isLoading: false,
+    cities: [], // [{id:'jjj', city:'new jersey'}]
+    isLoadingCities: false,
     error: '',
     trip: {},
-    isLoadingTrip: false,
-    cities: [], // [{id:'jjj', city:'new jersey'}]
+    isLoadingTrip: false,   
 }
 
 const PlanTravelReducer = (state = initState, action) => {
@@ -20,12 +20,6 @@ const PlanTravelReducer = (state = initState, action) => {
             return {
                 ...state,
                 preLoginTrip: action.preLoginTrip
-            }
-
-        case 'SET_IS_LOADING':
-            return {
-                ...state,
-                isLoading: action.isLoading
             }
 
         case 'CHANGE_PRELOGIN_TRIP_CITY':
@@ -55,11 +49,17 @@ const PlanTravelReducer = (state = initState, action) => {
                 }
             }
 
-        case 'GET_CITY_DATA':
+        case 'SET_IS_LOADING_CITIES':
+            return {
+                ...state,
+                isLoadingCities: action.isLoadingCities
+            }
+
+        case 'LOADED_CITY_DATA':
             return {
                 ...state,
                 cities: action.cities,
-                isLoading: false
+                isLoadingCities: false
             }
 
         case 'SET_IS_LOADING_TRIP':

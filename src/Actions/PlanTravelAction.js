@@ -1,5 +1,4 @@
 import { getDatabase, child, push, ref, set, get, remove, update } from "firebase/database";
-import { getAuth } from 'firebase/auth';
 import moment from "moment";
 
 export const SaveInitialTrip = (userId) => {
@@ -22,6 +21,7 @@ export const SaveInitialTrip = (userId) => {
         const db = getDatabase();
 
         const newTripId = push(child(ref(db), 'trips/' + userId)).key; // create the trip doc and gets it id
+
         set(ref(db, 'trips/' + userId + '/' + newTripId), tripData) // set tripDate in newTripId
             .then(() => { // result not use yet
 
@@ -66,8 +66,8 @@ export const GetCityData = () => {
         }
 
         dispatch({
-            type: 'SET_IS_LOADING',
-            isLoading: true
+            type: 'SET_IS_LOADING_CITIES',
+            isLoadingCities: true
         })
 
         get(child(dbRef, `trips/${userId}`)).then((snapshot) => { // get from db/trips/userId
@@ -86,7 +86,7 @@ export const GetCityData = () => {
                 console.log(listCities)
 
                 dispatch({  // save to Redux
-                    type: 'GET_CITY_DATA', // including isLoading: false
+                    type: 'LOADED_CITY_DATA', // including isLoading: false
                     cities: listCities
                 })
 
@@ -94,7 +94,7 @@ export const GetCityData = () => {
                 console.log("No data available");
 
                 dispatch({
-                    type: 'GET_CITY_DATA',
+                    type: 'LOADED_CITY_DATA',
                     cities: []
                 })
 
@@ -121,7 +121,9 @@ export const AddNewCity = (newCity) => {
         const userId = getState().auth.userId;
 
         const db = getDatabase();
+
         const newTripId = push(child(ref(db), 'trips/' + userId)).key;
+
         set(ref(db, 'trips/' + userId + '/' + newTripId), tripData) // 
             .then(() => {
 
@@ -168,7 +170,7 @@ export const GetTripData = (tripId) => {
 
         const db = getDatabase();
 
-        const userId = getState().auth.userId; //
+        const userId = getState().auth.userId;
 
         dispatch(SetIsLoadingTrip(true))
 
@@ -178,30 +180,47 @@ export const GetTripData = (tripId) => {
 
                 if (snapshot.exists()) {      // trip data
 
-                    let objectTrip = snapshot.val();
-                    console.log(objectTrip)
-
-                    dispatch({  // save to Redux
-                        type: 'LOADED_TRIP_DATA', // including isLoading: false
-                        trip: objectTrip
+                    dispatch({
+                        type: 'LOADED_TRIP_DATA',
+                        trip: snapshot.val() // sve the snapshot value to redux
                     })
 
                 } else {
                     console.log("No data available");
 
                     dispatch({   // if not trip save in redux empty data
-                        type: 'LOADED_CITY_DATA',
+                        type: 'LOADED_TRIP_DATA',
                         trip: {}
                     })
-
                 }
             }).catch((error) => {
                 console.error(error);
 
                 dispatch({  // if was error during request save in redux empty data
-                    type: 'LOADED_CITY_DATA',
+                    type: 'LOADED_TRIP_DATA',
                     trip: {}
                 })
+            });
+    }
+}
+
+export const SaveTripData = (tripId, tripData) => {
+
+    return (dispatch, getState) => {
+
+        const db = getDatabase();
+
+        const userId = getState().auth.userId; //
+
+        update(ref(db, 'trips/' + userId + '/' + tripId), tripData)
+
+            .then(() => { // get from db/trips/userId
+
+                dispatch(GetTripData(tripId))
+
+            }).catch((error) => {
+                console.error(error);
+
             });
     }
 }

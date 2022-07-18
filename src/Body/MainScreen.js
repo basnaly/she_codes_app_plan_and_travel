@@ -9,7 +9,7 @@ import { CircularProgress } from '@mui/material';
 const MainScreen = () => {
 
     const cities = useSelector(state => state.main.cities);
-    const isLoading = useSelector(state => state.main.isLoading);
+    const isLoadingCities = useSelector(state => state.main.isLoadingCities);
     const userId = useSelector(state => state.auth.userId);
 
     const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const MainScreen = () => {
     return (
         <div className="d-flex flex-column align-items-center overflow-auto">
             <AddCity />
-            {isLoading && <CircularProgress color="success" />}
+            {isLoadingCities && <CircularProgress color="success" />}
             <div className="overflow-auto d-flex flex-wrap align-items-center justify-content-evenly">
                 {cities.map(el =>
                     <CityBox el={el} key={el.id} />

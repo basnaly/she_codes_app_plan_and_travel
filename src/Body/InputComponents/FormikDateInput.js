@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
+
+import moment from "moment";
 
 import TextField from '@mui/material/TextField';
-import moment from "moment";
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 const FormikDateInput = ({ field, form, className = '', ...rest }) => {
@@ -16,8 +17,8 @@ const FormikDateInput = ({ field, form, className = '', ...rest }) => {
             inputFormat="DD/MM/yyyy"
             {...field}
             {...rest}
-            value={moment.unix(value)} // transform to moment object
-            onChange={val => setFieldValue(name, val.unix())} // val.unix transfor from moment to timestamp
+            value={moment.unix(value)} 
+            onChange={val => setFieldValue(name, val.unix())}
             renderInput={(params) => <TextField color="success" {...params} className={ className }/>} />
     )
 }

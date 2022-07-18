@@ -2,18 +2,22 @@ import React, { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import { Formik } from 'formik';
+
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 
-import { Routes, Route, Router, useNavigate, useParams } from "react-router-dom";
+import { CircularProgress } from '@mui/material';
 
-import PeriodComponent from './Period/PeriodComponent';
-import PreparationsComponent from './Preparations/PreparationsComponent';
-import { Formik } from 'formik';
+import { Routes, Route, useLocation, useNavigate, useParams } from "react-router-dom";
+
 import { HeaderBox } from '../styles/MuiStyles';
-import { GetTripData } from '../Actions/PlanTravelAction';
+import { GetTripData, SaveTripData } from '../Actions/PlanTravelAction';
 import ControlButtonsComponent from './ControlButtonsComponent';
+import TransportationsComponent from './Tabs/TransportationsComponent';
+import PeriodComponent from './Tabs/PeriodComponent';
+import PreparationsComponent from './Tabs/PreparationsComponent';
 
 const EditTripMainScreen = () => {
 
@@ -21,13 +25,17 @@ const EditTripMainScreen = () => {
     const trip = useSelector(state => state?.main?.trip);
     const isLoadingTrip = useSelector(state => state?.main?.isLoadingTrip);
 
-    const [selectedTab, setSelectedTab] = useState('');
+    const location = useLocation();
+
+    const params = useParams();
+
+    const idPath = `/${params.id}/`;
+
+    const [selectedTab, setSelectedTab] = useState(location.pathname.replace(idPath, ''));
 
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
-
-    const params = useParams();
 
     useEffect(() => {
 
@@ -45,7 +53,12 @@ const EditTripMainScreen = () => {
     }
 
     const Submit = (values) => {
-        console.log(values)
+        
+        dispatch(SaveTripData(params.id, values))
+    }
+
+    if (isLoadingTrip) {
+        return <CircularProgress color="success" />
     }
 
     return (
@@ -75,7 +88,7 @@ const EditTripMainScreen = () => {
                 <Routes>
                     <Route path='/period' element={<PeriodComponent />} />
                     <Route path='/preparations' element={<PreparationsComponent />} />
-
+                    <Route path='/transportations' element={<TransportationsComponent />} />
                 </Routes>
 
                 <div className="d-flex align-items-center mx-auto">
