@@ -1,17 +1,13 @@
 import React from 'react';
 
-import TextField from '@mui/material/TextField';
-import { Autocomplete } from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
 
-const options = ['$', '€', '￡', '₣', '￥', '₪'];
+const FormikAutocompleteInput = ({ field, form, options, label, ...props }) => {
 
-const FormikCurrencyInput = ({ field, form, ...props }) => {
-
-    const { setFieldValue } = form
+    const { setFieldValue } = form;
     const { value, name } = field
 
     return (
-
         <div className="d-flex align-items-center me-3">
             <Autocomplete
                 id="free-solo-demo"
@@ -20,22 +16,22 @@ const FormikCurrencyInput = ({ field, form, ...props }) => {
                 options={options}
                 renderInput={(params) =>
 
-                    <TextField id="outlined-basic"
+                    <TextField 
+                        id="outlined-basic"
                         className="ms-3"
                         variant="outlined"
                         color="success"
                         size='small'
-                        label="Currency"
+                        label={label}
                         type="text"
-                        onChange={e => setFieldValue(name, e.target.value)}
-                        {...params}
+                        {...params} {...field} {...props}
                     />}
 
                 {...field} {...props}
                 onChange={(_, text) => setFieldValue(name, text)}
             />
         </div>
-    )
+    );
 }
 
-export default FormikCurrencyInput;
+export default FormikAutocompleteInput;

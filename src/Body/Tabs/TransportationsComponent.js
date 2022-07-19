@@ -10,7 +10,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 import FormikDateInput from '../InputComponents/FormikDateInput';
 import FormikTextInput from '../InputComponents/FormikTextInput';
-import FormikCurrencyInput from '../InputComponents/FormikCurrencyInput';
+import FormikAutocompleteInput from '../InputComponents/FormikAutocompleteInput';
+import { CURRENCY_OPTIONS } from '../../constants';
 
 const TRANSPORTATIONS = [
     {
@@ -42,13 +43,17 @@ const TransportationsComponent = () => {
                     {({ remove, push }) => (
                         <div className="d-flex flex-column align-items-start ">
                             {(field.value ?? []).map((el, i) =>
-                                    <div className="d-flex align-items-start my-2" 
-                                        key={el.id}>
-                                        <Field name={`transportations[${i}].date`} component={FormikDateInput} label="Date" />
-                                        <Field name={`transportations[${i}.].transport`} component={FormikTextInput} label='Type of transport' />
-                                        <Field name={`transportations[${i}.].price`} component={FormikTextInput} type='number' label='Price' />
-                                        <Field name={`transportations[${i}.].currency`} component={FormikCurrencyInput} label='Currency' />
-                                        <Field name={`transportations[${i}.].notes`} component={FormikTextInput} label='Notes' />
+                                    <div key={el.id} className="d-flex align-items-start my-2" >
+                                        <Field name={`transportations[${i}].date`} 
+                                            component={FormikDateInput} label="Date" />
+                                        <Field name={`transportations[${i}].transport`} 
+                                            component={FormikTextInput} label='Type of transport' />
+                                        <Field name={`transportations[${i}].price`} 
+                                            component={FormikTextInput} type='number' label='Price' />
+                                        <Field name={`transportations[${i}].currency`} 
+                                            component={FormikAutocompleteInput} options={CURRENCY_OPTIONS} label='Currency' />
+                                        <Field name={`transportations[${i}].notes`} 
+                                            component={FormikTextInput} label='Notes' />
 
                                         <IconButton color='error' aria-label="upload picture" component="span"
                                             className="d-flex align-items-center m-2 "

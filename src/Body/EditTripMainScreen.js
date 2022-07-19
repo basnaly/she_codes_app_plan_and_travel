@@ -18,6 +18,7 @@ import ControlButtonsComponent from './ControlButtonsComponent';
 import TransportationsComponent from './Tabs/TransportationsComponent';
 import PeriodComponent from './Tabs/PeriodComponent';
 import PreparationsComponent from './Tabs/PreparationsComponent';
+import AccommodationsComponent from './Tabs/AccommodationsComponent';
 
 const EditTripMainScreen = () => {
 
@@ -89,6 +90,8 @@ const EditTripMainScreen = () => {
                     <Route path='/period' element={<PeriodComponent />} />
                     <Route path='/preparations' element={<PreparationsComponent />} />
                     <Route path='/transportations' element={<TransportationsComponent />} />
+                    <Route path='/accomodations' element={<AccommodationsComponent />} />
+
                 </Routes>
 
                 <div className="d-flex align-items-center mx-auto">
