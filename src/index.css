@@ -81,14 +81,6 @@
 
 /* FooterComponent */
 
-.footer {
-  background-color: lightslategrey;
-  height: 4rem;
-  position: absolute  ;
-  bottom: 0;
-  width: 100vw;
-}
-
 .me {
   height: 50px;
 }

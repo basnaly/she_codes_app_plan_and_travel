@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import moment from 'moment';
 
@@ -15,20 +15,11 @@ const columns = [
         valueFormatter: ({value}) => moment.unix(value).format('DD/MM/YYYY'),
     },
     {
-        field: 'transport',
-        headerName: 'Transport',
+        field: 'visit',
+        headerName: 'Places to visit',
         headerAlign: 'center',
         align: 'center',
         flex: 1
-    },
-    {
-        field: 'price',
-        headerName: 'Price',
-        headerAlign: 'center',
-        type: 'number',
-        align: 'center',
-        width: 150,
-        valueGetter: (params) => `${params.row.price ?? ''}${params.row.currency}`,
     },
     {
         field: 'notes',
@@ -37,15 +28,15 @@ const columns = [
         align: 'center',
         flex: 1,
     },
-];
+]
 
-const TransportationsViewList = ({ transportations = [] }) => {
+const VisitingViewList = ({ visitings = [] }) => {
 
     return (
 
         <React.Fragment>
             <div className='period-view mt-3 mb-2'>
-                Transportations:
+                Visitings:
             </div>
 
             <div className='d-flex align-items-center align-self-stretch'>
@@ -55,13 +46,13 @@ const TransportationsViewList = ({ transportations = [] }) => {
                     <div style={{ width: 'auto' }}>
                         <DataGrid
                             autoHeight
-                            rows={transportations}
+                            rows={visitings}
                             columns={columns}
                             hideFooter
                             hideFooterPagination
                             disableColumnMenu
+                            pageSize={20}
                         />
-
                     </div>
                 </DialogContentText>
             </div>
@@ -69,4 +60,4 @@ const TransportationsViewList = ({ transportations = [] }) => {
     )
 }
 
-export default TransportationsViewList
+export default VisitingViewList;

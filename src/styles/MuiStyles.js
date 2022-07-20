@@ -64,6 +64,7 @@ export const HeaderBox = styled(Box)({
 
 export const TabContentBox = styled(Box) ({
     marginTop: '10px',
+    marginBottom: '10px',
     marginRight: 'auto',
     marginLeft: 'auto',
     border: '2px solid forestgreen',
@@ -90,5 +91,15 @@ export const PeriodTitle = styled(CityTitleStyled) ({
     fontSize: '30px',
     marginTop: '-10px',
     textTransform: 'none',
-    
+})
+
+export const CategoryTitle = styled('div') ({
+    fontSize: '26px',
+    textDecoration: 'underline',
+})
+
+export const Footer = styled('div') ({
+    backgroundColor: 'lightslategrey',
+    height: '4rem',
+    width: '100vw',
 })

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import moment from 'moment';
 
@@ -7,16 +7,24 @@ import DialogContentText from '@mui/material/DialogContentText';
 
 const columns = [
     {
-        field: 'date',
-        headerName: 'Date',
+        field: 'dateFrom',
+        headerName: 'Date from',
         headerAlign: 'center',
         width: 150,
         filterable: false,
         valueFormatter: ({value}) => moment.unix(value).format('DD/MM/YYYY'),
     },
     {
-        field: 'transport',
-        headerName: 'Transport',
+        field: 'dateTo',
+        headerName: 'Date to',
+        headerAlign: 'center',
+        width: 150,
+        filterable: false,
+        valueFormatter: ({value}) => moment.unix(value).format('DD/MM/YYYY'),
+    },
+    {
+        field: 'accommodation',
+        headerName: 'Type of accommodation',
         headerAlign: 'center',
         align: 'center',
         flex: 1
@@ -28,7 +36,7 @@ const columns = [
         type: 'number',
         align: 'center',
         width: 150,
-        valueGetter: (params) => `${params.row.price ?? ''}${params.row.currency}`,
+        valueGetter: (params) => `${params.row.price ?? ''}${params.row.currency ?? ''}`,
     },
     {
         field: 'notes',
@@ -37,15 +45,15 @@ const columns = [
         align: 'center',
         flex: 1,
     },
-];
+]
 
-const TransportationsViewList = ({ transportations = [] }) => {
+const AccommodationViewList = ({ accommodations = [] }) => {
 
     return (
 
         <React.Fragment>
             <div className='period-view mt-3 mb-2'>
-                Transportations:
+                Accommodations:
             </div>
 
             <div className='d-flex align-items-center align-self-stretch'>
@@ -55,13 +63,13 @@ const TransportationsViewList = ({ transportations = [] }) => {
                     <div style={{ width: 'auto' }}>
                         <DataGrid
                             autoHeight
-                            rows={transportations}
+                            rows={accommodations}
                             columns={columns}
                             hideFooter
                             hideFooterPagination
                             disableColumnMenu
+                            pageSize={20}
                         />
-
                     </div>
                 </DialogContentText>
             </div>
@@ -69,4 +77,4 @@ const TransportationsViewList = ({ transportations = [] }) => {
     )
 }
 
-export default TransportationsViewList
+export default AccommodationViewList;

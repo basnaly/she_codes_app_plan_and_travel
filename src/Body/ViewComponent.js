@@ -12,6 +12,8 @@ import { CircularProgress } from '@mui/material';
 import { CityTitleStyled, GreenButton } from "../styles/MuiStyles";
 import ViewTripDates from './ViewInternalComponents/ViewTripDates';
 import TransportationsViewList from './ViewInternalComponents/TransportationsViewList';
+import AccommodationViewList from './ViewInternalComponents/AccommodationViewList';
+import VisitingViewList from './ViewInternalComponents/VisitingViewList';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="down" ref={ref} {...props} />;
@@ -51,12 +53,27 @@ const ViewComponent = ({ el }) => {
 				aria-labelledby="alert-dialog-title"
 				aria-describedby="alert-dialog-description"
 			>
-				<DialogTitle id="modal-modal-title" variant="h6" component="h2"
-					className='pb-1 m-1'>
-					<CityTitleStyled >
-						{trip.city}
-					</CityTitleStyled>
-				</DialogTitle>
+
+				<div className='d-flex align-items-center align-self-stretch justify-content-between'>
+
+					<DialogTitle id="modal-modal-title" variant="h6" component="h2"
+						className='pb-1 m-1'>
+						<CityTitleStyled >
+							{trip.city}
+						</CityTitleStyled>
+					</DialogTitle>
+
+					<DialogActions className="d-flex align-items-center mt-0 mb-3">
+						<GreenButton
+							variant={'outlined'}
+							className=" mx-3"
+							onClick={closeViewDialog}
+						>
+							Close
+						</GreenButton>
+					</DialogActions>
+
+				</div>
 
 				<hr className='mx-2 my-0' />
 
@@ -70,19 +87,13 @@ const ViewComponent = ({ el }) => {
 
 						<TransportationsViewList transportations={trip.transportations} />
 
+						<AccommodationViewList accommodations={trip.accommodations} />
+
+						<VisitingViewList visitings={trip.visitings} />
+
 					</DialogContent>
 
 				}
-
-				<DialogActions className="d-flex align-items-center mt-0 mb-3">
-					<GreenButton
-						variant={'outlined'}
-						className=" mx-3"
-						onClick={closeViewDialog}
-					>
-						Close
-					</GreenButton>
-				</DialogActions>
 			</Dialog>
 		</React.Fragment >
 	)
