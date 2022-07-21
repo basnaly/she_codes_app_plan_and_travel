@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import { useSelector } from "react-redux";
 
 import AuthenticationButtons from '../Authentication/AuthenticationButtons';
+import { HeaderStyled, IconStyled, LinkHoverStyled } from "../styles/MuiStyles";
 
 const HeaderComponent = () => {
 
@@ -11,21 +12,23 @@ const HeaderComponent = () => {
     const linkTo = userId ? '/home' : '/'
 
     return (
-        <div className="header d-flex align-items-center justify-content-between">
+        <HeaderStyled className="d-flex align-items-center justify-content-between">
             <div className="d-flex align-items-center ps-1">
-                <div className="icon">🗺</div>
+                <IconStyled className="icon">🗺</IconStyled>
 
-                <div>
-                    <Link className="name" to={ linkTo }>Plan & Travel</Link>
-                </div>
+                <LinkHoverStyled className="name" to={ linkTo }>Plan & Travel</LinkHoverStyled>
+
             </div>
             <div className="d-flex align-items-center ps-5">
+
+                <div id="portal" />
 
                 <ul className="d-flex align-items-center me-5 mt-3">
                     <AuthenticationButtons />    
                 </ul>
             </div>
-        </div>
+
+        </HeaderStyled>
     )
 }
 

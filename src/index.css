@@ -1,7 +1,7 @@
 
 /* AppPlanTravel */
 
-.main::after {
+/* .main::after {
   content: '';
   background-image: url('/public/img/map.webp');
   height: 100vh;
@@ -10,34 +10,34 @@
   right: 0;
   width: 100vw;
   z-index: -1;
-}
+} */
 
 /* PlanTravelComponent */
 
-.parent {
+/* .parent {
   font-family: 'Aladin', cursive;
   font-size: 30px;
   margin-top: -10px;
-}
+} */
 
-.palm {
+/* .palm {
   font-size: 50px;
   padding: 10px;
-}
+} */
 
-.link {
+/* .link {
   font-size: 26px;
   color: forestgreen;
-}
+} */
 
-.city {
+/* .city {
   padding: 10px;
   font-size: 30px;
   font-weight: bold;
-}
+} */
 
 /* HeaderComponent */
-
+/* 
 .header {
   background-color: lightslategrey;
   height: 4rem;
@@ -49,8 +49,8 @@
   height: 30px;
   font-size: 60px;
   margin-left: 10px;
-}
-
+} */
+/* 
 .name {
   font-family: 'Aladin', cursive;
   font-size: 40px;
@@ -61,9 +61,9 @@
 
 .name:hover {
   color:lightgreen;
-}
+} */
 
-.log {
+/* .log {
   font-family: 'Aladin', cursive;
   font-size: 24px;
   color: yellow;
@@ -77,43 +77,40 @@
   color:lightgreen;
   outline: 1px solid lightgreen;
   border: 1px solid transparent;
-}
+} */
 
 /* FooterComponent */
 
-.me {
+/* .me {
   height: 50px;
-}
+} */
 
 /* CityBox */
 
 
 /* RegisterComponent */
-
+/* 
 .error {
   color: red;
   font-weight: bold;
   font-size: 18px;
-}
-
-
-
+} */
 
 /* MainScreen */
 
-.no-trips {
+/* .no-trips {
   font-family: 'Aladin', cursive;
   font-size: 40px;
   color: forestgreen;
   text-shadow: 1px 1px black;
   margin: 20px;
-}
+} */
 
 /* ViewComponent */
-
+/* 
 .period-view {
   font-family: 'Aladin', cursive;
   font-size: 26px;
   color: forestgreen;
   font-weight: bold;
-}
+} */

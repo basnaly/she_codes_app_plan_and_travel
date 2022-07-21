@@ -3,6 +3,7 @@ import React from 'react';
 import moment from 'moment';
 
 import DialogContentText from '@mui/material/DialogContentText';
+import { PeriodView } from '../../styles/MuiStyles';
 
 const ViewTripDates = ({ period }) => {
 
@@ -12,9 +13,9 @@ const ViewTripDates = ({ period }) => {
     return (
 
         <React.Fragment>
-            <div className='period-view mt-2 mb-2'>
+            <PeriodView className='period-view mt-2 mb-2'>
                 Date of trip:
-            </div>
+            </PeriodView>
 
             <div className='date-view d-flex align-items-center'>
                 <DialogContentText id="alert-dialog-slide-description"

@@ -5,6 +5,7 @@ import AddCity from "./AddCity";
 import { useDispatch, useSelector } from "react-redux";
 import { GetCityData } from "../Actions/PlanTravelAction";
 import { CircularProgress } from '@mui/material';
+import { NoTripStyled } from "../styles/MuiStyles";
 
 const MainScreen = () => {
 
@@ -34,9 +35,9 @@ const MainScreen = () => {
 
             {  
                 cities.length !== 0 ? '' :
-                    <div className="no-trips">
+                    <NoTripStyled>
                         You don't have any trips. Let's start adding!
-                    </div>
+                    </NoTripStyled>
             }
 
         </div>

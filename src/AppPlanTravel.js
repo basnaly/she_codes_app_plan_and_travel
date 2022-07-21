@@ -14,6 +14,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { CircularProgress } from '@mui/material';
 
 import { app } from './firebase-config';
+import { Main } from "./styles/MuiStyles";
 
 const AppPlanTravel = () => {
 
@@ -37,7 +38,7 @@ const AppPlanTravel = () => {
     
     return (
         <ThemeProvider theme={myTheme}>
-            <div className="main d-flex flex-column flex-column overflow-auto vh-100">
+            <Main className="d-flex flex-column flex-column overflow-auto vh-100">
                 <Router>
                     <HeaderComponent />
                     {
@@ -48,7 +49,7 @@ const AppPlanTravel = () => {
                     }
                     <FooterComponent />
                 </Router>
-            </div>
+            </Main>
         </ThemeProvider>
     )
 

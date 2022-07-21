@@ -31,12 +31,16 @@ const TransportationsComponent = () => {
 
                                     <Field name={`transportations[${i}].date`}
                                         component={FormikDateInput} label="Date" />
+
                                     <Field name={`transportations[${i}].transport`}
                                         component={FormikTextInput} label='Type of transport' />
-                                    <Field name={`transportations[${i}].price`}
+
+                                    <Field name={`transportations[${i}].price`} sx={{maxWidth: '80px'}}
                                         component={FormikTextInput} type='number' label='Price' />
-                                    <Field name={`transportations[${i}].currency`}
+
+                                    <Field name={`transportations[${i}].currency`} sx={{maxWidth: '80px'}}
                                         component={FormikAutocompleteInput} options={CURRENCY_OPTIONS} label='Currency' />
+                                        
                                     <Field name={`transportations[${i}].notes`}
                                         component={FormikTextInput} label='Notes' />
 

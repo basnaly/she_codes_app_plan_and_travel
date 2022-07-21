@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import { DataGrid } from '@mui/x-data-grid';
 import DialogContentText from '@mui/material/DialogContentText';
+import { PeriodView } from '../../styles/MuiStyles';
 
 const columns = [
     {
@@ -35,9 +36,9 @@ const VisitingViewList = ({ visitings = [] }) => {
     return (
 
         <React.Fragment>
-            <div className='period-view mt-3 mb-2'>
+            <PeriodView className='mt-3 mb-2'>
                 Visitings:
-            </div>
+            </PeriodView>
 
             <div className='d-flex align-items-center align-self-stretch'>
                 <DialogContentText id="alert-dialog-slide-description"

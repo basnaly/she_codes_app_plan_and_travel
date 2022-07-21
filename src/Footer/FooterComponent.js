@@ -1,5 +1,5 @@
 import React from "react";
-import { Footer, FooterLink, FooterText } from "../styles/MuiStyles";
+import { Footer, FooterLink, FooterText, MeStyled } from "../styles/MuiStyles";
 
 const FooterComponent = () => {
 
@@ -10,7 +10,7 @@ const FooterComponent = () => {
                 https://github.com/basnaly
             </FooterLink>
             <FooterText>Israel-2022</FooterText>
-            <img className="me"
+            <MeStyled className="me"
                 src='https://github.com/basnaly/roman_numeric_converter/raw/main/my-photo.png'/>
         </Footer>
     )

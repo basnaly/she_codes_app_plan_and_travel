@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import LogoutComponent from "./LogoutComponent";
+import { AuthLinkStyled } from "../styles/MuiStyles";
 
 const AuthenticationButtons = () => {
 
@@ -15,10 +16,10 @@ const AuthenticationButtons = () => {
     return (
         <React.Fragment>
             <ol>
-                <Link className="log" to='/register'>Register</Link>
+                <AuthLinkStyled className="log" to='/register'>Register</AuthLinkStyled>
             </ol>
             <ol>
-                <Link className="log" to='/login'>Log in</Link>
+                <AuthLinkStyled className="log" to='/login'>Log in</AuthLinkStyled>
             </ol>
         </React.Fragment>
     )

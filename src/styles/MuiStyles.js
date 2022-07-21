@@ -1,19 +1,23 @@
-import { Box, Button } from '@mui/material';
+import { Button, Box } from '@mui/material';
 import { styled } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const cityStyle = {
     color: 'forestgreen',
     fontSize: '26px',
 }
 
-export const AddButton = styled(Button)({
-    textTransform: 'none',
-    color: 'forestgreen',
-    border: '1px solid black',
-    fontSize: '20px',
-    backgroundColor: 'lightgray',
-    padding: '3px 12px',
-    fontFamily: 'Aladin',
+export const Main = styled('div')({
+    '&::after': {
+        content: '""',
+        backgroundImage: "url('/img/map.webp')",
+        height: '100vh',
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        width: '100vw',
+        zIndex: '-1',
+    }
 })
 
 export const CityTitleStyled = styled('div')({
@@ -23,6 +27,94 @@ export const CityTitleStyled = styled('div')({
     marginTop: '-15px',
     textTransform: 'capitalize',
     textShadow: '1px 1px black', 
+});
+
+export const PreLoginStyled = styled('div')({
+    fontFamily: "'Aladin', cursive",
+    fontSize: '30px',
+    marginTop: '-10px',
+});
+
+export const PalmStyled = styled('div')({
+    fontSize: '50px',
+    marginTop: '10px',
+});
+
+export const LinkStyled = styled('a')({
+    fontSize: '26px',
+    color: 'forestgreen',
+});
+
+export const CityStyled = styled('span')({
+    padding: '10px',
+    fontSize: '30px',
+    fontWeight: 'bold',
+});
+
+export const HeaderStyled = styled('div')({
+    backgroundColor: 'lightslategrey',
+    height: '4rem',
+});
+
+export const IconStyled = styled('div')({
+    position: 'relative',
+    top: '-30px',
+    height: '30px',
+    fontSize: '60px',
+    marginLeft: '10px',
+});
+
+export const LinkHoverStyled = styled(Link)({
+    fontFamily: "'Aladin', cursive",
+    fontSize: '40px',
+    color: 'yellow',
+    padding: '20px',
+    textDecoration: 'none',
+
+    "&:hover": {
+        color: 'lightgreen',
+    }
+});
+
+export const AuthLinkStyled = styled(Link)({
+    fontFamily: "'Aladin', cursive",
+    fontSize: '24px',
+    color: 'yellow',
+    padding: '5px 10px',
+    textDecoration: 'none',
+    border: '1px solid yellow',
+    borderRadius: '5px',
+
+    "&:hover": {
+        color: 'lightgreen',
+        outline: '1px solid lightgreen',
+        border: '1px solid transparent',
+    }
+});
+
+export const MeStyled = styled('img')({
+    height: '50px',
+});
+
+export const ErrorStyled = styled('div')({
+    color: 'red',
+    fontSize: '18px',
+    fontWeight: 'bold',
+});
+
+export const NoTripStyled = styled('div')({
+    fontFamily: "'Aladin', cursive",
+    color: 'forestgreen',
+    fontSize: '40px',
+    margin: '20px',
+    textShadow: '1px 1px black', 
+});
+
+export const PeriodView = styled('div')({
+    fontFamily: "'Aladin', cursive",
+    fontSize: '26px',
+    color: 'forestgreen',
+    fontWeight: 'bold',
 });
 
 export const YellowButton = styled(Button)({
@@ -52,6 +144,16 @@ export const RedButton = styled(Button)({
     fontSize: '20px',
     backgroundColor: 'lightgray',
     padding: '3px 12px',
+    fontFamily: 'Aladin',
+})
+
+export const GrayButton = styled(Button)({
+    textTransform: 'none',
+    color: 'forestgreen',
+    border: '1px solid black',
+    fontSize: '18px',
+    backgroundColor: "lightgray",
+    padding: '0 5px',
     fontFamily: 'Aladin',
 })
 
@@ -90,7 +192,23 @@ export const FooterText = styled('div') ({
 export const PeriodTitle = styled(CityTitleStyled) ({
     fontSize: '30px',
     marginTop: '-10px',
-    textTransform: 'none',
+    textTransform: 'none',   
+})
+
+export const TotalView = styled('div') ({
+    fontFamily: "'Aladin', cursive",
+    fontSize: '26px',
+    color: 'forestgreen',
+})
+
+export const FilterView = styled('div') ({
+    fontFamily: "'Aladin', cursive",
+    fontSize: '22px',
+})
+
+export const AmountView = styled('div') ({
+    fontFamily: "'Aladin', cursive",
+    fontSize: '24px',
 })
 
 export const CategoryTitle = styled('div') ({

@@ -30,14 +30,19 @@ const AccommodationsComponent = () => {
                                 <div key={el.id} className="d-flex align-items-start my-2">
                                     <Field name={`accommodations[${i}].dateFrom`}
                                         component={FormikDateInput} label='Date from' />
+
                                     <Field name={`accommodations[${i}].dateTo`}
                                         component={FormikDateInput} className='ms-3' label='Date to' />
+
                                     <Field name={`accommodations[${i}].accommodation`}
                                         component={FormikTextInput} label='Type of accommodation' />
-                                    <Field name={`accommodations[${i}].price`}
+
+                                    <Field name={`accommodations[${i}].price`} sx={{maxWidth: '80px'}}
                                         component={FormikTextInput} type='number' label='Price' />
-                                    <Field name={`accommodations[${i}].currency`}
+
+                                    <Field name={`accommodations[${i}].currency`} sx={{maxWidth: '80px'}}
                                         component={FormikAutocompleteInput} options={CURRENCY_OPTIONS} label='Currency' />
+                                        
                                     <Field name={`accommodations[${i}].notes`}
                                         component={FormikTextInput} multiline label='Notes' />
 

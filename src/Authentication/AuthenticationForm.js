@@ -9,20 +9,7 @@ import TextField from '@mui/material/TextField';
 
 import PasswordInputComponent from "./PasswordInputComponent";
 import { SetAuthError } from "../Actions/AuthenticationAction";
-import { GreenButton, RedButton } from "../styles/MuiStyles";
-
-const style = {
-    position: 'absolute',
-    top: '35%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 500,
-    border: '2px solid forestgreen',
-    borderRadius: "10px",
-    boxShadow: 24,
-    p: 4,
-    backgroundColor: '#ffffff60',
-};
+import { ErrorStyled, GreenButton, RedButton, TabContentBox } from "../styles/MuiStyles";
 
 const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => {
 
@@ -74,12 +61,12 @@ const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => 
 
     return (
 
-        <Box sx={style} className="d-flex flex-column align-items-center">
+        <TabContentBox boxShadow={24} p={4}  className="d-flex flex-column align-items-center">
             <Typography className="form d-flex flex-column align-items-center">
                 { title }
             </Typography>
 
-            <div className="error d-flex mb-2">{authError}</div>
+            <ErrorStyled className="d-flex mb-2">{authError}</ErrorStyled>
 
             <div className="d-flex">
                 <Typography className="d-flex align-items-center justify-content-center"
@@ -113,7 +100,7 @@ const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => 
                     Cancel
                 </RedButton>
             </div>
-        </Box>
+        </TabContentBox>
     )
 }
 

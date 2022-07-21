@@ -6,25 +6,11 @@ import TextField from '@mui/material/TextField';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import Box from '@mui/material/Box';
 
-import { cityStyle } from "../styles/MuiStyles";
+import { cityStyle, CityStyled, LinkStyled, PalmStyled, PreLoginStyled, TabContentBox } from "../styles/MuiStyles";
 import { ChangePreLoginTripCity, 
         ChangePreLoginTripDateFrom, 
         ChangePreLoginTripDateTo } from '../Actions/PlanTravelAction';
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '600px',
-    border: '2px solid forestgreen',
-    borderRadius: "10px",
-    backgroundColor: '#ffffff60',
-    boxShadow: 24,
-    p: 4,
-};
 
 const PreLoginScreen = () => {
 
@@ -52,17 +38,17 @@ const PreLoginScreen = () => {
     return (
         <LocalizationProvider dateAdapter={AdapterMoment}>
 
-            <Box sx={style} className="d-flex align-items-center">
-                <div className="parent d-flex flex-column align-items-center">
+            <TabContentBox boxShadow={24} p={4} className="d-flex align-items-center">
+                <PreLoginStyled className="d-flex flex-column align-items-center">
                     <div className="d-flex align-items-center mb-2">
                         Where would you like to travel?
                     </div>
 
                     <TextField id="outlined-basic" label="City"
                         inputProps={ {style: cityStyle}}
-                        className="input-pt" 
                         variant="outlined"
                         color="success"
+                        size="small"
                         value={city}
                         onChange={(e) => dispatch(ChangePreLoginTripCity(e.target.value))}
                     />
@@ -80,7 +66,7 @@ const PreLoginScreen = () => {
                             onChange={handleChangeFrom}
                             renderInput={(params) => <TextField color="success" {...params} />}
                         />
-                        <div className="palm d-flex">🏝</div>
+                        <PalmStyled className="palm d-flex">🏝</PalmStyled>
 
                         <DesktopDatePicker
                             OpenPickerButtonProps={{style:{color:'forestgreen', transform: 'scale(1.3)'}}}
@@ -93,20 +79,20 @@ const PreLoginScreen = () => {
                     </div>
                     {
                         !city ? '' :
-                            <a className="link m-2" href={`https://www.holiday-weather.com/${formatedCity}/averages/`}
+                            <LinkStyled className="m-2" href={`https://www.holiday-weather.com/${formatedCity}/averages/`}
                                 target='_blank'>
                                 Check the weather for
-                                <span className="city">
+                                <CityStyled className="city">
                                     {city}
-                                </span>
+                                </CityStyled>
                                 on holiday-weather.com
-                            </a>
+                            </LinkStyled>
                     }
-                    <div className="m-3">
+                    <div className="mt-3">
                         Please register or sign in to start your trip!
                     </div>
-                </div>
-            </Box>
+                </PreLoginStyled>
+            </TabContentBox>
         </LocalizationProvider>
     )
 }
