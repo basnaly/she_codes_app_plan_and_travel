@@ -48,7 +48,7 @@ const columns = [
     },
 ]
 
-const AccommodationViewList = ({ accommodations = [] }) => {
+const AccommodationsViewList = ({ accommodations = [] }) => {
 
     return (
 
@@ -78,4 +78,4 @@ const AccommodationViewList = ({ accommodations = [] }) => {
     )
 }
 
-export default AccommodationViewList;
+export default AccommodationsViewList;

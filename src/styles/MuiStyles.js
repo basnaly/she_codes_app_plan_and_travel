@@ -37,7 +37,8 @@ export const PreLoginStyled = styled('div')({
 
 export const PalmStyled = styled('div')({
     fontSize: '50px',
-    marginTop: '10px',
+    margin: '10px 10px 0 10px',
+    textShadow: '1px 1px black',
 });
 
 export const LinkStyled = styled('a')({
@@ -220,4 +221,14 @@ export const Footer = styled('div') ({
     backgroundColor: 'lightslategrey',
     height: '4rem',
     width: '100vw',
+})
+
+export const NoteChecked = styled('div') ({
+    textDecoration: 'line-through',
+    color: 'gray',
+    padding: '0 10px',
+})
+
+export const NoteNotChecked = styled('div') ({
+    padding: '0 10px',
 })

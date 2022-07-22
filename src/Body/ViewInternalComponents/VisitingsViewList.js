@@ -31,7 +31,7 @@ const columns = [
     },
 ]
 
-const VisitingViewList = ({ visitings = [] }) => {
+const VisitingsViewList = ({ visitings = [] }) => {
 
     return (
 
@@ -61,4 +61,4 @@ const VisitingViewList = ({ visitings = [] }) => {
     )
 }
 
-export default VisitingViewList;
+export default VisitingsViewList;

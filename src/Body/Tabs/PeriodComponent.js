@@ -6,7 +6,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Field } from "formik";
 import FormikDateInput from "../InputComponents/FormikDateInput";
 
-import { PeriodTitle, TabContentBox } from "../../styles/MuiStyles";
+import { PalmStyled, PeriodTitle, TabContentBox } from "../../styles/MuiStyles";
 
 const PeriodComponent = () => {
 
@@ -23,7 +23,7 @@ const PeriodComponent = () => {
 
                         <Field name={'period.from'} component={FormikDateInput} label="Date from" />
                             
-                        <div className="palm d-flex">🏝</div>
+                        <PalmStyled className="d-flex">🏝</PalmStyled>
 
                         <Field name={'period.to'} component={FormikDateInput} label="Date to" />
 

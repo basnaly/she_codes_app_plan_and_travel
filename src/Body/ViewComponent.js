@@ -12,8 +12,9 @@ import { CircularProgress } from '@mui/material';
 import { CityTitleStyled, GreenButton } from "../styles/MuiStyles";
 import ViewTripDates from './ViewInternalComponents/ViewTripDates';
 import TransportationsViewList from './ViewInternalComponents/TransportationsViewList';
-import AccommodationViewList from './ViewInternalComponents/AccommodationViewList';
-import VisitingViewList from './ViewInternalComponents/VisitingViewList';
+import AccommodationsViewList from './ViewInternalComponents/AccommodationsViewList';
+import VisitingsViewList from './ViewInternalComponents/VisitingsViewList';
+import PreparationsViewList from './ViewInternalComponents/PreparationsViewList';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="down" ref={ref} {...props} />;
@@ -84,12 +85,13 @@ const ViewComponent = ({ el }) => {
 
 						<ViewTripDates period={trip.period} />
 
+						<PreparationsViewList preparations={trip.preparations} />
 
 						<TransportationsViewList transportations={trip.transportations} />
 
-						<AccommodationViewList accommodations={trip.accommodations} />
+						<AccommodationsViewList accommodations={trip.accommodations} />
 
-						<VisitingViewList visitings={trip.visitings} />
+						<VisitingsViewList visitings={trip.visitings} />
 
 					</DialogContent>
 

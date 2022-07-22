@@ -7,6 +7,7 @@ import { Formik } from 'formik';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
+import { Portal } from '@mui/material';
 
 import { CircularProgress } from '@mui/material';
 
@@ -17,8 +18,9 @@ import { GetTripData, SaveTripData } from '../Actions/PlanTravelAction';
 import ControlButtonsComponent from './ControlButtonsComponent';
 import TransportationsComponent from './Tabs/TransportationsComponent';
 import PeriodComponent from './Tabs/PeriodComponent';
-import PreparationsComponent from './Tabs/PreparationsComponent';
+import PreparationsComponent from './Tabs/PreparationsComponent.js';
 import AccommodationsComponent from './Tabs/AccommodationsComponent';
+import VisitingsComponent from './Tabs/VisitingsComponent';
 
 const EditTripMainScreen = () => {
 
@@ -54,7 +56,7 @@ const EditTripMainScreen = () => {
     }
 
     const Submit = (values) => {
-        
+
         dispatch(SaveTripData(params.id, values))
     }
 
@@ -91,13 +93,13 @@ const EditTripMainScreen = () => {
                     <Route path='/preparations' element={<PreparationsComponent />} />
                     <Route path='/transportations' element={<TransportationsComponent />} />
                     <Route path='/accomodations' element={<AccommodationsComponent />} />
-
+                    <Route path='/visitings' element={<VisitingsComponent />} />
                 </Routes>
 
-                <div className="d-flex align-items-center mx-auto">
+                <Portal container={document.getElementById('portal')}>
                     <ControlButtonsComponent />
-                </div>
-                
+                </Portal>
+
             </React.Fragment>
 
         </Formik>
