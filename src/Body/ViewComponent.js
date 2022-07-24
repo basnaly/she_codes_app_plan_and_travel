@@ -15,6 +15,7 @@ import TransportationsViewList from './ViewInternalComponents/TransportationsVie
 import AccommodationsViewList from './ViewInternalComponents/AccommodationsViewList';
 import VisitingsViewList from './ViewInternalComponents/VisitingsViewList';
 import PreparationsViewList from './ViewInternalComponents/PreparationsViewList';
+import CommentsViewList from './ViewInternalComponents/CommentsViewList';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="down" ref={ref} {...props} />;
@@ -64,7 +65,7 @@ const ViewComponent = ({ el }) => {
 						</CityTitleStyled>
 					</DialogTitle>
 
-					<DialogActions className="d-flex align-items-center mt-0 mb-3">
+					<DialogActions className="d-flex align-items-center my-2">
 						<GreenButton
 							variant={'outlined'}
 							className=" mx-3"
@@ -92,6 +93,8 @@ const ViewComponent = ({ el }) => {
 						<AccommodationsViewList accommodations={trip.accommodations} />
 
 						<VisitingsViewList visitings={trip.visitings} />
+
+						<CommentsViewList comments={trip.comments} />
 
 					</DialogContent>
 

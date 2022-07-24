@@ -1,6 +1,7 @@
 import { Button, Box } from '@mui/material';
 import { styled } from "@mui/material";
 import { Link } from "react-router-dom";
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 export const cityStyle = {
     color: 'forestgreen',
@@ -231,4 +232,28 @@ export const NoteChecked = styled('div') ({
 
 export const NoteNotChecked = styled('div') ({
     padding: '0 10px',
+})
+
+
+
+
+
+
+export const TextareaAutosizeStyled = styled(TextareaAutosize)({
+    fontFamily: "'Aladin', cursive",
+    fontSize: '22px',
+    color: 'black',
+    backgroundColor: '#fff6',
+
+    "&:focus, &:hover, &:focus-visible": {
+        outlineColor: 'forestgreen',
+    }
+});
+
+export const NumberViewStyled = styled('div') ({
+    color: 'forestgreen',
+})
+
+export const HrStyled = styled('hr') ({
+    color: 'gray',
 })
