@@ -37,10 +37,10 @@ const AccommodationsComponent = () => {
                                     <Field name={`accommodations[${i}].accommodation`}
                                         component={FormikTextInput} label='Type of accommodation' />
 
-                                    <Field name={`accommodations[${i}].price`} sx={{maxWidth: '80px'}}
+                                    <Field name={`accommodations[${i}].price`} sx={{maxWidth: '100px'}}
                                         component={FormikTextInput} type='number' label='Price' />
 
-                                    <Field name={`accommodations[${i}].currency`} sx={{maxWidth: '80px'}}
+                                    <Field name={`accommodations[${i}].currency`} sx={{maxWidth: '100px'}}
                                         component={FormikAutocompleteInput} options={CURRENCY_OPTIONS} label='Currency' />
                                         
                                     <Field name={`accommodations[${i}].notes`}

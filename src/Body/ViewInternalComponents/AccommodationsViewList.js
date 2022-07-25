@@ -1,10 +1,11 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 
 import moment from 'moment';
 
 import { DataGrid } from '@mui/x-data-grid';
 import DialogContentText from '@mui/material/DialogContentText';
-import { PeriodView } from '../../styles/MuiStyles';
+import { CaptionView, PeriodView } from '../../styles/MuiStyles';
+import MapViewComponent from '../MapViewComponent';
 
 const columns = [
     {
@@ -28,6 +29,7 @@ const columns = [
         headerName: 'Type of accommodation',
         headerAlign: 'center',
         align: 'center',
+        cellClassName: 'cursor-pointer',
         flex: 1
     },
     {
@@ -50,6 +52,13 @@ const columns = [
 
 const AccommodationsViewList = ({ accommodations = [] }) => {
 
+    const [place, setPlace] = useState('');
+
+    const clickRow = (arg) => {
+
+        setPlace(arg.row.accommodation.replaceAll('\s', '+'))
+    }
+
     return (
 
         <React.Fragment>
@@ -57,21 +66,31 @@ const AccommodationsViewList = ({ accommodations = [] }) => {
                 Accommodations:
             </PeriodView>
 
+            <CaptionView>
+                ** Click on the 'Place to visit' in the table to see it on the map.
+            </CaptionView>
+
+
             <div className='d-flex align-items-center align-self-stretch'>
                 <DialogContentText id="alert-dialog-slide-description"
-                    className='me-2 mt-0 mb-3 w-100'>
+                    className='mt-0 mb-3 w-100'>
 
                     <div style={{ width: 'auto' }}>
                         <DataGrid
                             autoHeight
                             rows={accommodations}
                             columns={columns}
+                            sx={{'& .cursor-pointer': {cursor: 'pointer'} }} 
+                            onRowClick={clickRow}
                             hideFooter
                             hideFooterPagination
                             disableColumnMenu
                             pageSize={20}
                         />
                     </div>
+
+                    {place ? <MapViewComponent place={place} /> : ''}
+
                 </DialogContentText>
             </div>
         </React.Fragment>

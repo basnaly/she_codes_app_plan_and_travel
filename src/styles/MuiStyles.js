@@ -257,3 +257,10 @@ export const NumberViewStyled = styled('div') ({
 export const HrStyled = styled('hr') ({
     color: 'gray',
 })
+
+export const CaptionView = styled('caption') ({
+    fontFamily: "'Aladin', cursive",
+    fontSize: '20px',
+    color: 'gray',
+    marginBottom: '10px'
+})

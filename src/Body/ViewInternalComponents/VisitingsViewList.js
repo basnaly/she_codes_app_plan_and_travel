@@ -1,10 +1,11 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 
 import moment from 'moment';
 
 import { DataGrid } from '@mui/x-data-grid';
 import DialogContentText from '@mui/material/DialogContentText';
-import { PeriodView } from '../../styles/MuiStyles';
+import { CaptionView, PeriodView } from '../../styles/MuiStyles';
+import MapViewComponent from '../MapViewComponent';
 
 const columns = [
     {
@@ -20,6 +21,7 @@ const columns = [
         headerName: 'Places to visit',
         headerAlign: 'center',
         align: 'center',
+        cellClassName: 'cursor-pointer',
         flex: 1
     },
     {
@@ -33,6 +35,13 @@ const columns = [
 
 const VisitingsViewList = ({ visitings = [] }) => {
 
+    const [place, setPlace] = useState('');
+
+    const clickRow = (arg) => {
+        
+        setPlace(arg.row.visit.replaceAll('\s', '+'))
+    }
+
     return (
 
         <React.Fragment>
@@ -42,13 +51,15 @@ const VisitingsViewList = ({ visitings = [] }) => {
 
             <div className='d-flex align-items-center align-self-stretch'>
                 <DialogContentText id="alert-dialog-slide-description"
-                    className='me-2 mt-0 mb-3 w-100'>
+                    className='mt-0 mb-3 w-100'>
 
                     <div style={{ width: 'auto' }}>
                         <DataGrid
                             autoHeight
                             rows={visitings}
                             columns={columns}
+                            sx={{'& .cursor-pointer': {cursor: 'pointer'} }} 
+                            onRowClick={clickRow}
                             hideFooter
                             hideFooterPagination
                             disableColumnMenu
@@ -57,6 +68,12 @@ const VisitingsViewList = ({ visitings = [] }) => {
                     </div>
                 </DialogContentText>
             </div>
+
+            <CaptionView>
+                ** Click on the 'Place to visit' in the table to see it on the map.
+            </CaptionView>
+
+            <MapViewComponent place={place} />
         </React.Fragment>
     )
 }
