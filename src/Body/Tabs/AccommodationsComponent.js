@@ -41,7 +41,8 @@ const AccommodationsComponent = () => {
                                         component={FormikTextInput} type='number' label='Price' />
 
                                     <Field name={`accommodations[${i}].currency`} sx={{maxWidth: '100px'}}
-                                        component={FormikAutocompleteInput} options={CURRENCY_OPTIONS} label='Currency' />
+                                        component={FormikAutocompleteInput} 
+                                        options={CURRENCY_OPTIONS} label='Currency' />
                                         
                                     <Field name={`accommodations[${i}].notes`}
                                         component={FormikTextInput} multiline label='Notes' />

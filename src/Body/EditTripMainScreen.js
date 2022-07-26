@@ -22,6 +22,7 @@ import PreparationsComponent from './Tabs/PreparationsComponent.js';
 import AccommodationsComponent from './Tabs/AccommodationsComponent';
 import VisitingsComponent from './Tabs/VisitingsComponent';
 import CommentsComponent from './Tabs/CommentsComponent';
+import ExpencesComponent from './Tabs/ExpencesComponent';
 
 const EditTripMainScreen = () => {
 
@@ -96,6 +97,7 @@ const EditTripMainScreen = () => {
                     <Route path='/accomodations' element={<AccommodationsComponent />} />
                     <Route path='/visitings' element={<VisitingsComponent />} />
                     <Route path='/comments' element={<CommentsComponent />} />
+                    <Route path='/expences' element={<ExpencesComponent />} />
                 </Routes>
 
                 <Portal container={document.getElementById('portal')}>

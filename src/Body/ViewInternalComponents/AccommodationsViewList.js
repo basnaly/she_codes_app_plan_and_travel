@@ -5,7 +5,7 @@ import moment from 'moment';
 import { DataGrid } from '@mui/x-data-grid';
 import DialogContentText from '@mui/material/DialogContentText';
 import { CaptionView, PeriodView } from '../../styles/MuiStyles';
-import MapViewComponent from '../MapViewComponent';
+import MapViewComponent from './MapViewComponent';
 
 const columns = [
     {
@@ -72,7 +72,7 @@ const AccommodationsViewList = ({ accommodations = [] }) => {
 
 
             <div className='d-flex align-items-center align-self-stretch'>
-                <DialogContentText id="alert-dialog-slide-description"
+                <div id="alert-dialog-slide-description"
                     className='mt-0 mb-3 w-100'>
 
                     <div style={{ width: 'auto' }}>
@@ -91,7 +91,7 @@ const AccommodationsViewList = ({ accommodations = [] }) => {
 
                     {place ? <MapViewComponent place={place} /> : ''}
 
-                </DialogContentText>
+                </div>
             </div>
         </React.Fragment>
     )

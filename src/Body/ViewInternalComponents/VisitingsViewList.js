@@ -3,9 +3,8 @@ import React, { useState } from 'react';
 import moment from 'moment';
 
 import { DataGrid } from '@mui/x-data-grid';
-import DialogContentText from '@mui/material/DialogContentText';
 import { CaptionView, PeriodView } from '../../styles/MuiStyles';
-import MapViewComponent from '../MapViewComponent';
+import MapViewComponent from './MapViewComponent';
 
 const columns = [
     {
@@ -50,7 +49,7 @@ const VisitingsViewList = ({ visitings = [] }) => {
             </PeriodView>
 
             <div className='d-flex align-items-center align-self-stretch'>
-                <DialogContentText id="alert-dialog-slide-description"
+                <div id="alert-dialog-slide-description"
                     className='mt-0 mb-3 w-100'>
 
                     <div style={{ width: 'auto' }}>
@@ -66,7 +65,7 @@ const VisitingsViewList = ({ visitings = [] }) => {
                             pageSize={20}
                         />
                     </div>
-                </DialogContentText>
+                </div>
             </div>
 
             <CaptionView>

@@ -2,8 +2,8 @@ import React from 'react';
 
 import DialogContentText from '@mui/material/DialogContentText';
 
-import { PeriodView } from '../../styles/MuiStyles';
-import ViewCheckBoxNote from './ViewCheckedNote';
+import { CategoryStyled, PeriodView, ViewStyled } from '../../styles/MuiStyles';
+import ViewCheckBoxNote from './ViewCheckBoxNote';
 
 
 const PreparationsViewList = ({ preparations = [] }) => {
@@ -23,14 +23,14 @@ const PreparationsViewList = ({ preparations = [] }) => {
             </PeriodView>
 
             <div className='d-flex align-items-center align-self-stretch'>
-                <DialogContentText id="alert-dialog-slide-description"
+                <ViewStyled id="alert-dialog-slide-description"
                     className=' me-2 mt-0 mb-3 w-100'>
 
                     {Object.keys(groupByCategory).map(el =>
                         <div className='d-flex flex-wrap align-items-center' key={el}>
-                            <div className='title-view d-flex text-align-start'>
+                            <CategoryStyled className='d-flex text-align-start'>
                                 {el}:
-                            </div>
+                            </CategoryStyled>
                             <div className='d-flex align-items-center'>
                                 {groupByCategory[el].map(note =>
                                     <ViewCheckBoxNote key={note.id} note={note} />
@@ -39,7 +39,7 @@ const PreparationsViewList = ({ preparations = [] }) => {
                         </div>
                     )}
 
-                </DialogContentText>
+                </ViewStyled>
             </div>
         </React.Fragment>
 	)

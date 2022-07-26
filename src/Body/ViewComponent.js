@@ -16,6 +16,7 @@ import AccommodationsViewList from './ViewInternalComponents/AccommodationsViewL
 import VisitingsViewList from './ViewInternalComponents/VisitingsViewList';
 import PreparationsViewList from './ViewInternalComponents/PreparationsViewList';
 import CommentsViewList from './ViewInternalComponents/CommentsViewList';
+import ExpencesViewList from './ViewInternalComponents/ExpencesViewList';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="down" ref={ref} {...props} />;
@@ -95,6 +96,8 @@ const ViewComponent = ({ el }) => {
 						<VisitingsViewList visitings={trip.visitings} />
 
 						<CommentsViewList comments={trip.comments} />
+
+						<ExpencesViewList expences={trip.expences} />
 
 					</DialogContent>
 

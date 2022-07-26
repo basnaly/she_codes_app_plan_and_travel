@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { DialogContentText } from '@mui/material';
-import { HrStyled, NumberViewStyled, PeriodView } from '../../styles/MuiStyles';
+import { HrStyled, NumberViewStyled, PeriodView, ViewStyled } from '../../styles/MuiStyles';
 
 import CommentViewItem from './CommentViewItem';
 
@@ -16,7 +16,7 @@ const CommentsViewList = ({ comments = [] }) => {
 
             <div className='date-view d-flex align-items-center align-self-stretch'>
 
-                <DialogContentText id="alert-dialog-slide-description"
+                <ViewStyled id="alert-dialog-slide-description"
                     className='mt-0 mb-2 w-100'>
 
                     { comments.map((el, i) =>
@@ -33,7 +33,7 @@ const CommentsViewList = ({ comments = [] }) => {
                             <HrStyled className='hr-view m-2' />
                         </React.Fragment>
                     )}
-                </DialogContentText>
+                </ViewStyled>
             </div>
         </React.Fragment>
     )

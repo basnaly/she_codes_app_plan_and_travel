@@ -264,3 +264,14 @@ export const CaptionView = styled('caption') ({
     color: 'gray',
     marginBottom: '10px'
 })
+
+export const ViewStyled = styled('div') ({
+    fontFamily: "'Aladin', cursive",
+    fontSize: '24px',   
+})
+
+export const CategoryStyled = styled('div') ({
+    fontWeight: 'bold',
+    textDecoration: 'underline', 
+    textTransform: 'capitalize',
+})
