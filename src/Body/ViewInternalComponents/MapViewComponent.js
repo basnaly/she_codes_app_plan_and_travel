@@ -12,11 +12,11 @@ const MapViewComponent = ( {place} ) => {
         <iframe
             width="100%"
             height="350"
-            frameborder="0" style={{border:0 }}
+            frameBorder="0" style={{border:0 }}
             className="flex-shrink-0"
-            referrerpolicy="no-referrer-when-downgrade"
+            referrerPolicy="no-referrer-when-downgrade"
             src={`https://www.google.com/maps/embed/v1/place?key=${googleMapApiKey}&q=${place},${city}`}
-            allowfullscreen>
+            allowFullScreen>
         </iframe>
     )
 }

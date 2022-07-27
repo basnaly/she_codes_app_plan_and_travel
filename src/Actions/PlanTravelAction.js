@@ -1,6 +1,7 @@
 import { getDatabase, child, push, ref, set, get, remove, update } from "firebase/database";
 
 import moment from "moment";
+import { LoadedExpencesData } from "./ExpencesAction";
 
 
 export const SaveInitialTrip = (userId) => {
@@ -184,8 +185,10 @@ export const GetTripData = (tripId) => {
 
                     dispatch({
                         type: 'LOADED_TRIP_DATA',
-                        trip: snapshot.val() // sve the snapshot value to redux
+                        trip: snapshot.val() // save the snapshot value to redux
                     })
+
+                    dispatch(LoadedExpencesData(snapshot.val().expences))
 
                 } else {
                     console.log("No data available");
@@ -226,5 +229,3 @@ export const SaveTripData = (tripId, tripData) => {
             });
     }
 }
-
-

@@ -3,7 +3,7 @@ import React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import moment from 'moment';
 import { PeriodView } from '../../styles/MuiStyles';
-
+import { useSelector } from 'react-redux';
 
 const columns = [
     {
@@ -49,7 +49,9 @@ const columns = [
 
 ]
 
-const ExpencesViewList = ( {expences = []} ) => {
+const ExpencesViewList = () => {
+
+    const filteredExpences = useSelector(state => state?.expences?.filteredExpences);
 
     return (
 
@@ -65,7 +67,7 @@ const ExpencesViewList = ( {expences = []} ) => {
                     <div style={{ width: 'auto' }}>
                         <DataGrid
                             autoHeight
-                            rows={expences}
+                            rows={filteredExpences}
                             columns={columns}
                             hideFooter
                             hideFooterPagination

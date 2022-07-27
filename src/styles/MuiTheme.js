@@ -93,6 +93,19 @@ export const myTheme = createTheme({
                 }
             }
         },
+        MuiMenu: {
+            styleOverrides: {
+                list: {
+                    backgroundColor: 'lightgray',
+
+                },
+                option: {
+                    ".Mui-focused, &:hover": {
+                        border: '1px solid khaki',
+                    },
+                },
+            }
+        },
         MuiTab: {
             styleOverrides: {
                 root: {
@@ -112,13 +125,13 @@ export const myTheme = createTheme({
                 },
             },
         },
-        MuiSvgIcon: {
-            styleOverrides: {
-                fontSizeMedium: {
+        // MuiSvgIcon: {
+        //     styleOverrides: {
+        //         fontSizeMedium: {
 
-                }
-            }
-        },
+        //         }
+        //     }
+        // },
         MuiTabs: {
             styleOverrides: {
                 flexContainer: {
@@ -146,7 +159,7 @@ export const myTheme = createTheme({
                 },
                 columnHeader: {
                     fontFamily: 'Aladin, cursive',
-                    fontSize: '24px',   
+                    fontSize: '24px',
                 },
                 cellContent: {
                     fontFamily: 'Aladin, cursive',
@@ -154,7 +167,7 @@ export const myTheme = createTheme({
                 },
                 main: {
                     overflow: 'unset',
-                    width:'auto'
+                    width: 'auto'
                 },
                 filterForm: {
                     backgroundColor: 'lightgray',
@@ -186,7 +199,11 @@ export const myTheme = createTheme({
                     fontFamily: 'Aladin, cursive',
                     fontSize: '18px',
                     backgroundColor: 'lightgray',
-                    border: '1px solid khaki',
+                    border: '1px solid forestgreen', ///
+                    borderTop: '0',
+                    "&:first-of-type": {
+                        borderTop: '1px solid forestgreen',
+                    }
                 }
             }
         },
@@ -204,13 +221,13 @@ export const myTheme = createTheme({
                     "& .MuiButtonBase-root": {
                         fontFamily: 'Aladin, cursive',
                         backgroundColor: 'khaki',
-                    }, 
+                    },
                     "&& .Mui-selected": {
                         color: 'red',
                         fontWeight: 'bold',
                         fontSize: '18px',
                         backgroundColor: 'khaki',
-                    },"& .Mui-selected:hover, & .Mui-selected:focus": {
+                    }, "& .Mui-selected:hover, & .Mui-selected:focus": {
 
                         border: '1px solid khaki',
                     },
@@ -222,8 +239,8 @@ export const myTheme = createTheme({
                     },
                     "& .PrivatePickersYear-yearButton": {
                         fontFamily: 'Aladin, cursive',
-                    }, 
-                    "& .PrivatePickersYear-yearButton:hover, & .PrivatePickersYear-yearButton:focus" : {
+                    },
+                    "& .PrivatePickersYear-yearButton:hover, & .PrivatePickersYear-yearButton:focus": {
                         backgroundColor: 'khaki',
                     },
                     "& .PrivatePickersYear-yearButton:hover, .MuiPickersDay-root:hover": {
@@ -231,7 +248,6 @@ export const myTheme = createTheme({
                         backgroundColor: 'transparent',
                     },
                 }
-                
             }
         }
     }

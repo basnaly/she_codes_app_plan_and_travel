@@ -258,7 +258,7 @@ export const HrStyled = styled('hr') ({
     color: 'gray',
 })
 
-export const CaptionView = styled('caption') ({
+export const CaptionView = styled('div') ({
     fontFamily: "'Aladin', cursive",
     fontSize: '20px',
     color: 'gray',
