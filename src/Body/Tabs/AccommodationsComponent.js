@@ -19,41 +19,45 @@ const AccommodationsComponent = () => {
 
     return (
         <LocalizationProvider dateAdapter={AdapterMoment}>
-            <TabContentBox boxShadow={24} p={4} className="d-flex flex-column overflow-auto align-items-center mx-auto">
+            <TabContentBox boxShadow={24} p={4} className="d-flex flex-column overflow-auto align-items-center mx-auto pe-0">
 
                 <FieldArray name="accommodations"
                     render={({ remove, push }) => (
 
-                        <div className="d-flex flex-column align-items-start">
-                            {(field.value ?? []).map((el, i) => (
-                                
-                                <div key={el.id} className="d-flex align-items-start my-2">
-                                    <Field name={`accommodations[${i}].dateFrom`}
-                                        component={FormikDateInput} label='Date from' />
+                        <React.Fragment>
 
-                                    <Field name={`accommodations[${i}].dateTo`}
-                                        component={FormikDateInput} className='ms-3' label='Date to' />
+                            <div className="d-flex flex-column align-items-start overflow-auto pe-3">
+                                {(field.value ?? []).map((el, i) => (
 
-                                    <Field name={`accommodations[${i}].accommodation`}
-                                        component={FormikTextInput} label='Type of accommodation' />
+                                    <div key={el.id} className="d-flex align-items-start my-2">
+                                        <Field name={`accommodations[${i}].dateFrom`}
+                                            component={FormikDateInput} label='Date from' />
 
-                                    <Field name={`accommodations[${i}].price`} sx={{maxWidth: '100px'}}
-                                        component={FormikTextInput} type='number' label='Price' />
+                                        <Field name={`accommodations[${i}].dateTo`}
+                                            component={FormikDateInput} className='ms-3' label='Date to' />
 
-                                    <Field name={`accommodations[${i}].currency`} sx={{maxWidth: '100px'}}
-                                        component={FormikAutocompleteInput} 
-                                        options={CURRENCY_OPTIONS} label='Currency' />
-                                        
-                                    <Field name={`accommodations[${i}].notes`}
-                                        component={FormikTextInput} multiline label='Notes' />
+                                        <Field name={`accommodations[${i}].accommodation`}
+                                            component={FormikTextInput} label='Type of accommodation' />
 
-                                    <IconButton color='error' aria-label="upload picture" component="span"
-                                        className="d-flex align-items-center m-2 "
-                                        onClick={() => remove(i)} >
-                                        <DeleteOutlineIcon sx={{ fontSize: 30 }} />
-                                    </IconButton>
-                                </div>
-                            ))}
+                                        <Field name={`accommodations[${i}].price`} sx={{ maxWidth: '100px' }}
+                                            component={FormikTextInput} type='number' label='Price' />
+
+                                        <Field name={`accommodations[${i}].currency`} sx={{ maxWidth: '100px' }}
+                                            component={FormikAutocompleteInput}
+                                            options={CURRENCY_OPTIONS} label='Currency' />
+
+                                        <Field name={`accommodations[${i}].notes`}
+                                            component={FormikTextInput} multiline label='Notes' />
+
+                                        <IconButton color='error' aria-label="upload picture" component="span"
+                                            className="d-flex align-items-center m-2 "
+                                            onClick={() => remove(i)} >
+                                            <DeleteOutlineIcon sx={{ fontSize: 30 }} />
+                                        </IconButton>
+                                    </div>
+                                ))}
+
+                            </div>
 
                             <GreenButton className="d-flex align-items-center mx-auto mt-3"
                                 variant={'outlined'}
@@ -61,7 +65,8 @@ const AccommodationsComponent = () => {
                                 onClick={() => push({ id: new Date().getTime() })}>
                                 Add new accommodation
                             </GreenButton>
-                        </div>
+
+                        </React.Fragment>
                     )}>
                 </FieldArray>
 

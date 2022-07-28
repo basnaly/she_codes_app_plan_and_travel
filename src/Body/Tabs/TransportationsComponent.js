@@ -19,39 +19,42 @@ const TransportationsComponent = () => {
 
     return (
         <LocalizationProvider dateAdapter={AdapterMoment}>
-            <TabContentBox boxShadow={24} p={4} className="d-flex flex-column overflow-auto align-items-center mx-auto">
+            <TabContentBox boxShadow={24} p={4} className="d-flex flex-column overflow-auto align-items-center mx-auto pe-0">
 
                 <FieldArray name="transportations">
                     {({ remove, push }) => (
 
-                        <div className="d-flex flex-column align-items-start ">
-                            {(field.value ?? []).map((el, i) =>
+                        <React.Fragment>
 
-                                <div key={el.id} className="d-flex align-items-start my-2" >
+                            <div className="d-flex flex-column align-items-start overflow-auto pe-3">
+                                {(field.value ?? []).map((el, i) =>
 
-                                    <Field name={`transportations[${i}].date`}
-                                        component={FormikDateInput} label="Date" />
+                                    <div key={el.id} className="d-flex align-items-start my-2" >
 
-                                    <Field name={`transportations[${i}].transport`}
-                                        component={FormikTextInput} label='Type of transport' />
+                                        <Field name={`transportations[${i}].date`}
+                                            component={FormikDateInput} label="Date" />
 
-                                    <Field name={`transportations[${i}].price`} sx={{maxWidth: '80px'}}
-                                        component={FormikTextInput} type='number' label='Price' />
+                                        <Field name={`transportations[${i}].transport`}
+                                            component={FormikTextInput} label='Type of transport' />
 
-                                    <Field name={`transportations[${i}].currency`} sx={{maxWidth: '80px'}}
-                                        component={FormikAutocompleteInput} 
-                                        options={CURRENCY_OPTIONS} label='Currency' />
-                                        
-                                    <Field name={`transportations[${i}].notes`}
-                                        component={FormikTextInput} label='Notes' />
+                                        <Field name={`transportations[${i}].price`} sx={{ maxWidth: '80px' }}
+                                            component={FormikTextInput} type='number' label='Price' />
 
-                                    <IconButton color='error' aria-label="upload picture" component="span"
-                                        className="d-flex align-items-center m-2 "
-                                        onClick={() => remove(i)} >
-                                        <DeleteOutlineIcon sx={{ fontSize: 30 }} />
-                                    </IconButton>
-                                </div>
-                            )}
+                                        <Field name={`transportations[${i}].currency`} sx={{ maxWidth: '80px' }}
+                                            component={FormikAutocompleteInput}
+                                            options={CURRENCY_OPTIONS} label='Currency' />
+
+                                        <Field name={`transportations[${i}].notes`}
+                                            component={FormikTextInput} label='Notes' />
+
+                                        <IconButton color='error' aria-label="upload picture" component="span"
+                                            className="d-flex align-items-center m-2 "
+                                            onClick={() => remove(i)} >
+                                            <DeleteOutlineIcon sx={{ fontSize: 30 }} />
+                                        </IconButton>
+                                    </div>
+                                )}
+                            </div>
 
                             <GreenButton className="d-flex align-items-center mx-auto mt-3"
                                 variant={'outlined'}
@@ -59,7 +62,8 @@ const TransportationsComponent = () => {
                                 onClick={() => push({ id: new Date().getTime() })}>
                                 Add new transportation
                             </GreenButton>
-                        </div>
+
+                        </React.Fragment>
                     )}
                 </FieldArray>
             </TabContentBox>

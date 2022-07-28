@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { AuthLinkStyled } from "../styles/MuiStyles";
 
 import LogoutComponent from "./LogoutComponent";
-import { AuthLinkStyled } from "../styles/MuiStyles";
 
 const AuthenticationButtons = () => {
 

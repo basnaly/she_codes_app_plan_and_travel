@@ -1,7 +1,5 @@
 import React from 'react';
 
-import DialogContentText from '@mui/material/DialogContentText';
-
 import { CategoryStyled, PeriodView, ViewStyled } from '../../styles/MuiStyles';
 import ViewCheckBoxNote from './ViewCheckBoxNote';
 

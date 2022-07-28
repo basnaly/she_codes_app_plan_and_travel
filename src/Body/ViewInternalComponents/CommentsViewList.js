@@ -30,7 +30,7 @@ const CommentsViewList = ({ comments = [] }) => {
                                 <CommentViewItem comment={el.comment} />
                             </div>
 
-                            <HrStyled className='hr-view m-2' />
+                            <HrStyled className='m-2' />
                         </React.Fragment>
                     )}
                 </ViewStyled>

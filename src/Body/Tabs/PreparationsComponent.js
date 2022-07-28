@@ -26,12 +26,12 @@ const PreparationsComponent = () => {
 
     return (
 
-        <TabContentBox boxShadow={24} p={4} className="d-flex flex-column overflow-auto align-items-center mx-auto pt-3">
+        <TabContentBox boxShadow={24} p={4} className="d-flex flex-column overflow-auto align-items-center mx-auto pt-3 pe-0">
             <FieldArray name='preparations'
                 render={({ remove, push }) => (
                     <div className="d-flex flex-column overflow-auto">
 
-                        <div className="d-flex flex-column align-items-center overflow-auto mb-4">
+                        <div className="d-flex flex-column align-items-center overflow-auto mb-4 pe-3">
                             {categories.map(el =>
                                 <div key={el}
                                     className="d-flex flex-column align-items-center mb-2" >

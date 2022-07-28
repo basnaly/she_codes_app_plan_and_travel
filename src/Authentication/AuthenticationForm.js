@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import Box from '@mui/material/Box';
 import { Typography } from "@mui/material";
 import TextField from '@mui/material/TextField';
 
@@ -61,7 +60,7 @@ const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => 
 
     return (
 
-        <TabContentBox boxShadow={24} p={4}  className="d-flex flex-column align-items-center">
+        <TabContentBox boxShadow={24} p={4} className="d-flex flex-column align-items-center">
             <Typography className="form d-flex flex-column align-items-center">
                 { title }
             </Typography>

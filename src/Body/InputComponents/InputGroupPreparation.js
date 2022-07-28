@@ -23,7 +23,7 @@ const InputGroupPreparation = ({ categories, push }) => {
 
     return (
 
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center pe-3">
 
             <div className="d-flex align-items-center w-100 me-3">
                 <Autocomplete
@@ -57,10 +57,12 @@ const InputGroupPreparation = ({ categories, push }) => {
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
             />
+            
 
             <IconButton color="success" aria-label="upload picture" component="span"
-                className="cursor-icon d-flex align-items-center justify-content-center"
-                onClick={AddNewNote}>
+                className="d-flex align-items-center justify-content-center"
+                onClick={AddNewNote}
+                disabled={!category}>
                 <AddCircleOutlineIcon sx={{ fontSize: 30 }} />
             </IconButton>
         </div>

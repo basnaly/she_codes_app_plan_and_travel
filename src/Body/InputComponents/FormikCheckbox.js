@@ -10,7 +10,6 @@ const FormikCheckbox = ({ field, form, ...props }) => {
 			color="success"
 			{...field} {...props}
 		/>
-
 	)
 }
 

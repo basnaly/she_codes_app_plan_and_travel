@@ -13,11 +13,12 @@ const ViewTripDates = ({ period }) => {
     return (
 
         <React.Fragment>
-            <PeriodView className='period-view mt-2 mb-2'>
+            <PeriodView className='mt-2 mb-2'>
                 Date of trip:
             </PeriodView>
 
-            <div className='date-view d-flex align-items-center'>
+            <div className='d-flex align-items-center'>
+                
                 <DialogContentText id="alert-dialog-slide-description"
                     className='me-2 mt-0 mb-2'>
                     from: {tripFrom}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const CommentViewItem = ({ comment }) => {
+const CommentViewItem = ({ comment = ''}) => {
 
     const [isLink, setIsLink] = useState(comment.includes("http"));
     const [textArr, setTextArr] = useState([]);

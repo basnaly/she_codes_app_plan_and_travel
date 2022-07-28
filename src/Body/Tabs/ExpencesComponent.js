@@ -19,42 +19,45 @@ const ExpencesComponent = () => {
     return (
 
         <LocalizationProvider dateAdapter={AdapterMoment}>
-            <TabContentBox boxShadow={24} p={4} className="d-flex flex-column overflow-auto align-items-center mx-auto">
+            <TabContentBox boxShadow={24} p={4} className="d-flex flex-column overflow-auto align-items-center mx-auto pe-0">
 
                 <FieldArray name="expences"
                     render={({ push, remove }) => (
 
-                        <div className="d-flex flex-column align-items-start">
-                            {(field.value ?? []).map((el, i) => (
+                        <React.Fragment>
 
-                                <div key={el.id} className="d-flex align-items-start my-2">
-                                    <Field name={`expences[${i}].date`}
-                                        component={FormikDateInput} label='Transaction date' />
+                            <div className="d-flex flex-column align-items-start overflow-auto pe-3">
+                                {(field.value ?? []).map((el, i) => (
 
-                                    <Field name={`expences[${i}].product`}
-                                        component={FormikTextInput} label='Product/service' />
+                                    <div key={el.id} className="d-flex align-items-start my-2">
+                                        <Field name={`expences[${i}].date`}
+                                            component={FormikDateInput} label='Transaction date' />
 
-                                    <Field name={`expences[${i}].price`} sx={{ maxWidth: '100px' }}
-                                        component={FormikTextInput} type='number' label='Price' />
+                                        <Field name={`expences[${i}].product`}
+                                            component={FormikTextInput} label='Product/service' />
 
-                                    <Field name={`expences[${i}].currency`} sx={{ maxWidth: '100px' }}
-                                        component={FormikAutocompleteInput} label='Currency'
-                                        options={CURRENCY_OPTIONS} />
+                                        <Field name={`expences[${i}].price`} sx={{ maxWidth: '100px' }}
+                                            component={FormikTextInput} type='number' label='Price' />
 
-                                    <Field name={`expences[${i}].payment`} sx={{ minWidth: '150px' }}
-                                        component={FormikAutocompleteInput} label='Payment mathod'
-                                        options={PAYMENT_OPTIONS} />
+                                        <Field name={`expences[${i}].currency`} sx={{ maxWidth: '100px' }}
+                                            component={FormikAutocompleteInput} label='Currency'
+                                            options={CURRENCY_OPTIONS} />
 
-                                    <Field name={`expences[${i}].notes`}
-                                        component={FormikTextInput} label='Notes' />
+                                        <Field name={`expences[${i}].payment`} sx={{ minWidth: '150px' }}
+                                            component={FormikAutocompleteInput} label='Payment mathod'
+                                            options={PAYMENT_OPTIONS} />
 
-                                    <IconButton color='error' aria-label="upload picture" component="span"
-                                        className="d-flex align-items-center m-2 "
-                                        onClick={() => remove(i)} >
-                                        <DeleteOutlineIcon sx={{ fontSize: 30 }} />
-                                    </IconButton>
-                                </div>
-                            ))}
+                                        <Field name={`expences[${i}].notes`}
+                                            component={FormikTextInput} label='Notes' />
+
+                                        <IconButton color='error' aria-label="upload picture" component="span"
+                                            className="d-flex align-items-center m-2 "
+                                            onClick={() => remove(i)} >
+                                            <DeleteOutlineIcon sx={{ fontSize: 30 }} />
+                                        </IconButton>
+                                    </div>
+                                ))}
+                            </div>
 
                             <GreenButton className="d-flex align-items-center mx-auto mt-3"
                                 variant={'outlined'}
@@ -63,7 +66,7 @@ const ExpencesComponent = () => {
                                 Add new expence
                             </GreenButton>
 
-                        </div>
+                        </React.Fragment>
                     )}>
                 </FieldArray>
 

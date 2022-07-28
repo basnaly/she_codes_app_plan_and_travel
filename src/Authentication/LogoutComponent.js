@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux";
 
 import { signOut, getAuth } from 'firebase/auth';
 
-import { Button } from "@mui/material";
-import { styled } from "@mui/material";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
