@@ -12,7 +12,7 @@ const columns = [
         headerAlign: 'center',
         width: 150,
         filterable: false,
-        valueFormatter: ({ value }) => moment.unix(value).format('DD/MM/YYYY')
+        valueFormatter: ({ value }) => moment(value).format('DD/MM/YYYY')
     },
     {
         field: 'product',

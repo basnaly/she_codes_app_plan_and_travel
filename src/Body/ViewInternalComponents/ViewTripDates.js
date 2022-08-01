@@ -7,8 +7,8 @@ import { PeriodView } from '../../styles/MuiStyles';
 
 const ViewTripDates = ({ period }) => {
 
-    const tripFrom = moment.unix(period?.from).format('DD/MM/YYYY');
-	const tripTo = moment.unix(period?.to).format('DD/MM/YYYY');
+    const tripFrom = moment(period?.from).format('DD/MM/YYYY');
+	const tripTo = moment(period?.to).format('DD/MM/YYYY');
 
     return (
 

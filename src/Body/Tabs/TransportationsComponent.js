@@ -12,6 +12,7 @@ import FormikDateInput from '../InputComponents/FormikDateInput';
 import FormikTextInput from '../InputComponents/FormikTextInput';
 import FormikAutocompleteInput from '../InputComponents/FormikAutocompleteInput';
 import { CURRENCY_OPTIONS } from '../../constants';
+import FormikNoItems from '../InputComponents/FormikNoItems';
 
 const TransportationsComponent = () => {
 
@@ -19,14 +20,14 @@ const TransportationsComponent = () => {
 
     return (
         <LocalizationProvider dateAdapter={AdapterMoment}>
-            <TabContentBox boxShadow={24} p={4} className="d-flex flex-column overflow-auto align-items-center mx-auto pe-0">
+            <TabContentBox boxShadow={24} p={4} className="d-flex flex-column overflow-auto align-items-center mx-auto px-0">
 
                 <FieldArray name="transportations">
                     {({ remove, push }) => (
 
                         <React.Fragment>
 
-                            <div className="d-flex flex-column align-items-start overflow-auto pe-3">
+                            <div className="d-flex flex-column align-items-start overflow-auto px-3">
                                 {(field.value ?? []).map((el, i) =>
 
                                     <div key={el.id} className="d-flex align-items-start my-2" >
@@ -54,6 +55,10 @@ const TransportationsComponent = () => {
                                         </IconButton>
                                     </div>
                                 )}
+
+                                <FormikNoItems formikValue={field.value}
+                                    item={'transportations'} />
+
                             </div>
 
                             <GreenButton className="d-flex align-items-center mx-auto mt-3"

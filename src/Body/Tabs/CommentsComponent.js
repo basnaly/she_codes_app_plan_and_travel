@@ -4,6 +4,7 @@ import FormikTextareaInput from '../InputComponents/FormikTextareaInput';
 import { IconButton } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { GreenButton, TabContentBox } from '../../styles/MuiStyles';
+import FormikNoItems from '../InputComponents/FormikNoItems';
 
 const CommentsComponent = () => {
 
@@ -11,14 +12,14 @@ const CommentsComponent = () => {
 
     return (
 
-        <TabContentBox boxShadow={24} p={4} className="d-flex flex-column overflow-auto align-items-center mx-auto pe-0">
+        <TabContentBox boxShadow={24} p={4} className="d-flex flex-column overflow-auto align-items-center mx-auto px-0">
 
             <FieldArray name='comments'
                 render={({ push, remove }) => (
 
                     <React.Fragment>
 
-                        <div className="d-flex flex-column align-items-start overflow-auto pe-3">
+                        <div className="d-flex flex-column align-items-start overflow-auto px-3">
                             {(field.value ?? []).map((el, i) =>
 
                                 <div key={el.id} className="d-flex align-items-start my-2">
@@ -32,6 +33,9 @@ const CommentsComponent = () => {
                                     </IconButton>
                                 </div>
                             )}
+
+                            <FormikNoItems formikValue={field.value}
+                                item={'comments'} />
 
                         </div>
 

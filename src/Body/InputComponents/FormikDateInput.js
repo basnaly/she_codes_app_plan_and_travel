@@ -17,7 +17,7 @@ const FormikDateInput = ({ field, form, className = '', ...rest }) => {
             inputFormat="DD/MM/yyyy"
             {...field} {...rest}
             value={moment.unix(value)} 
-            onChange={val => setFieldValue(name, val.unix())}
+            onChange={val => setFieldValue(name, val)}
             renderInput={(params) => 
                 
                 <TextField 

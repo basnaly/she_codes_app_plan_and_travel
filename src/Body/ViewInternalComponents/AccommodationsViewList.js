@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import moment from 'moment';
 
 import { DataGrid } from '@mui/x-data-grid';
-import DialogContentText from '@mui/material/DialogContentText';
 import { CaptionView, PeriodView } from '../../styles/MuiStyles';
 import MapViewComponent from './MapViewComponent';
 
@@ -14,7 +13,7 @@ const columns = [
         headerAlign: 'center',
         width: 150,
         filterable: false,
-        valueFormatter: ({value}) => moment.unix(value).format('DD/MM/YYYY'),
+        valueFormatter: ({value}) => moment(value).format('DD/MM/YYYY'),
     },
     {
         field: 'dateTo',
@@ -22,7 +21,7 @@ const columns = [
         headerAlign: 'center',
         width: 150,
         filterable: false,
-        valueFormatter: ({value}) => moment.unix(value).format('DD/MM/YYYY'),
+        valueFormatter: ({value}) => moment(value).format('DD/MM/YYYY'),
     },
     {
         field: 'accommodation',

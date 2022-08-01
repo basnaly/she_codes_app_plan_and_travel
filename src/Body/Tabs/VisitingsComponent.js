@@ -9,6 +9,7 @@ import { useField, FieldArray, Field } from 'formik';
 import { GreenButton, TabContentBox } from '../../styles/MuiStyles';
 import FormikDateInput from '../InputComponents/FormikDateInput';
 import FormikTextInput from '../InputComponents/FormikTextInput';
+import FormikNoItems from '../InputComponents/FormikNoItems';
 
 const VisitingsComponent = () => {
 
@@ -17,14 +18,14 @@ const VisitingsComponent = () => {
     return (
 
         <LocalizationProvider dateAdapter={AdapterMoment}>
-            <TabContentBox boxShadow={24} p={4} className="d-flex flex-column overflow-auto align-items-center mx-auto pe-0">
+            <TabContentBox boxShadow={24} p={4} className="d-flex flex-column overflow-auto align-items-center mx-auto px-0">
 
                 <FieldArray name="visitings"
                     render={({ remove, push }) => (
 
                         <React.Fragment>
 
-                            <div className="d-flex flex-column align-items-start overflow-auto pe-3">
+                            <div className="d-flex flex-column align-items-start overflow-auto px-3">
                                 {(field.value ?? []).map((el, i) => (
 
                                     <div key={el.id} className="d-flex align-items-start my-2">
@@ -45,6 +46,8 @@ const VisitingsComponent = () => {
                                     </div>
                                 ))}
 
+                                <FormikNoItems formikValue={field.value}
+                                    item={'visitings'} />
 
                             </div>
 
