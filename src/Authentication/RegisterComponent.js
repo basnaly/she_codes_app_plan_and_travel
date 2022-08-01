@@ -2,7 +2,7 @@ import React, { useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
-import { RegisterWithFirebase, SetAuthError } from '../Actions/AuthenticationAction';
+import { RegisterWithBackend, SetAuthError } from '../Actions/AuthenticationAction';
 import AuthenticationForm from "../Authentication/AuthenticationForm";
 
 const RegisterComponent = () => {
@@ -15,7 +15,7 @@ const RegisterComponent = () => {
 
     const validatePassword = (password) => {
 
-        var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9!@#$%^&*]{6,10}$/;
+        var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*-_])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9!@#$%^&*-_]{8,12}$/;
     
         const found = password.match(regularExpression); 
         
@@ -35,7 +35,7 @@ const RegisterComponent = () => {
             return
         }
 
-        dispatch(RegisterWithFirebase(email, password))
+        dispatch(RegisterWithBackend(email, password))
         setPassword('');
     }
 
