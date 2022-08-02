@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import config from './config';
 import { SaveInitialTrip } from './PlanTravelAction';
 
 export const SaveUser = (userId, userEmail) => {
@@ -47,7 +48,7 @@ export const RegisterWithBackend = (email, password) => {
     }
 }
 
-export const SigninWithFirebase = (email, password) => {
+export const LoginWithBackend = (email, password) => {
 
     return (dispatch, getState) => {
 
@@ -55,36 +56,50 @@ export const SigninWithFirebase = (email, password) => {
             type: 'SET_IS_AUTH_LOADING'
         })
 
-        const authentication = getAuth();
+        axios.post('/auth/login', {email, password})
 
-        signInWithEmailAndPassword(authentication, email, password)
-            .then((response) => {
-                let userId = response.user.uid;
-                let userEmail = response.user.email
+            .then(result => {
+                console.log(result)
+        
+            let token = result?.data?.accessToken
+            sessionStorage.setItem('authToken', token);
 
-                dispatch(SaveUser(userId, userEmail));
-                dispatch(SaveInitialTrip(userId))
+            let userId = result?.data?.id;
+            let email = result?.data?.email;
+
+            dispatch(SaveUser(userId, email))
+            // dispatch(SaveInitialTrip(userId))
             })
-            .catch((error) => {
-                let authError = '';
-                if (error.code === 'auth/wrong-password') {
-                    authError = 'Please check the Password and Email';
-                }
-                if (error.code === 'auth/invalid-email') {
-                    authError = 'Please check the Password and Email';
-                }
-                if (error.code === 'auth/user-not-found') {
-                    authError = 'Please check the Password and Email';
-                }
-                if (error.code === 'auth/email-already-in-use') {
-                    authError = 'Email already in use'
-                }
 
-                dispatch(SetAuthError(authError))
-                
+            .catch(error => {
+                console.log(error)
+                dispatch(SetAuthError(error?.response?.data?.message))
             })
     }
 }
 
+export const CheckUserWithBackend = () => {
 
+    return (dispatch, getState) => {
+
+        dispatch({
+            type: 'SET_IS_AUTH_LOADING'
+        })
+
+        axios.get('/auth/check-user', config)
+
+        .then(result => {
+
+            let userId = result?.data?.id;
+            let email = result?.data?.email;
+
+            dispatch(SaveUser(userId, email))
+        })
+
+        .catch(error => {
+            console.log(error)
+            
+        })
+    }
+}
 

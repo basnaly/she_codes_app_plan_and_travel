@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
-import { SigninWithFirebase, SetAuthError } from '../Actions/AuthenticationAction'
+import { LoginWithBackend, SetAuthError } from '../Actions/AuthenticationAction'
 import AuthenticationForm from "./AuthenticationForm";
 
 const LoginComponent = () => {
@@ -20,7 +20,7 @@ const LoginComponent = () => {
             return
         }
 
-        dispatch(SigninWithFirebase(email, password))
+        dispatch(LoginWithBackend(email, password))
         setPassword('');
 
     }

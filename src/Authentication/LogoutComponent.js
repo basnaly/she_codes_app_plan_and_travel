@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { signOut, getAuth } from 'firebase/auth';
-
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -30,9 +28,9 @@ const LogoutComponent = () => {
 
     const dispatch = useDispatch();
 
-    const handleLogout = () => { // google function
-        const authentication = getAuth();
-        signOut(authentication);
+    const handleLogout = () => { 
+
+        sessionStorage.removeItem('authToken')
         dispatch(SaveUser(undefined, undefined)) // no userId, no email
         navigate('/')
     }
