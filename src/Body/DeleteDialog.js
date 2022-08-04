@@ -8,7 +8,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 
-import { DeleteCity } from '../Actions/PlanTravelAction';
+import { DeleteTrip } from '../Actions/PlanTravelAction';
 
 import { CityTitleStyled, GreenButton, RedButton } from '../styles/MuiStyles';
 
@@ -27,7 +27,7 @@ const DeleteDialog = ({ el }) => {
 
     const DeleteCityDialog = () => {
 
-        dispatch(DeleteCity(el.id))
+        dispatch(DeleteTrip(el.id))
     }
 
     return (

@@ -6,8 +6,8 @@ const initState = {
         dateFrom: moment(),
         dateTo: moment(),
     },
-    cities: [], // [{id:'jjj', city:'new jersey'}]
-    isLoadingCities: false,
+    listTrips: [], // [{id:'jjj', city:'new jersey'}]
+    isLoadingListTrips: false,
     error: '',
     trip: {},
     isLoadingTrip: false,   
@@ -49,17 +49,17 @@ const PlanTravelReducer = (state = initState, action) => {
                 }
             }
 
-        case 'SET_IS_LOADING_CITIES':
+        case 'SET_IS_LOADING_LIST_TRIPS':
             return {
                 ...state,
-                isLoadingCities: action.isLoadingCities
+                isLoadingListTrips: action.isLoadingListTrips
             }
 
-        case 'LOADED_CITY_DATA':
+        case 'LOADED_LIST_TRIPS':
             return {
                 ...state,
-                cities: action.cities,
-                isLoadingCities: false
+                listTrips: action.listTrips,
+                isLoadingListTrips: false
             }
 
         case 'SET_IS_LOADING_TRIP':

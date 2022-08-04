@@ -1,231 +1,210 @@
-import { getDatabase, child, push, ref, set, get, remove, update } from "firebase/database";
+import axios from "axios";
+import {
+	getDatabase,
+	child,
+	push,
+	ref,
+	set,
+	get,
+	remove,
+	update,
+} from "firebase/database";
 
 import moment from "moment";
+import config from "./config";
 import { LoadedExpencesData } from "./ExpencesAction";
 
+export const SaveInitialTrip = (token) => {
+	// pass token for use token before saving
 
-export const SaveInitialTrip = (userId) => {
+	return async (dispatch, getState) => {
+		// get access to Redux
 
-    return (dispatch, getState) => {  // get access to Redux
+		const preLoginTrip = getState().main.preLoginTrip; //get current state of preLoginTrip from redux
+		if (!preLoginTrip.city) {
+			return;
+		}
+		const tripData = {
+			city: preLoginTrip.city,
+			period: {
+				from: preLoginTrip.dateFrom(),
+				to: preLoginTrip.dateTo(),
+			},
+			transportations: [],
+		};
 
-        const preLoginTrip = getState().main.preLoginTrip; //get current state of preLoginTrip from redux
-        if (!preLoginTrip.city) {
-            return
-        }
-        const tripData = {  // create trip data in firebase format 
-            city: preLoginTrip.city,
-            period: {
-                from: preLoginTrip.dateFrom.unix(),
-                to: preLoginTrip.dateTo.unix()
-            },
-            transportations: []
-        };
+		try {
+			const result = await axios.post(
+				"/trip/create",
+				{ trip: tripData },
+				{ headers: { "x-access-token": token } }
+			);
+			console.log(result);
 
-        const db = getDatabase();
-
-        const newTripId = push(child(ref(db), 'trips/' + userId)).key; // create the trip doc and gets it id
-
-        set(ref(db, 'trips/' + userId + '/' + newTripId), tripData) // set tripDate in newTripId
-            .then(() => { // result not use yet
-
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-}
+		} catch (e) {
+			console.log(e);
+		}
+	};
+};
 
 export const ChangePreLoginTripCity = (newCity) => {
-    return {
-        type: 'CHANGE_PRELOGIN_TRIP_CITY',
-        newCity
-    }
-}
+	return {
+		type: "CHANGE_PRELOGIN_TRIP_CITY",
+		newCity,
+	};
+};
 
 export const ChangePreLoginTripDateFrom = (newDateFrom) => {
-    return {
-        type: 'CHANGE_PRELOGIN_TRIP_DATE_FROM',
-        newDateFrom
-    }
-}
+	return {
+		type: "CHANGE_PRELOGIN_TRIP_DATE_FROM",
+		newDateFrom,
+	};
+};
 
 export const ChangePreLoginTripDateTo = (newDateTo) => {
-    return {
-        type: 'CHANGE_PRELOGIN_TRIP_DATE_TO',
-        newDateTo
-    }
-}
+	return {
+		type: "CHANGE_PRELOGIN_TRIP_DATE_TO",
+		newDateTo,
+	};
+};
 
-export const GetCityData = () => {
+export const GetListTrips = () => {
 
-    return (dispatch, getState) => {
+	return async (dispatch, getState) => {
 
-        const dbRef = ref(getDatabase());
+		dispatch({
+			type: "SET_IS_LOADING_LIST_TRIPS",
+			isLoadingListTrips: true,
+		});
 
-        const userId = getState().auth.userId;
+		try {
+			const result = await axios.get("/trip/list-trips", config); //config => header with access token
+			let listTrips = result.data.listTrips; // recieve list trips
 
-        if (!userId) {
-            return
+			dispatch({
+				type: "LOADED_LIST_TRIPS", // save list trips
+				listTrips,
+			});
+
+		} catch (e) {
+			console.log(e);
+		}
+	};
+};
+
+export const AddNewTrip = (newCity) => {
+
+	return async (dispatch, getState) => {
+
+            const tripData = {
+			city: newCity, // add city in trip
+			period: {
+				from: moment(),
+				to: moment(),
+			},
+		};
+
+        try {
+            const addNewTrip = await axios.post(
+				"/trip/create",
+				{ trip: tripData }, // 'trip:' from backend: ...req.body.trip,
+				config // header with access token
+			);
+                console.log(addNewTrip)
+            dispatch(GetListTrips()); // get updated list trips
         }
+        catch (e) {
+			console.log(e);
+		}
+	};
+};
 
+export const DeleteTrip = (tripId) => {
+
+	return async (dispatch, getState) => {
+        
         dispatch({
-            type: 'SET_IS_LOADING_CITIES',
-            isLoadingCities: true
-        })
+			type: "SET_IS_LOADING_LIST_TRIPS",
+			isLoadingListTrips: true,
+		});
 
-        get(child(dbRef, `trips/${userId}`)).then((snapshot) => { // get from db/trips/userId
-
-            if (snapshot.exists()) {      // city data
-                console.log(snapshot.val());
-
-                let objectCities = snapshot.val();
-
-                let listCitiesId = Object.keys(objectCities)
-
-                let listCities = listCitiesId.map(el => ({
-                    id: el,
-                    city: objectCities[el].city
-                }))
-                console.log(listCities)
-
-                dispatch({  // save to Redux
-                    type: 'LOADED_CITY_DATA', // including isLoading: false
-                    cities: listCities
-                })
-
-            } else {
-                console.log("No data available");
-
-                dispatch({
-                    type: 'LOADED_CITY_DATA',
-                    cities: []
-                })
-
-            }
-        }).catch((error) => {
-            console.error(error);
-        });
-    }
-}
-
-export const AddNewCity = (newCity) => {
-
-    return (dispatch, getState) => {
-
-        const tripData = {
-            city: newCity,
-            period: {
-                from: moment().unix(),
-                to: moment().unix()
-            },
-            transportations: []
-        };
-
-        const userId = getState().auth.userId;
-
-        const db = getDatabase();
-
-        const newTripId = push(child(ref(db), 'trips/' + userId)).key;
-
-        set(ref(db, 'trips/' + userId + '/' + newTripId), tripData) // 
-            .then(() => {
-
-                dispatch(GetCityData()) // call action to get updated list of cities 
-
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-}
-
-export const DeleteCity = (cityId) => {
-
-    return (dispatch, getState) => {
-
-        const userId = getState().auth.userId;
-
-        const db = getDatabase();
-
-        remove(ref(db, 'trips/' + userId + '/' + cityId))
-            .then(() => {
-
-                dispatch(GetCityData()) // call action to get updated list of cities 
-
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-
-    }
-}
+		try {
+            const deleteTrip = await axios.delete(
+                `/trip/delete-trip?tripId=${tripId}`,
+                config
+            )
+            dispatch(GetListTrips()); // get updated list trips
+        }
+        catch (e) {
+			console.log(e);
+		}
+	};
+};
 
 export const SetIsLoadingTrip = (isLoadingTrip) => {
-    return {
-        type: 'SET_IS_LOADING_TRIP',
-        isLoadingTrip
-    }
-}
+	return {
+		type: "SET_IS_LOADING_TRIP",
+		isLoadingTrip,
+	};
+};
 
 export const GetTripData = (tripId) => {
+	return (dispatch, getState) => {
+		const db = getDatabase();
 
-    return (dispatch, getState) => {
+		const userId = getState().auth.userId;
 
-        const db = getDatabase();
+		dispatch(SetIsLoadingTrip(true));
 
-        const userId = getState().auth.userId;
+		get(ref(db, "trips/" + userId + "/" + tripId))
+			.then((snapshot) => {
+				// get from db/trips/userId
 
-        dispatch(SetIsLoadingTrip(true))
+				if (snapshot.exists()) {
+					// trip data
 
-        get(ref(db, 'trips/' + userId + '/' + tripId))
+					dispatch({
+						type: "LOADED_TRIP_DATA",
+						trip: snapshot.val(), // save the snapshot value to redux
+					});
 
-            .then((snapshot) => { // get from db/trips/userId
+					dispatch(LoadedExpencesData(snapshot.val().expences));
+				} else {
+					console.log("No data available");
 
-                if (snapshot.exists()) {      // trip data
+					dispatch({
+						// if not trip save in redux empty data
+						type: "LOADED_TRIP_DATA",
+						trip: {},
+					});
+				}
+			})
+			.catch((error) => {
+				console.error(error);
 
-                    dispatch({
-                        type: 'LOADED_TRIP_DATA',
-                        trip: snapshot.val() // save the snapshot value to redux
-                    })
-
-                    dispatch(LoadedExpencesData(snapshot.val().expences))
-
-                } else {
-                    console.log("No data available");
-
-                    dispatch({   // if not trip save in redux empty data
-                        type: 'LOADED_TRIP_DATA',
-                        trip: {}
-                    })
-                }
-            }).catch((error) => {
-                console.error(error);
-
-                dispatch({  // if was error during request save in redux empty data
-                    type: 'LOADED_TRIP_DATA',
-                    trip: {}
-                })
-            });
-    }
-}
+				dispatch({
+					// if was error during request save in redux empty data
+					type: "LOADED_TRIP_DATA",
+					trip: {},
+				});
+			});
+	};
+};
 
 export const SaveTripData = (tripId, tripData) => {
+	return (dispatch, getState) => {
+		const db = getDatabase();
 
-    return (dispatch, getState) => {
+		const userId = getState().auth.userId; //
 
-        const db = getDatabase();
+		update(ref(db, "trips/" + userId + "/" + tripId), tripData)
+			.then(() => {
+				// get from db/trips/userId
 
-        const userId = getState().auth.userId; //
-
-        update(ref(db, 'trips/' + userId + '/' + tripId), tripData)
-
-            .then(() => { // get from db/trips/userId
-
-                dispatch(GetTripData(tripId))
-
-            }).catch((error) => {
-                console.error(error);
-
-            });
-    }
-}
+				dispatch(GetTripData(tripId));
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	};
+};

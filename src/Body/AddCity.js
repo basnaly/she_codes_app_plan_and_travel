@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 
 import { cityStyle, GreenButton } from "../styles/MuiStyles";
 
-import { AddNewCity } from "../Actions/PlanTravelAction";
+import { AddNewTrip } from "../Actions/PlanTravelAction";
 
 const AddCity = () => {
 
@@ -13,9 +13,9 @@ const AddCity = () => {
 
     const dispatch = useDispatch()
 
-    const AddCity = () => {
+    const AddTrip = () => {
         
-        dispatch(AddNewCity(city));
+        dispatch(AddNewTrip(city));
         setCity('');
 
     }
@@ -36,7 +36,7 @@ const AddCity = () => {
                 variant={'outlined'}
                 className="ms-2"
                 disabled={!city}
-                onClick={AddCity}>
+                onClick={AddTrip}>
                 Add new city
             </GreenButton>
         </div>

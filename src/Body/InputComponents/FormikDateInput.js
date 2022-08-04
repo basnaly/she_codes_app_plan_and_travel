@@ -16,7 +16,7 @@ const FormikDateInput = ({ field, form, className = '', ...rest }) => {
             OpenPickerButtonProps={{ style: { color: 'forestgreen', transform: 'scale(1.3)', margin: '-5px' } }}
             inputFormat="DD/MM/yyyy"
             {...field} {...rest}
-            value={moment.unix(value)} 
+            value={moment(value)} 
             onChange={val => setFieldValue(name, val)}
             renderInput={(params) => 
                 

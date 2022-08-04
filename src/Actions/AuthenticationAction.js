@@ -38,7 +38,7 @@ export const RegisterWithBackend = (email, password) => {
                 let email = result?.data?.email;
 
                 dispatch(SaveUser(userId, email))
-                //dispatch(SaveInitialTrip(userId))
+                dispatch(SaveInitialTrip(token))
             })
 
             .catch(error => {
@@ -68,7 +68,7 @@ export const LoginWithBackend = (email, password) => {
             let email = result?.data?.email;
 
             dispatch(SaveUser(userId, email))
-            // dispatch(SaveInitialTrip(userId))
+            dispatch(SaveInitialTrip(token))
             })
 
             .catch(error => {
