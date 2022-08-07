@@ -275,3 +275,4 @@ export const CategoryStyled = styled('div') ({
     textDecoration: 'underline', 
     textTransform: 'capitalize',
 })
+

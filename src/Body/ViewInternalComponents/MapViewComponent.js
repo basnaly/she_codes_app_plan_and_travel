@@ -1,7 +1,6 @@
 import React from 'react';
-
 import { useSelector } from 'react-redux';
-import { googleMapApiKey } from "../../firebase-config";
+import { googleMapApiKey } from "../../config";
 
 const MapViewComponent = ( {place} ) => {
 

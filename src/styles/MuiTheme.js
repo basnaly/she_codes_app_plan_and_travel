@@ -121,17 +121,11 @@ export const myTheme = createTheme({
                         color: 'forestgreen',
                         textShadow: '1px 1px black',
                         fontSize: '26px',
+                        textTransform: 'capitalize',
                     },
                 },
             },
         },
-        // MuiSvgIcon: {
-        //     styleOverrides: {
-        //         fontSizeMedium: {
-
-        //         }
-        //     }
-        // },
         MuiTabs: {
             styleOverrides: {
                 flexContainer: {
@@ -190,6 +184,28 @@ export const myTheme = createTheme({
                     color: 'forestgreen',
                     fontFamily: 'Aladin, cursive',
                     fontSize: '18px',
+                }
+            }
+        },
+        MuiAlertTitle: {
+            styleOverrides: {
+                root: {
+                    fontFamily: 'Aladin, cursive',
+                    fontSize: '18px',
+                    textTransform: 'capitalize',
+                }
+            }
+        },
+        MuiAlert: {
+            styleOverrides: {
+                root:{
+                    position: "fixed",
+                    right: '4px',
+                    top: '4.1rem'
+                },
+                message: {
+                    fontFamily: 'Aladin, cursive',
+                    fontSize: '20px',
                 }
             }
         },

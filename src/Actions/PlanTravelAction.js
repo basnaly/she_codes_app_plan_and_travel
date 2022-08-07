@@ -1,49 +1,46 @@
 import axios from "axios";
-import {
-	getDatabase,
-	child,
-	push,
-	ref,
-	set,
-	get,
-	remove,
-	update,
-} from "firebase/database";
-
 import moment from "moment";
 import config from "./config";
 import { LoadedExpencesData } from "./ExpencesAction";
 
-export const SaveInitialTrip = (token) => {
-	// pass token for use token before saving
+export const SaveInitialTrip = (token) => { // pass token for use token before saving
 
-	return async (dispatch, getState) => {
-		// get access to Redux
+	return async (dispatch, getState) => { // get access to Redux
 
 		const preLoginTrip = getState().main.preLoginTrip; //get current state of preLoginTrip from redux
 		if (!preLoginTrip.city) {
 			return;
 		}
-		const tripData = {
+		const preLoginTripData = {
 			city: preLoginTrip.city,
 			period: {
-				from: preLoginTrip.dateFrom(),
-				to: preLoginTrip.dateTo(),
+				from: preLoginTrip.dateFrom,
+				to: preLoginTrip.dateTo,
 			},
-			transportations: [],
 		};
 
 		try {
 			const result = await axios.post(
 				"/trip/create",
-				{ trip: tripData },
+				{ trip: preLoginTripData },
 				{ headers: { "x-access-token": token } }
 			);
 			console.log(result);
+            dispatch(SetAlertMessage(result?.data?.message, 'success'));
+            
 
-		} catch (e) {
-			console.log(e);
+		} catch (error) {
+			console.log(error);
+			dispatch(SetAlertMessage(error?.response?.data?.message));
 		}
+	};
+};
+
+export const SetAlertMessage = (alertMessage, alertSeverity = 'error') => {
+	return {
+		type: "SET_ALERT_MESSAGE",
+		alertMessage,
+        alertSeverity
 	};
 };
 
@@ -69,9 +66,7 @@ export const ChangePreLoginTripDateTo = (newDateTo) => {
 };
 
 export const GetListTrips = () => {
-
 	return async (dispatch, getState) => {
-
 		dispatch({
 			type: "SET_IS_LOADING_LIST_TRIPS",
 			isLoadingListTrips: true,
@@ -85,9 +80,9 @@ export const GetListTrips = () => {
 				type: "LOADED_LIST_TRIPS", // save list trips
 				listTrips,
 			});
-
-		} catch (e) {
-			console.log(e);
+		} catch (error) {
+			console.log(error);
+			dispatch(SetAlertMessage(error?.response?.data?.message));
 		}
 	};
 };
@@ -96,7 +91,7 @@ export const AddNewTrip = (newCity) => {
 
 	return async (dispatch, getState) => {
 
-            const tripData = {
+		const tripData = {
 			city: newCity, // add city in trip
 			period: {
 				from: moment(),
@@ -104,39 +99,42 @@ export const AddNewTrip = (newCity) => {
 			},
 		};
 
-        try {
-            const addNewTrip = await axios.post(
+		try {
+			const result = await axios.post(
 				"/trip/create",
 				{ trip: tripData }, // 'trip:' from backend: ...req.body.trip,
 				config // header with access token
 			);
-                console.log(addNewTrip)
-            dispatch(GetListTrips()); // get updated list trips
-        }
-        catch (e) {
-			console.log(e);
+			console.log(result);
+            dispatch(SetAlertMessage(result?.data?.message, 'success'));
+			dispatch(GetListTrips()); // get updated list trips
+
+		} catch (error) {
+			console.log(error);
+			dispatch(SetAlertMessage(error?.response?.data?.message));
 		}
 	};
 };
 
 export const DeleteTrip = (tripId) => {
-
 	return async (dispatch, getState) => {
-        
-        dispatch({
+		dispatch({
 			type: "SET_IS_LOADING_LIST_TRIPS",
 			isLoadingListTrips: true,
 		});
 
 		try {
-            const deleteTrip = await axios.delete(
-                `/trip/delete-trip?tripId=${tripId}`,
-                config
-            )
-            dispatch(GetListTrips()); // get updated list trips
-        }
-        catch (e) {
-			console.log(e);
+			const result = await axios.delete(
+				`/trip/delete-trip?tripId=${tripId}`,
+				config
+			);
+            console.log(result.data)
+            dispatch(SetAlertMessage(result?.data?.message, 'success'));
+			dispatch(GetListTrips()); // get updated list trips
+
+		} catch (error) {
+			console.log(error)
+            dispatch(SetAlertMessage(error?.response?.data?.message))
 		}
 	};
 };
@@ -149,62 +147,48 @@ export const SetIsLoadingTrip = (isLoadingTrip) => {
 };
 
 export const GetTripData = (tripId) => {
-	return (dispatch, getState) => {
-		const db = getDatabase();
+	return async (dispatch, getState) => {
+		dispatch({
+			type: "SET_IS_LOADING_TRIP",
+			isLoadingTrip: true,
+		});
 
-		const userId = getState().auth.userId;
+		try {
+			const result = await axios.get(
+				`/trip/trip-data?tripId=${tripId}`,
+				config
+			);
 
-		dispatch(SetIsLoadingTrip(true));
-
-		get(ref(db, "trips/" + userId + "/" + tripId))
-			.then((snapshot) => {
-				// get from db/trips/userId
-
-				if (snapshot.exists()) {
-					// trip data
-
-					dispatch({
-						type: "LOADED_TRIP_DATA",
-						trip: snapshot.val(), // save the snapshot value to redux
-					});
-
-					dispatch(LoadedExpencesData(snapshot.val().expences));
-				} else {
-					console.log("No data available");
-
-					dispatch({
-						// if not trip save in redux empty data
-						type: "LOADED_TRIP_DATA",
-						trip: {},
-					});
-				}
-			})
-			.catch((error) => {
-				console.error(error);
-
-				dispatch({
-					// if was error during request save in redux empty data
-					type: "LOADED_TRIP_DATA",
-					trip: {},
-				});
+			dispatch({
+				type: "LOADED_TRIP_DATA",
+				trip: result?.data?.trip ?? {},
 			});
+
+			dispatch(LoadedExpencesData(result?.data?.trip?.expences ?? []));
+
+		} catch (error) {
+			console.log(error)
+            dispatch(SetAlertMessage(error?.response?.data?.message))
+		}
 	};
 };
 
-export const SaveTripData = (tripId, tripData) => {
-	return (dispatch, getState) => {
-		const db = getDatabase();
+export const UpdateTripData = (tripId, tripData) => {
+	return async (dispatch, getState) => {
+		try {
+			const result = await axios.post(
+				`/trip/trip-data?tripId=${tripId}`,
+				{ trip: tripData },
+				config
+			);
+			console.log(result);
 
-		const userId = getState().auth.userId; //
+            dispatch(SetAlertMessage(result?.data?.message, 'success'));
+			dispatch(GetTripData(tripId));
 
-		update(ref(db, "trips/" + userId + "/" + tripId), tripData)
-			.then(() => {
-				// get from db/trips/userId
-
-				dispatch(GetTripData(tripId));
-			})
-			.catch((error) => {
-				console.error(error);
-			});
+		} catch (error) {
+			console.log(error)
+            dispatch(SetAlertMessage(error?.response?.data?.message))
+		}
 	};
 };
