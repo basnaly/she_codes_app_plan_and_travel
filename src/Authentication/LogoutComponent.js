@@ -24,15 +24,13 @@ const LogoutComponent = () => {
     const openLogoutDialog = () => setIsLogoutDialogOpen(true);
     const closeLogoutDialog = () => setIsLogoutDialogOpen(false);
 
-    const navigate = useNavigate();
-
     const dispatch = useDispatch();
 
     const handleLogout = () => { 
 
         sessionStorage.removeItem('authToken')
         dispatch(SaveUser(undefined, undefined)) // no userId, no email
-        navigate('/')
+    
     }
 
     return (

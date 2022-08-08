@@ -18,6 +18,7 @@ import { CheckUserWithBackend } from "./Actions/AuthenticationAction";
 const AppPlanTravel = () => {
 
     const alertMessage = useSelector(state => state?.main?.alertMessage) 
+
     const dispatch = useDispatch();
 
     const alertSeverity = useSelector(state => state?.main?.alertSeverity)
@@ -27,8 +28,7 @@ const AppPlanTravel = () => {
         dispatch(CheckUserWithBackend())
 
     }, []);
-
-    
+ 
     return (
         <ThemeProvider theme={myTheme}>
             <Main className="d-flex flex-column flex-column overflow-auto vh-100">
@@ -42,7 +42,6 @@ const AppPlanTravel = () => {
                             onClose={() => dispatch(SetAlertMessage())}
                             elevation={6}
                         >
-
                             <AlertTitle>{alertSeverity}</AlertTitle>
                             {alertMessage}
                         </Alert>

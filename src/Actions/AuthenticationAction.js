@@ -1,105 +1,94 @@
-import axios from 'axios';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import config from './config';
-import { SaveInitialTrip } from './PlanTravelAction';
+import axios from "axios";
+
+import config from "./config";
+import { SaveInitialTrip } from "./PlanTravelAction";
 
 export const SaveUser = (userId, userEmail) => {
-    return {
-        type: 'SAVE_USER',
-        userId,
-        userEmail
-    }
-}
+	return {
+		type: "SAVE_USER",
+		userId,
+		userEmail,
+	};
+};
 
 export const SetAuthError = (authError) => {
-    return {
-        type: 'SET_AUTH_ERROR',
-        authError
-    }
-}
+	return {
+		type: "SET_AUTH_ERROR",
+		authError,
+	};
+};
 
 export const RegisterWithBackend = (email, password) => {
 
-    return (dispatch, getState) => {
+	return async (dispatch, getState) => {
 
-        dispatch({
-            type: 'SET_IS_AUTH_LOADING'
-        })
+		try {
+			dispatch({
+				type: "SET_IS_AUTH_LOADING",
+			});
 
-        axios.post('/auth/register', { email, password })
+			const result = await axios.post("/auth/register", {
+				email,
+				password,
+			});
 
-            .then(result => {
-                console.log(result)
+			let token = result?.data?.accessToken;
+			sessionStorage.setItem("authToken", token);
 
-                let token = result?.data?.accessToken
-                sessionStorage.setItem('authToken', token)
+			let userId = result?.data?.id;
+			let userEmail = result?.data?.email;
 
-                let userId = result?.data?.id;
-                let email = result?.data?.email;
+			dispatch(SaveUser(userId, userEmail));
+			dispatch(SaveInitialTrip(token));
 
-                dispatch(SaveUser(userId, email))
-                dispatch(SaveInitialTrip(token))
-            })
-
-            .catch(error => {
-                console.log(error)
-                dispatch(SetAuthError(error?.response?.data?.message))
-            })
-    }
-}
+		} catch (error) {
+			console.log(error);
+			dispatch(SetAuthError(error?.response?.data?.message));
+		}
+	};
+};
 
 export const LoginWithBackend = (email, password) => {
+	return async (dispatch, getState) => {
+		try {
+			dispatch({
+				type: "SET_IS_AUTH_LOADING",
+			});
 
-    return (dispatch, getState) => {
+			let result = await axios.post("/auth/login", { email, password });
 
-        dispatch({
-            type: 'SET_IS_AUTH_LOADING'
-        })
+			let token = result?.data?.accessToken;
+			sessionStorage.setItem("authToken", token);
 
-        axios.post('/auth/login', {email, password})
+			let userId = result?.data?.id;
+			let userEmail = result?.data?.email;
 
-            .then(result => {
-                console.log(result)
-        
-            let token = result?.data?.accessToken
-            sessionStorage.setItem('authToken', token);
+			dispatch(SaveUser(userId, userEmail));
+			dispatch(SaveInitialTrip(token));
 
-            let userId = result?.data?.id;
-            let email = result?.data?.email;
-
-            dispatch(SaveUser(userId, email))
-            dispatch(SaveInitialTrip(token))
-            })
-
-            .catch(error => {
-                console.log(error)
-                dispatch(SetAuthError(error?.response?.data?.message))
-            })
-    }
-}
+		} catch (error) {
+			console.log(error);
+			dispatch(SetAuthError(error?.response?.data?.message));
+		}
+	};
+};
 
 export const CheckUserWithBackend = () => {
+	return async (dispatch, getState) => {
+		try {
+			dispatch({
+				type: "SET_IS_AUTH_LOADING",
+			});
 
-    return (dispatch, getState) => {
+			let result = await axios.get("/auth/check-user", config);
 
-        dispatch({
-            type: 'SET_IS_AUTH_LOADING'
-        })
+			let userId = result?.data?.id;
+			let userEmail = result?.data?.email;
 
-        axios.get('/auth/check-user', config)
+			dispatch(SaveUser(userId, userEmail));
 
-        .then(result => {
-
-            let userId = result?.data?.id;
-            let email = result?.data?.email;
-
-            dispatch(SaveUser(userId, email))
-        })
-
-        .catch(error => {
-            console.log(error)
-            
-        })
-    }
-}
-
+		} catch (error) {
+			console.log(error?.response?.data?.message);
+		}
+	};
+};

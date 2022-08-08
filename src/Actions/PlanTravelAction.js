@@ -1,5 +1,6 @@
 import axios from "axios";
 import moment from "moment";
+import { SaveUser } from "./AuthenticationAction";
 import config from "./config";
 import { LoadedExpencesData } from "./ExpencesAction";
 
@@ -31,6 +32,7 @@ export const SaveInitialTrip = (token) => { // pass token for use token before s
 
 		} catch (error) {
 			console.log(error);
+			dispatch(CheckTokenError(error))
 			dispatch(SetAlertMessage(error?.response?.data?.message));
 		}
 	};
@@ -43,6 +45,19 @@ export const SetAlertMessage = (alertMessage, alertSeverity = 'error') => {
         alertSeverity
 	};
 };
+
+const CheckTokenError = (error) => {
+
+	return (dispatch, getState) => {
+
+		if (error.response.status === 401 || error.response.status === 403) {
+			sessionStorage.removeItem('authToken')
+        	dispatch(SaveUser(undefined, undefined))
+		}
+
+		console.log(error.response.status)
+	}
+}
 
 export const ChangePreLoginTripCity = (newCity) => {
 	return {
@@ -73,7 +88,7 @@ export const GetListTrips = () => {
 		});
 
 		try {
-			const result = await axios.get("/trip/list-trips", config); //config => header with access token
+			const result = await axios.get("/trip/list-trips", config()); //config => header with access token
 			let listTrips = result.data.listTrips; // recieve list trips
 
 			dispatch({
@@ -82,6 +97,7 @@ export const GetListTrips = () => {
 			});
 		} catch (error) {
 			console.log(error);
+			dispatch(CheckTokenError(error))
 			dispatch(SetAlertMessage(error?.response?.data?.message));
 		}
 	};
@@ -103,7 +119,7 @@ export const AddNewTrip = (newCity) => {
 			const result = await axios.post(
 				"/trip/create",
 				{ trip: tripData }, // 'trip:' from backend: ...req.body.trip,
-				config // header with access token
+				config() // header with access token
 			);
 			console.log(result);
             dispatch(SetAlertMessage(result?.data?.message, 'success'));
@@ -111,6 +127,7 @@ export const AddNewTrip = (newCity) => {
 
 		} catch (error) {
 			console.log(error);
+			dispatch(CheckTokenError(error))
 			dispatch(SetAlertMessage(error?.response?.data?.message));
 		}
 	};
@@ -126,7 +143,7 @@ export const DeleteTrip = (tripId) => {
 		try {
 			const result = await axios.delete(
 				`/trip/delete-trip?tripId=${tripId}`,
-				config
+				config()
 			);
             console.log(result.data)
             dispatch(SetAlertMessage(result?.data?.message, 'success'));
@@ -134,6 +151,7 @@ export const DeleteTrip = (tripId) => {
 
 		} catch (error) {
 			console.log(error)
+			dispatch(CheckTokenError(error))
             dispatch(SetAlertMessage(error?.response?.data?.message))
 		}
 	};
@@ -156,7 +174,7 @@ export const GetTripData = (tripId) => {
 		try {
 			const result = await axios.get(
 				`/trip/trip-data?tripId=${tripId}`,
-				config
+				config()
 			);
 
 			dispatch({
@@ -168,6 +186,7 @@ export const GetTripData = (tripId) => {
 
 		} catch (error) {
 			console.log(error)
+			dispatch(CheckTokenError(error))
             dispatch(SetAlertMessage(error?.response?.data?.message))
 		}
 	};
@@ -179,7 +198,7 @@ export const UpdateTripData = (tripId, tripData) => {
 			const result = await axios.post(
 				`/trip/trip-data?tripId=${tripId}`,
 				{ trip: tripData },
-				config
+				config()
 			);
 			console.log(result);
 
@@ -188,6 +207,7 @@ export const UpdateTripData = (tripId, tripData) => {
 
 		} catch (error) {
 			console.log(error)
+			dispatch(CheckTokenError(error))
             dispatch(SetAlertMessage(error?.response?.data?.message))
 		}
 	};

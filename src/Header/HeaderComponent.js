@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+
 
 import AuthenticationButtons from '../Authentication/AuthenticationButtons';
 import { HeaderStyled, IconStyled, LinkHoverStyled } from "../styles/MuiStyles";
@@ -9,7 +11,17 @@ const HeaderComponent = () => {
 
     const userId = useSelector(state => state.auth.userId)
 
-    const linkTo = userId ? '/home' : '/'
+    const linkTo = userId ? '/home' : '/';
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+
+        if (!userId) {
+            navigate('/')
+        }    
+
+    }, [userId]);
 
     return (
         <HeaderStyled className="d-flex align-items-center justify-content-between">
