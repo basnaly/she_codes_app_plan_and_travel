@@ -60,7 +60,8 @@ const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => 
 
     return (
 
-        <TabContentBox boxShadow={24} p={4} className="d-flex flex-column align-items-center">
+        <TabContentBox boxShadow={24} p={4} className="d-flex flex-column align-items-center"
+            data-testid="form-container">
             <Typography className="form d-flex flex-column align-items-center">
                 { title }
             </Typography>
@@ -86,14 +87,17 @@ const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => 
 
             <div>
                 <GreenButton
+                    data-testid="submit-button"
                     variant={'outlined'}
                     className="mt-4 mx-3"
-                    disabled={authError}
+                    disabled={authError || isAuthLoading}
                     onClick={() => Submit(email, password, setPassword)}>
-                    Submit
+                    {isAuthLoading ? 'Loading' : 'Submit'}
                 </GreenButton>
 
-                <RedButton onClick={Cancel}
+                <RedButton 
+                    data-testid="cancel-button"
+                    onClick={Cancel}
                     variant={'outlined'}
                     className="mt-4 mx-3">
                     Cancel

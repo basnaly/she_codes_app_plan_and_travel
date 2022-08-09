@@ -18,12 +18,16 @@ const PasswordInputComponent = ({password, setPassword}) => {
 
     return (
         <FormControl sx={{ mt: 2, width: '100%' }} variant="outlined"
-            className="d-flex align-items-center justify-content-center ">
+            className="d-flex align-items-center justify-content-center"
+            data-testid="password-container">
+
             <InputLabel htmlFor="outlined-adornment-password"
                 color="success" className="mx-3">
                 Password
             </InputLabel>
+
             <OutlinedInput
+                inputProps={ {"data-testid": "password-input"} }
                 id="outlined-adornment-password"
                 type={showPassword ? 'text' : 'password'}
                 color="success"
@@ -33,6 +37,7 @@ const PasswordInputComponent = ({password, setPassword}) => {
                 endAdornment={
                     <InputAdornment position="end">
                         <IconButton
+                            data-testid="password-text"
                             aria-label="toggle password visibility"
                             onClick={handleClickShowPassword}
                             edge="end"
