@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux'; 
-import { combineReducers, createStore } from 'redux';
+import { combineReducers } from 'redux';
+import { legacy_createStore as createStore} from 'redux'
 import { BrowserRouter as Router } from "react-router-dom";
 import AuthenticationForm from '../AuthenticationForm';
 

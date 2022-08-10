@@ -24,7 +24,7 @@ export const PREPARATIONS = [
 export const TRANSPORTATIONS = [
     {
         id: 1,
-        date: 1659866738000,
+        date: '05/09/2022',
         transport: 'British Airways BA164',
         price: 1370,
         currency: '$',
@@ -32,7 +32,7 @@ export const TRANSPORTATIONS = [
     },
     {
         id: 2,
-        date: 1659953138000,
+        date: '06/09/2022',
         transport: 'Underground',
         price: 50,
         currency: '£',
@@ -43,8 +43,8 @@ export const TRANSPORTATIONS = [
 export const ACCOMMODATION = [
     {
         id: 1,
-        dateFrom: 1659830400000, //07/08/22
-        dateTo: 1660348800000, //13/08/22
+        dateFrom: '05/09/2022',
+        dateTo: '13/09/2022',
         accommodation: 'Novotel Canary Wharf',
         price: 7054,
         currency: '₪',
@@ -52,8 +52,8 @@ export const ACCOMMODATION = [
     },
     {
         id: 2,
-        dateFrom: 1660348800000, //13/08/22
-        dateTo: 1660953600000, //20/08/22
+        dateFrom: '13/09/2022',
+        dateTo: '19/09/2022',
         accommodation: 'Pan Pacific London',
         price: 11272,
         currency: '₪',
@@ -64,13 +64,13 @@ export const ACCOMMODATION = [
 export const VISITINGS = [
     {
         id: 1,
-        date: 1659866738000,
+        date: '06/09/2022',
         visit: 'Science Museum',
         notes: '10-11 in the morning'
     },
     {
         id: 2,
-        date: 1659953138000,
+        date: '07/09/2022',
         visit: 'Tower',
         notes: 'order ticket in internet'
     },
@@ -90,7 +90,7 @@ export const COMMENTS = [
 export const EXPENCES = [
     {
         id: 1,
-        date: 1659866738000,
+        date: '06/09/2022',
         product: 'Science Museum',
         price: 45,
         currency: '£',
@@ -99,7 +99,7 @@ export const EXPENCES = [
     },
     {
         id: 2,
-        date: 1659953138000,
+        date: '06/09/2022',
         product: 'Temse Boat Trip',
         price: 80,
         currency: '£',

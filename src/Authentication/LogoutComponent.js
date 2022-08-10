@@ -36,6 +36,7 @@ const LogoutComponent = () => {
     return (
         <React.Fragment>
             <YellowButton
+                data-testid="logout-element"
                 variant={'outlined'}
                 className="log"
                 onClick={openLogoutDialog}>

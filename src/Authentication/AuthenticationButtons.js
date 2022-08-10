@@ -15,10 +15,20 @@ const AuthenticationButtons = () => {
     return (
         <React.Fragment>
             <ol>
-                <AuthLinkStyled className="log" to='/register'>Register</AuthLinkStyled>
+                <AuthLinkStyled 
+                    data-testid="register-element"
+                    className="log" 
+                    to='/register'>
+                        Register
+                </AuthLinkStyled>
             </ol>
             <ol>
-                <AuthLinkStyled className="log" to='/login'>Log in</AuthLinkStyled>
+                <AuthLinkStyled 
+                    data-testid="login-element"
+                    className="log" 
+                    to='/login'>
+                        Log in
+                </AuthLinkStyled>
             </ol>
         </React.Fragment>
     )

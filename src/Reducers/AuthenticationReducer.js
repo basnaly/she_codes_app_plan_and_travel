@@ -3,7 +3,7 @@ const initState = {
     userId: '',
     email: '',
     authError: '',
-    isAuthLoading: '',
+    isAuthLoading: false,
 }
 
 const AuthenticationRedicer = (state = initState, action) => {

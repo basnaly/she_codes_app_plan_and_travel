@@ -5,7 +5,8 @@ import AppPlanTravel from './AppPlanTravel';
 import reportWebVitals from './reportWebVitals';
 
 import "bootstrap/dist/css/bootstrap.css";
-import { applyMiddleware, compose, createStore } from "redux";
+import { applyMiddleware, compose } from "redux";
+import { legacy_createStore as createStore} from 'redux';
 import { Provider} from "react-redux";
 import { createLogger } from 'redux-logger';
 import thunk from "redux-thunk";

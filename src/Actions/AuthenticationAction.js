@@ -76,10 +76,6 @@ export const LoginWithBackend = (email, password) => {
 export const CheckUserWithBackend = () => {
 	return async (dispatch, getState) => {
 		try {
-			dispatch({
-				type: "SET_IS_AUTH_LOADING",
-			});
-
 			let result = await axios.get("/auth/check-user", config);
 
 			let userId = result?.data?.id;

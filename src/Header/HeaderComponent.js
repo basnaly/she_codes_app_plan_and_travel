@@ -26,9 +26,17 @@ const HeaderComponent = () => {
     return (
         <HeaderStyled className="d-flex align-items-center justify-content-between">
             <div className="d-flex align-items-center ps-1">
-                <IconStyled className="icon">🗺</IconStyled>
+                <IconStyled 
+                    className="icon"
+                    data-testid="icon-element">
+                    🗺
+                </IconStyled>
 
-                <LinkHoverStyled className="name" to={ linkTo }>Plan & Travel</LinkHoverStyled>
+                <LinkHoverStyled 
+                    className="name" to={ linkTo }
+                    data-testid="title-link">
+                    Plan & Travel
+                    </LinkHoverStyled>
 
             </div>
             <div className="d-flex align-items-center ps-5">
