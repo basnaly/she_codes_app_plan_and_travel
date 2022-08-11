@@ -22,7 +22,9 @@ const AddCity = () => {
 
     return (
         <div className="d-flex align-items-center justify-content-evenly m-3">
-            <TextField id="outlined-size-small"
+            <TextField 
+                data-testid="add-input-element"
+                id="outlined-size-small"
                 size="small" 
                 label="City"
                 inputProps={{ style: {...cityStyle, backgroundColor:'#ffffff60' }}}
@@ -33,6 +35,7 @@ const AddCity = () => {
             />
 
             <GreenButton
+                data-testid="add-button-element"
                 variant={'outlined'}
                 className="ms-2"
                 disabled={!city}

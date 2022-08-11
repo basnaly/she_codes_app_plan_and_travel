@@ -18,7 +18,6 @@ const CalculateExpences = () => {
         dispatch(Calculate())
     }
 
-    console.log(total)
     return (
 
         <React.Fragment>
@@ -46,10 +45,6 @@ const CalculateExpences = () => {
                 </div>
 
                 <GrayButton
-                //id="basic-button"
-                //aria-controls={open ? 'basic-menu' : undefined}
-                //aria-haspopup="true"
-                //aria-expanded={open ? 'true' : undefined}
                     onClick={calculate}
                 >
                     Calculate

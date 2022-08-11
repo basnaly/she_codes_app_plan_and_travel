@@ -17,7 +17,6 @@ const AuthenticationButtons = () => {
             <ol>
                 <AuthLinkStyled 
                     data-testid="register-element"
-                    className="log" 
                     to='/register'>
                         Register
                 </AuthLinkStyled>
@@ -25,7 +24,6 @@ const AuthenticationButtons = () => {
             <ol>
                 <AuthLinkStyled 
                     data-testid="login-element"
-                    className="log" 
                     to='/login'>
                         Log in
                 </AuthLinkStyled>

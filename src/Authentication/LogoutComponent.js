@@ -44,6 +44,7 @@ const LogoutComponent = () => {
             </YellowButton>
 
             <Dialog
+                data-testid="dialog-logout-element"
                 open={isLogoutDialogOpen}
                 TransitionComponent={Transition}
                 keepMounted
@@ -68,6 +69,7 @@ const LogoutComponent = () => {
 
                 <DialogActions className="d-flex align-items-center mt-0 mb-3">
                     <GreenButton
+                        data-testid="cancel-element"
                         variant={'outlined'}
                         className=" mx-3"
                         onClick={closeLogoutDialog}

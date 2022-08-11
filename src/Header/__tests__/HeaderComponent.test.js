@@ -5,7 +5,7 @@ import { combineReducers } from 'redux';
 import { legacy_createStore as createStore} from 'redux'
 import HeaderComponent from "../HeaderComponent";
 
-const store = ({userId=''}) =>
+const store = ({userId = ''}) =>
 	createStore(
 		combineReducers({
 			auth: (
@@ -36,7 +36,7 @@ describe("HeaderComponent", () => {
 		expect(iconElement).toBeInTheDocument();
 	});
 
-    it("should render title-link element", () => {
+    it("should render title link element", () => {
 		render(<MockHeaderComponent />);
 
 		const titleLinkElement = screen.getByTestId("title-link");

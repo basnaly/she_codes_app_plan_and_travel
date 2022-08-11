@@ -1,6 +1,6 @@
 import axios from "axios";
 import moment from "moment";
-import { SaveUser } from "./AuthenticationAction";
+import { CheckTokenError } from "./AuthenticationAction";
 import config from "./config";
 import { LoadedExpencesData } from "./ExpencesAction";
 
@@ -45,19 +45,6 @@ export const SetAlertMessage = (alertMessage, alertSeverity = 'error') => {
         alertSeverity
 	};
 };
-
-const CheckTokenError = (error) => {
-
-	return (dispatch, getState) => {
-
-		if (error.response.status === 401 || error.response.status === 403) {
-			sessionStorage.removeItem('authToken')
-        	dispatch(SaveUser(undefined, undefined))
-		}
-
-		console.log(error.response.status)
-	}
-}
 
 export const ChangePreLoginTripCity = (newCity) => {
 	return {

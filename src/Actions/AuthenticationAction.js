@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import config from "./config";
-import { SaveInitialTrip } from "./PlanTravelAction";
+import { SaveInitialTrip, SetAlertMessage } from "./PlanTravelAction";
 
 export const SaveUser = (userId, userEmail) => {
 	return {
@@ -76,7 +76,7 @@ export const LoginWithBackend = (email, password) => {
 export const CheckUserWithBackend = () => {
 	return async (dispatch, getState) => {
 		try {
-			let result = await axios.get("/auth/check-user", config);
+			let result = await axios.get("/auth/check-user", config());
 
 			let userId = result?.data?.id;
 			let userEmail = result?.data?.email;
@@ -85,6 +85,20 @@ export const CheckUserWithBackend = () => {
 
 		} catch (error) {
 			console.log(error?.response?.data?.message);
+			dispatch(SetAlertMessage(error?.response?.data?.message));
 		}
 	};
 };
+
+export const CheckTokenError = (error) => {
+
+	return (dispatch, getState) => {
+
+		if (error.response.status === 401 || error.response.status === 403) {
+			sessionStorage.removeItem('authToken')
+        	dispatch(SaveUser(undefined, undefined))
+		}
+
+		console.log(error.response.status)
+	}
+}

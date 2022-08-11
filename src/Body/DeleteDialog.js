@@ -33,6 +33,7 @@ const DeleteDialog = ({ el }) => {
     return (
         <React.Fragment>
             <RedButton
+                data-testid="delete-button-element"
                 variant={'outlined'}
                 className=" mx-3"
                 onClick={openDeleteDialog}>
@@ -40,6 +41,7 @@ const DeleteDialog = ({ el }) => {
             </RedButton>
 
             <Dialog
+                data-testid="delete-dialog-element"
                 open={isDialogOpen}
                 TransitionComponent={Transition}
                 keepMounted
@@ -66,6 +68,7 @@ const DeleteDialog = ({ el }) => {
 
                 <DialogActions className="d-flex align-items-center mt-0 mb-3">
                     <GreenButton
+                        data-testid="cancel-button-element"
                         variant={'outlined'}
                         className=" mx-3"
                         onClick={closeDeleteDialog}

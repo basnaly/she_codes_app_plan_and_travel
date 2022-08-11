@@ -16,7 +16,7 @@ const PeriodComponent = () => {
             <TabContentBox boxShadow={24} p={4} className="d-flex flex-column align-items-center mx-auto">
                 <div className="d-flex flex-column align-items-center">
                     <PeriodTitle className="d-flex align-items-center mb-4">
-                        I'd like to travel?
+                        The travel period:
                     </PeriodTitle>
 
                     <div className="d-flex align-items-center">
