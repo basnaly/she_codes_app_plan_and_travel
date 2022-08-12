@@ -6,14 +6,18 @@ const ViewCheckBoxNote = ({ note }) => {
 
     if (note.checked) {
         return (
-            <NoteChecked className='border-end border-dark'>
+            <NoteChecked 
+                data-testid="checked-note-element"
+                className='border-end border-dark'>
                 {note.note}
             </NoteChecked>
         )
     } 
     return (
 
-        <NoteNotChecked className='border-end border-dark'>
+        <NoteNotChecked
+            data-testid="note-element" 
+            className='border-end border-dark'>
             {note.note}
         </NoteNotChecked>
     )

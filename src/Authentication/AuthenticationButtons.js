@@ -6,7 +6,7 @@ import LogoutComponent from "./LogoutComponent";
 
 const AuthenticationButtons = () => {
 
-    const userId = useSelector(state => state.auth.userId);
+    const userId = useSelector(state => state?.auth?.userId);
     
     if (userId) {
         return <LogoutComponent />

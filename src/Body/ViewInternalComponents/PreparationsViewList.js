@@ -26,12 +26,16 @@ const PreparationsViewList = ({ preparations = [] }) => {
 
                     {Object.keys(groupByCategory).map(el =>
                         <div className='d-flex flex-wrap align-items-center' key={el}>
-                            <CategoryStyled className='d-flex text-align-start'>
+                            <CategoryStyled 
+                                data-testid="catergory-element"
+                                className='d-flex text-align-start'>
                                 {el}:
                             </CategoryStyled>
                             <div className='d-flex align-items-center'>
                                 {groupByCategory[el].map(note =>
-                                    <ViewCheckBoxNote key={note.id} note={note} />
+                                    <ViewCheckBoxNote 
+                                        key={note.id} 
+                                        note={note} />
                                 )}
                             </div>
                         </div>

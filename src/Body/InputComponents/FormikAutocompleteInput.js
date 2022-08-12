@@ -13,6 +13,7 @@ const FormikAutocompleteInput = ({ field, form, options, label, ...props }) => {
                 id="free-solo-demo"
                 sx={{ maxWidth: '100px' }}
                 freeSolo
+                value={value}
                 options={options}
                 renderInput={(params) =>
 

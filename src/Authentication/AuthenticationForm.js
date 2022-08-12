@@ -12,9 +12,9 @@ import { ErrorStyled, GreenButton, RedButton, TabContentBox } from "../styles/Mu
 
 const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => {
 
-    const userId = useSelector(state => state.auth.userId);
-    const authError = useSelector(state => state.auth.authError);
-    const isAuthLoading = useSelector(state => state.auth.isAuthLoading);
+    const userId = useSelector(state => state?.auth?.userId);
+    const authError = useSelector(state => state?.auth?.authError);
+    const isAuthLoading = useSelector(state => state?.auth?.isAuthLoading);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

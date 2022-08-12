@@ -7,7 +7,7 @@ import AuthenticationForm from "./AuthenticationForm";
 
 const LoginComponent = () => {
 
-    const userId = useSelector(state => state.auth.userId)
+    const userId = useSelector(state => state?.auth?.userId)
 
     const navigate = useNavigate();
 

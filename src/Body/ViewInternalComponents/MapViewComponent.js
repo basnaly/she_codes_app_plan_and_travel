@@ -9,6 +9,7 @@ const MapViewComponent = ( {place} ) => {
     return (
 
         <iframe
+            data-testid="map-element"
             width="100%"
             height="350"
             frameBorder="0" style={{border:0 }}

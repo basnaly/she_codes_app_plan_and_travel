@@ -201,7 +201,8 @@ export const myTheme = createTheme({
                 root:{
                     position: "fixed",
                     right: '4px',
-                    top: '4.1rem'
+                    top: '4.1rem',
+                    zIndex: 1,
                 },
                 message: {
                     fontFamily: 'Aladin, cursive',
