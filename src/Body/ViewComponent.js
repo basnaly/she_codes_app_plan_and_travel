@@ -28,13 +28,13 @@ const ViewComponent = ({ el }) => {
 	const [isViewDialogOpen, setIsViewDialogOpen] = useState(false);
 
 	const trip = useSelector(state => state?.main?.trip);
-	const isLoadingTrip = useSelector(state => state.main.isLoadingTrip);
+	const isLoadingTrip = useSelector(state => state?.main?.isLoadingTrip);
 
 	const dispatch = useDispatch();
 
 	const openViewDialog = () => {
 
-		dispatch(GetTripData(el.id)) // request to get date
+		dispatch(GetTripData(el?.id)) // request to get date
 		setIsViewDialogOpen(true)
 	}
 	const closeViewDialog = () => setIsViewDialogOpen(false);
@@ -63,7 +63,7 @@ const ViewComponent = ({ el }) => {
 					<DialogTitle id="modal-modal-title" variant="h6" component="h2"
 						className='pb-1 m-1'>
 						<CityTitleStyled >
-							{trip.city}
+							{trip?.city}
 						</CityTitleStyled>
 					</DialogTitle>
 
@@ -86,19 +86,19 @@ const ViewComponent = ({ el }) => {
 
 					<DialogContent className='d-flex flex-column align-items-center pt-1 pb-3'>
 
-						<ViewTripDates period={trip.period} />
+						<ViewTripDates period={trip?.period} />
 
-						<PreparationsViewList preparations={trip.preparations} />
+						<PreparationsViewList preparations={trip?.preparations} />
 
-						<TransportationsViewList transportations={trip.transportations} />
+						<TransportationsViewList transportations={trip?.transportations} />
 
-						<AccommodationsViewList accommodations={trip.accommodations} />
+						<AccommodationsViewList accommodations={trip?.accommodations} />
 
-						<VisitingsViewList visitings={trip.visitings} />
+						<VisitingsViewList visitings={trip?.visitings} />
 
-						<CommentsViewList comments={trip.comments} />
+						<CommentsViewList comments={trip?.comments} />
 
-						<ExpencesViewList expences={trip.expences} />
+						<ExpencesViewList expences={trip?.expences} />
 
 						<CalculateExpences />
 

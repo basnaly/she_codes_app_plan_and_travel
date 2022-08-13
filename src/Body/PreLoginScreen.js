@@ -14,10 +14,10 @@ import { ChangePreLoginTripCity,
 
 const PreLoginScreen = () => {
 
-    const city = useSelector(state => state?.main?.preLoginTrip.city);
-    const from = useSelector(state => state?.main?.preLoginTrip.dateFrom);
-    const to = useSelector(state => state?.main?.preLoginTrip.dateTo);
-    const userId = useSelector(state => state.auth.userId);
+    const city = useSelector(state => state?.main?.preLoginTrip?.city);
+    const from = useSelector(state => state?.main?.preLoginTrip?.dateFrom);
+    const to = useSelector(state => state?.main?.preLoginTrip?.dateTo);
+    const userId = useSelector(state => state?.auth?.userId);
 
     const dispatch = useDispatch();
 

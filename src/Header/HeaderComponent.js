@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-
 
 import AuthenticationButtons from '../Authentication/AuthenticationButtons';
 import { HeaderStyled, IconStyled, LinkHoverStyled } from "../styles/MuiStyles";
@@ -43,7 +41,7 @@ const HeaderComponent = () => {
 
                 <div id="portal" />
 
-                <ul className="d-flex align-items-center me-5 mt-3">
+                <ul className="d-flex align-items-center me-1 mt-3">
                     <AuthenticationButtons />    
                 </ul>
             </div>

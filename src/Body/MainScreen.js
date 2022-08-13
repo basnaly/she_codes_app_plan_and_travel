@@ -9,9 +9,9 @@ import { NoTripStyled } from "../styles/MuiStyles";
 
 const MainScreen = () => {
 
-    const listTrips = useSelector(state => state.main.listTrips);
-    const isLoadingListTrips = useSelector(state => state.main.isLoadingListTrips);
-    const userId = useSelector(state => state.auth.userId);
+    const listTrips = useSelector(state => state?.main?.listTrips);
+    const isLoadingListTrips = useSelector(state => state?.main?.isLoadingListTrips);
+    const userId = useSelector(state => state?.auth?.userId);
 
     const dispatch = useDispatch();
 

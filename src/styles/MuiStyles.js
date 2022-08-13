@@ -2,6 +2,8 @@ import { Button, Box } from '@mui/material';
 import { styled } from "@mui/material";
 import { Link } from "react-router-dom";
 import TextareaAutosize from '@mui/material/TextareaAutosize';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Paper from "@mui/material/Paper";
 
 export const cityStyle = {
     color: 'forestgreen',
@@ -234,10 +236,9 @@ export const NoteNotChecked = styled('div') ({
     padding: '0 10px',
 })
 
-
-
-
-
+export const MapStyled = styled('span') ({
+    border: '1px solid black',
+})
 
 export const TextareaAutosizeStyled = styled(TextareaAutosize)({
     fontFamily: "'Aladin', cursive",
@@ -276,3 +277,25 @@ export const CategoryStyled = styled('div') ({
     textTransform: 'capitalize',
 })
 
+export const AccountCircleIconStyled = styled(AccountCircleIcon)({
+    fontSize: '40px',
+    color: 'yellow',  
+});
+
+export const PaperStyled = styled(Paper)({
+    backgroundColor: 'lightgrey',
+    fontFamily: "'Aladin', cursive",  
+    border: '1px solid gray',
+    boxShadow: "2px 2px grey"
+});
+
+export const TimeStyled = styled('div') ({
+    fontSize: '22px',
+    color: "yellow", 
+})
+
+export const EmailStyled = styled('div') ({
+    fontSize: '26px',
+    textShadow: '0.5px 0.5px black',
+    color: "forestgreen", 
+})

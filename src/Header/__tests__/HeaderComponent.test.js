@@ -56,16 +56,16 @@ describe("HeaderComponent", () => {
 		expect(logoutElement).not.toBeInTheDocument();
 	});
 
-    it("should render logout button", () => {
+	it ("should render user icon", () => {
 		render(<MockHeaderComponent userId={"ab1268re"}/>);
 
-		const logoutElement = screen.getByTestId("logout-element");
-		expect(logoutElement).toBeInTheDocument();
+		const userIconElement = screen.getByTestId("user-icon");
+		expect(userIconElement).toBeInTheDocument();
 
-        const registerElement = screen.queryByTestId("register-element");
+    	const registerElement = screen.queryByTestId("register-element");
 		expect(registerElement).not.toBeInTheDocument();
 
-        const loginElement = screen.queryByTestId("login-element");
+    	const loginElement = screen.queryByTestId("login-element");
 		expect(loginElement).not.toBeInTheDocument();
 	});
 });

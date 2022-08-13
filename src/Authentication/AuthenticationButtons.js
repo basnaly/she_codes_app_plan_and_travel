@@ -2,18 +2,18 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { AuthLinkStyled } from "../styles/MuiStyles";
 
-import LogoutComponent from "./LogoutComponent";
+import UserDropdown from "../Header/UserDropdown";
 
 const AuthenticationButtons = () => {
 
     const userId = useSelector(state => state?.auth?.userId);
     
     if (userId) {
-        return <LogoutComponent />
+        return <UserDropdown />
     }
 
     return (
-        <React.Fragment>
+        <div className="d-flex me-3">
             <ol>
                 <AuthLinkStyled 
                     data-testid="register-element"
@@ -28,7 +28,7 @@ const AuthenticationButtons = () => {
                         Log in
                 </AuthLinkStyled>
             </ol>
-        </React.Fragment>
+        </div>
     )
 }
 
