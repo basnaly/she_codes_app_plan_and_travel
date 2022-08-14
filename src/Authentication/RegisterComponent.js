@@ -1,56 +1,80 @@
-import React, { useEffect} from "react";
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { RegisterWithBackend, SetAuthError } from '../Actions/AuthenticationAction';
+import { Typography } from "@mui/material";
+import TextField from "@mui/material/TextField";
+
+import { RegisterWithBackend, SetAuthError } from "../Actions/AuthenticationAction";
 import AuthenticationForm from "../Authentication/AuthenticationForm";
 
 const RegisterComponent = () => {
 
-    const userId = useSelector(state => state?.auth?.userId)
-    
-    const navigate = useNavigate();
+	const [username, setUsername] = useState("");
 
-    const dispatch = useDispatch();
+	const userId = useSelector((state) => state?.auth?.userId);
 
-    const validatePassword = (password) => {
+	const navigate = useNavigate();
 
-        var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*-_])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9!@#$%^&*-_]{8,12}$/;
-    
-        const found = password.match(regularExpression); 
-        
-        return !!found 
-    }
+	const dispatch = useDispatch();
 
-    const Submit = (email, password, setPassword) => {
-        
-        if (!email || !password) {
-            dispatch(SetAuthError('Email and password cannot be empty'))
-            return
-        }
+	const validatePassword = (password) => {
+		
+		var regularExpression =
+			/^(?=.*[0-9])(?=.*[!@#$%^&*-_])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9!@#$%^&*-_]{8,12}$/;
 
-        const isPasswordValid = validatePassword(password)
-        if (!isPasswordValid) { 
-            dispatch(SetAuthError('Password is not valid'))
-            return
-        }
+		const found = password.match(regularExpression);
 
-        dispatch(RegisterWithBackend(email, password))
-        setPassword('');
-    }
+		return !!found;
+	};
 
-    useEffect(() => {
+	const Submit = (email, password, setPassword) => {
+		if (!username || !email || !password) {
+			dispatch(
+				SetAuthError("Username, email and password cannot be empty")
+			);
+			return;
+		}
 
-        if (userId) {
-            navigate('/home')
-        }
+		const isPasswordValid = validatePassword(password);
+		if (!isPasswordValid) {
+			dispatch(SetAuthError("Password is not valid"));
+			return;
+		}
 
-    }, [userId])
+		dispatch(RegisterWithBackend(username, email, password));
+		setPassword("");
+	};
 
-    return <AuthenticationForm Submit={ Submit}
-                            title={ 'The register form' }
-                            validatePassword={validatePassword}/>
+	useEffect(() => {
+		if (userId) {
+			navigate("/home");
+		}
+	}, [userId]);
 
-}
+	return (
+		<AuthenticationForm
+			Submit={Submit}
+			title={"The register form"}
+			validatePassword={validatePassword}
+		>
+			<Typography
+				className="d-flex align-items-center justify-content-center" // children
+				id="modal-modal-description"
+				sx={{ mt: 2, width: "100%" }}
+			>
+				<TextField
+					className="regist mx-3"
+					id="outlined-helperText"
+					label="Username"
+					type="username"
+					color="success"
+					value={username}
+					onChange={(e) => setUsername(e.target.value)}
+				/>
+			</Typography>
+		</AuthenticationForm>
+	);
+};
 
 export default RegisterComponent;

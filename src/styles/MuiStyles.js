@@ -283,19 +283,42 @@ export const AccountCircleIconStyled = styled(AccountCircleIcon)({
 });
 
 export const PaperStyled = styled(Paper)({
-    backgroundColor: 'lightgrey',
+    '&::before': {
+        content: '""',
+        backgroundImage: "url('/img/map.webp')",
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        zIndex: -1,
+        borderRadius: '10px',
+    },
+    '&::after': {
+        content: '""',
+        backgroundColor: '#fff6',
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        zIndex: -1,
+        borderRadius: '10px',
+    },
+    zIndex: 1,
+    position: 'relative',
     fontFamily: "'Aladin', cursive",  
-    border: '1px solid gray',
-    boxShadow: "2px 2px grey"
+    border: '2px solid forestgreen',
+    borderRadius: '10px',
 });
 
 export const TimeStyled = styled('div') ({
     fontSize: '22px',
-    color: "yellow", 
+    color: "forestgreen",
 })
 
-export const EmailStyled = styled('div') ({
-    fontSize: '26px',
-    textShadow: '0.5px 0.5px black',
-    color: "forestgreen", 
+export const UserStyled = styled('div') ({
+    fontSize: '30px',
+    textShadow: '1px 1px black',
+    color: "yellow", 
 })

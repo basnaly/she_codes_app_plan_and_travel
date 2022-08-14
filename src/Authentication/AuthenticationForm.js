@@ -10,7 +10,7 @@ import PasswordInputComponent from "./PasswordInputComponent";
 import { SetAuthError } from "../Actions/AuthenticationAction";
 import { ErrorStyled, GreenButton, RedButton, TabContentBox } from "../styles/MuiStyles";
 
-const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => {
+const AuthenticationForm = ({Submit, title, children, validatePassword = () => true }) => {
 
     const userId = useSelector(state => state?.auth?.userId);
     const authError = useSelector(state => state?.auth?.authError);
@@ -69,6 +69,9 @@ const AuthenticationForm = ({Submit, title, validatePassword = () => true }) => 
             <ErrorStyled className="d-flex mb-2">{authError}</ErrorStyled>
 
             <div className="d-flex">
+                
+                {children}
+
                 <Typography className="d-flex align-items-center justify-content-center"
                     id="modal-modal-description" sx={{ mt: 2, width: '100%' }}>
                     <TextField className="regist mx-3"

@@ -13,6 +13,7 @@ import GreetingComponent from "./GreetingComponent";
 const UserDropdown = () => {
 	
 	const [open, setOpen] = useState(false);
+
 	const anchorRef = useRef(null);
 
 	const handleToggle = () => {
@@ -62,12 +63,13 @@ const UserDropdown = () => {
 			</IconButton>
 
 			<Popper
-				open={open}
+				data-testid="user-dropdown"
+				open={open} 
+				container={document.body}
 				anchorEl={anchorRef.current}
 				role={undefined}
 				placement="bottom-start"
 				transition
-				disablePortal
 			>
 				{({ TransitionProps, placement }) => (
 					<Grow
@@ -79,7 +81,10 @@ const UserDropdown = () => {
 									: "left bottom",
 						}}
 					>
-						<PaperStyled className="d-flex flex-column align-items-center">
+						<PaperStyled 
+							className="d-flex flex-column align-items-center"
+							elevation={8}>
+								
 							<ClickAwayListener onClickAway={handleClose}>
 								<MenuList
 									className="d-flex flex-column align-items-center m-2"
@@ -91,6 +96,7 @@ const UserDropdown = () => {
 									<GreetingComponent />
 
 									<LogoutComponent />
+
 								</MenuList>
 							</ClickAwayListener>
 						</PaperStyled>

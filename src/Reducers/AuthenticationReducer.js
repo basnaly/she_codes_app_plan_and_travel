@@ -1,6 +1,7 @@
 
 const initState = {
     userId: '',
+    username: '',
     email: '',
     authError: '',
     isAuthLoading: false,
@@ -12,6 +13,7 @@ const AuthenticationRedicer = (state = initState, action) => {
         case 'SAVE_USER':
             return {
                 ...state,
+                username: action.username,
                 userId: action.userId,
                 email: action.userEmail,
                 authError: '',

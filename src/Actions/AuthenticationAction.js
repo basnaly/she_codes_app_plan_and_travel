@@ -3,9 +3,10 @@ import axios from "axios";
 import config from "./config";
 import { SaveInitialTrip, SetAlertMessage } from "./PlanTravelAction";
 
-export const SaveUser = (userId, userEmail) => {
+export const SaveUser = (userId, username, userEmail) => {
 	return {
 		type: "SAVE_USER",
+		username,
 		userId,
 		userEmail,
 	};
@@ -18,7 +19,7 @@ export const SetAuthError = (authError) => {
 	};
 };
 
-export const RegisterWithBackend = (email, password) => {
+export const RegisterWithBackend = (username, email, password) => {
 
 	return async (dispatch, getState) => {
 
@@ -28,6 +29,7 @@ export const RegisterWithBackend = (email, password) => {
 			});
 
 			const result = await axios.post("/auth/register", {
+				username,
 				email,
 				password,
 			});
@@ -36,9 +38,10 @@ export const RegisterWithBackend = (email, password) => {
 			sessionStorage.setItem("authToken", token);
 
 			let userId = result?.data?.id;
+			let userUsername = result?.data?.username;
 			let userEmail = result?.data?.email;
 
-			dispatch(SaveUser(userId, userEmail));
+			dispatch(SaveUser(userId, userUsername, userEmail));
 			dispatch(SaveInitialTrip(token));
 
 		} catch (error) {
@@ -61,9 +64,10 @@ export const LoginWithBackend = (email, password) => {
 			sessionStorage.setItem("authToken", token);
 
 			let userId = result?.data?.id;
+			let userUsername = result?.data?.username;
 			let userEmail = result?.data?.email;
 
-			dispatch(SaveUser(userId, userEmail));
+			dispatch(SaveUser(userId, userUsername, userEmail));
 			dispatch(SaveInitialTrip(token));
 
 		} catch (error) {
@@ -74,14 +78,16 @@ export const LoginWithBackend = (email, password) => {
 };
 
 export const CheckUserWithBackend = () => {
+
 	return async (dispatch, getState) => {
 		try {
 			let result = await axios.get("/auth/check-user", config());
 
 			let userId = result?.data?.id;
+			let userUsername = result?.data?.username;
 			let userEmail = result?.data?.email;
 
-			dispatch(SaveUser(userId, userEmail));
+			dispatch(SaveUser(userId, userUsername, userEmail));
 
 		} catch (error) {
 			console.log(error?.response?.data?.message);
@@ -96,7 +102,7 @@ export const CheckTokenError = (error) => {
 
 		if (error.response.status === 401 || error.response.status === 403) {
 			sessionStorage.removeItem('authToken')
-        	dispatch(SaveUser(undefined, undefined))
+        	dispatch(SaveUser(undefined, undefined, undefined))
 		}
 
 		console.log(error.response.status)

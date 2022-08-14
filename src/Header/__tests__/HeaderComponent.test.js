@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from 'react-redux'; 
 import { combineReducers } from 'redux';
-import { legacy_createStore as createStore} from 'redux'
+import { legacy_createStore as createStore} from 'redux';
 import HeaderComponent from "../HeaderComponent";
 
 const store = ({userId = ''}) =>
@@ -16,7 +16,7 @@ const store = ({userId = ''}) =>
 					isAuthLoading: "",
 				}, action) => state,
 		})
-	);
+);
 
 const MockHeaderComponent = ({userId}) => {
 	return (
@@ -29,6 +29,7 @@ const MockHeaderComponent = ({userId}) => {
 };
 
 describe("HeaderComponent", () => {
+	
 	it("should render icon element", () => {
 		render(<MockHeaderComponent />);
 

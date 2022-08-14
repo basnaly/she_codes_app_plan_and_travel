@@ -8,7 +8,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 
-import { GreenButton, RedButton, YellowButton } from "../styles/MuiStyles";
+import { GreenButton, RedButton } from "../styles/MuiStyles";
 
 import { SaveUser } from "../Actions/AuthenticationAction";
 
@@ -34,13 +34,13 @@ const LogoutComponent = () => {
 
     return (
         <React.Fragment>
-            <YellowButton
+            <GreenButton
                 data-testid="logout-element"
                 variant={'outlined'}
-                className="log"
+                className="my-2"
                 onClick={openLogoutDialog}>
                 Log out
-            </YellowButton>
+            </GreenButton>
 
             <Dialog
                 data-testid="dialog-logout-element"
@@ -70,7 +70,7 @@ const LogoutComponent = () => {
                     <GreenButton
                         data-testid="cancel-element"
                         variant={'outlined'}
-                        className=" mx-3"
+                        className="mx-3"
                         onClick={closeLogoutDialog}
                     >
                         Cancel
@@ -78,7 +78,7 @@ const LogoutComponent = () => {
 
                     <RedButton
                         variant={'outlined'}
-                        className=" mx-3"
+                        className="mx-3"
                         onClick={handleLogout}>
                         Logout
                     </RedButton>

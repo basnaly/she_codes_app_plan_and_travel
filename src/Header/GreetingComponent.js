@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { EmailStyled, TimeStyled } from "../styles/MuiStyles";
+import { TimeStyled, UserStyled } from "../styles/MuiStyles";
 
 const GreetingComponent = () => {
 
-    const email = useSelector(state => state?.auth?.email)
+    const userUsername = useSelector(state => state?.auth?.username)
 
     let nowTime = new Date().getHours()
 
@@ -22,11 +22,12 @@ const GreetingComponent = () => {
 
 		<div className="d-flex flex-column align-items-center mx-3">
 			<TimeStyled className="d-flex flex-column align-items-center ">
-				{nowTime}
+				{nowTime},
 			</TimeStyled>
-			<EmailStyled className="d-flex flex-column align-items-center mb-2">
-				{email} !
-			</EmailStyled>
+            
+			<UserStyled className="d-flex flex-column align-items-center mb-2">
+				{userUsername} !
+			</UserStyled>
 		</div>
 	);
 };
