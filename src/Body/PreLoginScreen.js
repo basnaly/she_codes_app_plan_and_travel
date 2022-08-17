@@ -89,7 +89,7 @@ const PreLoginScreen = () => {
                             </LinkStyled>
                     }
                     <div className="mt-3">
-                        Please register or sign in to start your trip!
+                        Please register or login to start your trip!
                     </div>
                 </PreLoginStyled>
             </TabContentBox>

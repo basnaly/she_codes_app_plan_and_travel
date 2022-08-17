@@ -9,6 +9,8 @@ import MenuList from "@mui/material/MenuList";
 import LogoutComponent from "../Authentication/LogoutComponent";
 import { AccountCircleIconStyled, PaperStyled } from "../styles/MuiStyles";
 import GreetingComponent from "./GreetingComponent";
+import ChangePasswordForm from "./ChangePasswordForm";
+
 
 const UserDropdown = () => {
 	
@@ -87,13 +89,17 @@ const UserDropdown = () => {
 								
 							<ClickAwayListener onClickAway={handleClose}>
 								<MenuList
-									className="d-flex flex-column align-items-center m-2"
+									className="d-flex flex-column align-items-center"
 									autoFocusItem={open}
 									id="composition-menu"
 									aria-labelledby="composition-button"
 									onKeyDown={handleListKeyDown}
 								>
 									<GreetingComponent />
+
+									<hr className='mx-2 my-0 w-100' />
+
+									<ChangePasswordForm />
 
 									<LogoutComponent />
 

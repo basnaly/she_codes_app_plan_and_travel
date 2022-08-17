@@ -8,7 +8,7 @@ export const SaveInitialTrip = (token) => { // pass token for use token before s
 
 	return async (dispatch, getState) => { // get access to Redux
 
-		const preLoginTrip = getState().main.preLoginTrip; //get current state of preLoginTrip from redux
+		const preLoginTrip = getState()?.main?.preLoginTrip; //get current state of preLoginTrip from redux
 		if (!preLoginTrip.city) {
 			return;
 		}
@@ -76,7 +76,7 @@ export const GetListTrips = () => {
 
 		try {
 			const result = await axios.get("/trip/list-trips", config()); //config => header with access token
-			let listTrips = result.data.listTrips; // recieve list trips
+			let listTrips = result?.data?.listTrips; // recieve list trips
 
 			dispatch({
 				type: "LOADED_LIST_TRIPS", // save list trips

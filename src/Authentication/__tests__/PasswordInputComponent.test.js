@@ -42,6 +42,4 @@ describe("PasswordInputComponent", () => {
         fireEvent.click(eyeElement); // click eye
         expect(passwordInputElement.type).toBe("password"); // type of input: ****..
     })
-
-
 });

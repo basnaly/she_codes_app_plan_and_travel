@@ -39,7 +39,7 @@ const AuthenticationForm = ({Submit, title, children, validatePassword = () => t
     const setPasswordWithValidation = password => { 
         
         const passValidation = validatePassword(password);
-        const validationError = 'The password must contain lower and upper case letters, numbers and symbols, 6-10 letters';
+        const validationError = 'The password must contain lower and upper case letters, numbers and symbols, 8-12 letters';
 
         if (!passValidation) {
             dispatch(SetAuthError(validationError))

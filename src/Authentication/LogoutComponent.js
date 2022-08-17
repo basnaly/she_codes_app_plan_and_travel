@@ -8,7 +8,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 
-import { GreenButton, RedButton } from "../styles/MuiStyles";
+import { GreenButton, RedButton, UserMenuStyled } from "../styles/MuiStyles";
 
 import { SaveUser } from "../Actions/AuthenticationAction";
 
@@ -34,13 +34,14 @@ const LogoutComponent = () => {
 
     return (
         <React.Fragment>
-            <GreenButton
+        
+            <UserMenuStyled
+                className="d-flex flex-column align-items-center w-100 py-2"
                 data-testid="logout-element"
                 variant={'outlined'}
-                className="my-2"
                 onClick={openLogoutDialog}>
                 Log out
-            </GreenButton>
+            </UserMenuStyled>
 
             <Dialog
                 data-testid="dialog-logout-element"

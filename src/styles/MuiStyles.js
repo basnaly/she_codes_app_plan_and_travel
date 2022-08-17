@@ -322,3 +322,12 @@ export const UserStyled = styled('div') ({
     textShadow: '1px 1px black',
     color: "yellow", 
 })
+
+export const UserMenuStyled = styled('div') ({
+    fontSize: '22px',
+    color: "forestgreen",
+    cursor: "pointer",
+    '&:hover': {
+        backgroundColor: "#fff6",
+    }
+})

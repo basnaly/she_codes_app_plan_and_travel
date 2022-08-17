@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 
 import { RegisterWithBackend, SetAuthError } from "../Actions/AuthenticationAction";
 import AuthenticationForm from "../Authentication/AuthenticationForm";
+import { validatePassword } from "../constants";
 
 const RegisterComponent = () => {
 
@@ -17,16 +18,6 @@ const RegisterComponent = () => {
 	const navigate = useNavigate();
 
 	const dispatch = useDispatch();
-
-	const validatePassword = (password) => {
-		
-		var regularExpression =
-			/^(?=.*[0-9])(?=.*[!@#$%^&*-_])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9!@#$%^&*-_]{8,12}$/;
-
-		const found = password.match(regularExpression);
-
-		return !!found;
-	};
 
 	const Submit = (email, password, setPassword) => {
 		if (!username || !email || !password) {
