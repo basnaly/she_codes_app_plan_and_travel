@@ -82,6 +82,9 @@ const PlanTravelReducer = (state = initState, action) => {
 				isLoadingTrip: false,
 			};
 
+		case "RESET_USER_DATA":
+			return initState
+
 		default:
 			return state;
 	}

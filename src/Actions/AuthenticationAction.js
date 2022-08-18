@@ -103,8 +103,55 @@ export const CheckTokenError = (error) => {
 		if (error.response.status === 401 || error.response.status === 403) {
 			sessionStorage.removeItem('authToken')
         	dispatch(SaveUser(undefined, undefined, undefined))
+			dispatch({
+				type: "RESET_USER_DATA"
+			})
 		}
 
 		console.log(error.response.status)
+	}
+}
+
+export const ChangePassword = (oldPassword, newPassword) => {
+
+	return async (dispatch, getState) => {
+
+		try {
+			const result = await axios.post("/auth/change-password",
+			{ oldPassword, password: newPassword }, config())
+
+			console.log(result.data)
+            	dispatch(SetAlertMessage(result?.data?.message, 'success'));
+
+		} catch(error) {
+				console.log(error);
+				dispatch(SetAlertMessage(error?.response?.data?.message));
+			};
+	}
+
+}
+
+export const DeleteUserAccount = () => {
+
+	return async (dispatch, getState) => {
+
+		try {
+			const result = await axios.delete("auth/delete-account", config())
+
+			sessionStorage.removeItem('authToken')
+        	dispatch(SaveUser(undefined, undefined, undefined))
+
+			dispatch({
+				type: "RESET_USER_DATA",
+			});
+
+			console.log(result.data)
+            	dispatch(SetAlertMessage(result?.data?.message, 'success'));
+			
+
+		} catch (error) {
+				console.log(error);
+				dispatch(SetAlertMessage(error?.response?.data?.message));
+		}
 	}
 }

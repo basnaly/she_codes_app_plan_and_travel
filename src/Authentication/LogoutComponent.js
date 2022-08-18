@@ -29,7 +29,9 @@ const LogoutComponent = () => {
 
         sessionStorage.removeItem('authToken')
         dispatch(SaveUser(undefined, undefined)) // no userId, no email
-    
+        dispatch({
+            type: "RESET_USER_DATA"
+        })
     }
 
     return (

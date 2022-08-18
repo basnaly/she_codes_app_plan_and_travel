@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import PasswordInputComponent from "../Authentication/PasswordInputComponent";
-import { SetAuthError } from "../Actions/AuthenticationAction";
+import { ChangePassword, SetAuthError } from "../Actions/AuthenticationAction";
 
 import { ErrorStyled, GreenButton, RedButton, UserMenuStyled } from "../styles/MuiStyles";
 import { Dialog, DialogActions, DialogContent, DialogTitle, Slide } from "@mui/material";
@@ -53,12 +53,14 @@ const ChangePasswordForm = () => {
 			dispatch(SetAuthError("The old or new password cannot be empty"));
 			return;
 		}
+		dispatch(ChangePassword(oldPassword, newPassword))
+		setIsDialogOpen(false);
 	};
 
 	return (
 		<React.Fragment>
 			<UserMenuStyled 
-				className="d-flex flex-column align-items-center p-2"
+				className="d-flex flex-column align-items-center justify-content-center py-2 px-3"
 				onClick={openChangePasswordDialog}>
 					Change password
 			</UserMenuStyled>
@@ -77,13 +79,15 @@ const ChangePasswordForm = () => {
 					className="d-flex flex-column align-items-center pb-1 m-1"
 					id="modal-modal-title"
 					variant="h6"
-					component="h2"
-					
+					component="h2"	
 				>
 					Change password
 				</DialogTitle>
 
-				<ErrorStyled className="d-flex mb-2">{authError}</ErrorStyled>
+				<ErrorStyled 
+					className="d-flex align-items-center text-center px-3 mb-3">
+						{authError}
+				</ErrorStyled>
 
 				<DialogContent className="d-flex align-items-center py-2">
 					<PasswordInputComponent

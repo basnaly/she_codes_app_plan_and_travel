@@ -102,8 +102,9 @@ export const MeStyled = styled('img')({
 
 export const ErrorStyled = styled('div')({
     color: 'red',
-    fontSize: '18px',
+    fontSize: '22px',
     fontWeight: 'bold',
+    fontFamily: "'Aladin', cursive",
 });
 
 export const NoTripStyled = styled('div')({

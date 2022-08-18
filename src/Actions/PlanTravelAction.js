@@ -121,6 +121,7 @@ export const AddNewTrip = (newCity) => {
 };
 
 export const DeleteTrip = (tripId) => {
+	
 	return async (dispatch, getState) => {
 		dispatch({
 			type: "SET_IS_LOADING_LIST_TRIPS",

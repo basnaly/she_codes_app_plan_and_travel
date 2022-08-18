@@ -10,6 +10,7 @@ import LogoutComponent from "../Authentication/LogoutComponent";
 import { AccountCircleIconStyled, PaperStyled } from "../styles/MuiStyles";
 import GreetingComponent from "./GreetingComponent";
 import ChangePasswordForm from "./ChangePasswordForm";
+import DeleteAccount from "./DeleteAccount";
 
 
 const UserDropdown = () => {
@@ -100,6 +101,8 @@ const UserDropdown = () => {
 									<hr className='mx-2 my-0 w-100' />
 
 									<ChangePasswordForm />
+
+									<DeleteAccount />
 
 									<LogoutComponent />
 
