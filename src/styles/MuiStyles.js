@@ -332,3 +332,12 @@ export const UserMenuStyled = styled('div') ({
         backgroundColor: "#fff6",
     }
 })
+
+export const BoxStyled = styled(Box) ({
+    position: 'relative',
+    border: '2px solid forestgreen',
+    borderRadius: "10px",
+    backgroundColor: '#ffffff60',
+    boxShadow: 24,
+    p: 4,
+})

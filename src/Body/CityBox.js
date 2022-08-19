@@ -1,32 +1,28 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
-import Box from '@mui/material/Box';
+import { useDispatch } from "react-redux";
 
 import DeleteDialog from "./DeleteDialog";
 import ViewComponent from "./ViewComponent";
-import { CityTitleStyled, GreenButton } from "../styles/MuiStyles";
+import { BoxStyled, CityTitleStyled, GreenButton } from "../styles/MuiStyles";
 
-const style = {
-    position: 'relative',
-    border: '2px solid forestgreen',
-    borderRadius: "10px",
-    backgroundColor: '#ffffff60',
-    boxShadow: 24,
-    p: 4,
-};
+import { GetTripData } from "../Actions/PlanTravelAction";
 
 const CityBox = ({ el }) => {
 
     const navigate = useNavigate();
 
+    const dispatch = useDispatch();
+
     const editTrip = () => {
+
         navigate('/' + el.id + '/period');
-        
+        dispatch(GetTripData(el.id))
+
     };
 
     return (
-        <Box sx={style} className="d-flex flex-column align-items-center m-3">
+        <BoxStyled  boxShadow={24} p={4} className="d-flex flex-column align-items-center m-3">
             <CityTitleStyled className="d-flex align-items-center">
                 {el.city}
             </CityTitleStyled>
@@ -43,7 +39,7 @@ const CityBox = ({ el }) => {
 
                 <DeleteDialog el={el}/>
             </div>
-        </Box>
+        </BoxStyled>
     )
 }
 

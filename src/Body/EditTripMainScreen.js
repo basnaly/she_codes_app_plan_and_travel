@@ -46,9 +46,7 @@ const EditTripMainScreen = () => {
 
         if (!userId) {
             navigate('/')
-        } else {
-            dispatch(GetTripData(params.id))
-        }
+        } 
 
     }, [userId])
 

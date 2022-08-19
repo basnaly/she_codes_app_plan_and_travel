@@ -34,7 +34,7 @@ const ViewComponent = ({ el }) => {
 
 	const openViewDialog = () => {
 
-		dispatch(GetTripData(el?.id)) // request to get date
+		dispatch(GetTripData(el?.id)) // request to get data
 		setIsViewDialogOpen(true)
 	}
 	const closeViewDialog = () => setIsViewDialogOpen(false);
