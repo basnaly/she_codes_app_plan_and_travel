@@ -36,7 +36,8 @@ const DeleteAccount = () => {
   return (
 
     <React.Fragment>
-            <UserMenuStyled 
+            <UserMenuStyled
+                data-testid="delete-account-button"
 				className="d-flex flex-column align-items-center justify-content-center py-2 px-3"
 				onClick={openDeleteAccount}>
 					Delete my account
@@ -71,7 +72,7 @@ const DeleteAccount = () => {
 
                 <DialogActions className="d-flex align-items-center mt-0 mb-3">
                     <GreenButton
-                        data-testid="cancel-button-element"
+                        data-testid="cancel-button"
                         variant={'outlined'}
                         className=" mx-3"
                         onClick={closeDeleteAccount}
@@ -80,6 +81,7 @@ const DeleteAccount = () => {
                     </GreenButton>
 
                     <RedButton
+                        data-testid="delete-button"
                         variant={'outlined'}
                         className=" mx-3"
                         onClick={deleteAccount}>

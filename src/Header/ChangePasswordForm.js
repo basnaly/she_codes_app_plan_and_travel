@@ -59,7 +59,8 @@ const ChangePasswordForm = () => {
 
 	return (
 		<React.Fragment>
-			<UserMenuStyled 
+			<UserMenuStyled
+				data-testid="change-password-button"
 				className="d-flex flex-column align-items-center justify-content-center py-2 px-3"
 				onClick={openChangePasswordDialog}>
 					Change password
@@ -67,7 +68,7 @@ const ChangePasswordForm = () => {
 
 			<Dialog 
 				className="d-flex flex-column align-items-center"
-				data-testid="delete-dialog-element"
+				data-testid="password-dialog-element"
 				open={isDialogOpen}
 				TransitionComponent={Transition}
 				keepMounted
@@ -91,6 +92,7 @@ const ChangePasswordForm = () => {
 
 				<DialogContent className="d-flex align-items-center py-2">
 					<PasswordInputComponent
+						dataTestid="old-password-input"
 						password={oldPassword}
 						setPassword={setOldPassword}
 						label={'Old password'}
@@ -98,6 +100,7 @@ const ChangePasswordForm = () => {
 					/>
 
 					<PasswordInputComponent
+						dataTestid="new-password-input"
 						password={newPassword}
 						setPassword={setPasswordWithValidation}
 						label={'New password'}

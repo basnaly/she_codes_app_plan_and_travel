@@ -14,7 +14,7 @@ import { CircularProgress } from '@mui/material';
 import { Routes, Route, useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { HeaderBox } from '../styles/MuiStyles';
-import { GetTripData, UpdateTripData } from '../Actions/PlanTravelAction';
+import { UpdateTripData } from '../Actions/PlanTravelAction';
 import ControlButtonsComponent from './ControlButtonsComponent';
 import TransportationsComponent from './Tabs/TransportationsComponent';
 import PeriodComponent from './Tabs/PeriodComponent';

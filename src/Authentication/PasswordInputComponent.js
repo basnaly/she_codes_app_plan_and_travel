@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
 
 import IconButton from "@mui/material/IconButton";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -8,9 +8,11 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-const PasswordInputComponent = ({ password, setPassword, label = "Password", mt = 2 }) => {
-	const [showPassword, setShowPassword] = useState(false);
+const PasswordInputComponent = ({ password, setPassword, label = "Password", 
+		mt = 2, dataTestid = "password-input" }) => {
 
+	const [showPassword, setShowPassword] = useState(false);
+	const id = useId();
 	const handleClickShowPassword = () => {
 		setShowPassword((prev) => !prev);
 	};
@@ -23,7 +25,7 @@ const PasswordInputComponent = ({ password, setPassword, label = "Password", mt 
 			data-testid="password-container"
 		>
 			<InputLabel
-				htmlFor="outlined-adornment-password"
+				htmlFor={id} // different id for every instants
 				color="success"
 				className="mx-3"
 			>
@@ -31,8 +33,8 @@ const PasswordInputComponent = ({ password, setPassword, label = "Password", mt 
 			</InputLabel>
 
 			<OutlinedInput
-				inputProps={{ "data-testid": "password-input" }}
-				id="outlined-adornment-password"
+				inputProps={{ "data-testid": dataTestid }}
+				id={id}
 				type={showPassword ? "text" : "password"}
 				color="success"
 				className="mx-3"
