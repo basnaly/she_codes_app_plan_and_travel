@@ -210,6 +210,18 @@ export const myTheme = createTheme({
                 }
             }
         },
+        MuiTooltip: {
+            styleOverrides: {
+                tooltip: {
+                    fontFamily: 'Aladin, cursive',
+                    fontSize: '16px',
+                    marginTop: 0,
+                    color: 'yellow',
+                    backgroundColor: 'lightslategray',
+                    padding: '4px 10px',
+                }
+            }
+        },
         MuiMenuItem: {
             styleOverrides: {
                 root: {

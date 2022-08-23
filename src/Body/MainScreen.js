@@ -1,47 +1,66 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import CityBox from "./CityBox";
 import AddCity from "./AddCity";
 import { useDispatch, useSelector } from "react-redux";
 import { GetListTrips } from "../Actions/PlanTravelAction";
-import { CircularProgress } from '@mui/material';
+import { CircularProgress } from "@mui/material";
 import { NoTripStyled } from "../styles/MuiStyles";
+import FlipMove from "react-flip-move";
 
 const MainScreen = () => {
+	const listTrips = useSelector((state) => state?.main?.listTrips);
 
-    const listTrips = useSelector(state => state?.main?.listTrips);
-    const isLoadingListTrips = useSelector(state => state?.main?.isLoadingListTrips);
-    const userId = useSelector(state => state?.auth?.userId);
+	const isLoadingListTrips = useSelector(
+		(state) => state?.main?.isLoadingListTrips
+	);
+	const userId = useSelector((state) => state?.auth?.userId);
 
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-    useEffect(() => {
+	let sortedListTrips = [];
 
-        if (userId) {
-            dispatch(GetListTrips()) // send request to firebase to get list of listTrips and save them in redux
-        }
+	const [sortUp, setSortUp] = useState(true);
 
-    }, [userId]);
+	if (!sortUp) {
+		sortedListTrips = listTrips.sort((a, b) =>
+			b.city.localeCompare(a.city)
+		);
+	} else {
+		sortedListTrips = listTrips.sort((a, b) =>
+			a.city.localeCompare(b.city)
+		);
+	}
 
-    return (
-        <div className="d-flex flex-column align-items-center overflow-auto">
-            <AddCity />
-            {isLoadingListTrips && <CircularProgress color="success" />}
-            <div className="overflow-auto d-flex flex-wrap align-items-center justify-content-evenly">
-                {listTrips.map(el =>
-                    <CityBox el={el} key={el.id} />
-                )}
-            </div>
+	useEffect(() => {
+		if (userId) {
+			dispatch(GetListTrips()); // send request to firebase to get list of listTrips and save them in redux
+		}
+	}, [userId]);
 
-            {  
-                listTrips.length !== 0 ? '' :
-                    <NoTripStyled>
-                        You don't have any trips. Let's start adding!
-                    </NoTripStyled>
-            }
+	return (
+		<div className="d-flex flex-column align-items-center overflow-auto">
+			<AddCity setSortUp={setSortUp} sortUp={sortUp} />
 
-        </div>
-    )
-}
+			{isLoadingListTrips && <CircularProgress color="success" />}
+            
+			<FlipMove className="overflow-auto d-flex flex-wrap align-items-center justify-content-evenly">
+				{sortedListTrips.map((el) => (
+					<div key={el.id}>
+						<CityBox el={el} />
+					</div>
+				))}
+			</FlipMove>
+
+			{listTrips.length !== 0 ? (
+				""
+			) : (
+				<NoTripStyled>
+					You don't have any trips. Let's start adding!
+				</NoTripStyled>
+			)}
+		</div>
+	);
+};
 
 export default MainScreen;
