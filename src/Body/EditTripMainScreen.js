@@ -80,7 +80,7 @@ const EditTripMainScreen = () => {
                             <Tab label="Period" value="period" />
                             <Tab label="Preparations" value="preparations" />
                             <Tab label="Transportations" value="transportations" />
-                            <Tab label="Accomodations" value="accomodations" />
+                            <Tab label="Accommodations" value="accommodations" />
                             <Tab label="Visitings" value="visitings" />
                             <Tab label="Comments" value="comments" />
                             <Tab label="Expences" value="expences" />
@@ -92,7 +92,7 @@ const EditTripMainScreen = () => {
                     <Route path='/period' element={<PeriodComponent />} />
                     <Route path='/preparations' element={<PreparationsComponent />} />
                     <Route path='/transportations' element={<TransportationsComponent />} />
-                    <Route path='/accomodations' element={<AccommodationsComponent />} />
+                    <Route path='/accommodations' element={<AccommodationsComponent />} />
                     <Route path='/visitings' element={<VisitingsComponent />} />
                     <Route path='/comments' element={<CommentsComponent />} />
                     <Route path='/expences' element={<ExpencesComponent />} />

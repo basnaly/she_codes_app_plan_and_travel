@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import DeleteDialog from "./DeleteDialog";
 import ViewComponent from "./ViewComponent";
-import { BoxStyled, CityTitleStyled, GreenButton } from "../styles/MuiStyles";
+import { BoxStyled, ChipStyled, CityTitleStyled, GreenButton } from "../styles/MuiStyles";
 
 import { GetTripData } from "../Actions/PlanTravelAction";
 
@@ -21,10 +21,26 @@ const CityBox = ({ el }) => {
 
     };
 
+    let chipColor = 'yellow';
+    let chipShadow = '1px 1px black';
+    let chipBorder = '1px solid lightslategrey';
+
+    if (el.period === 'past') {
+        chipColor = 'black'
+        chipShadow = '1px 1px white'
+    } else if (el.period === 'future') {
+        chipColor = 'white';
+        chipShadow = '1px 1px black'    
+    }
+
     return (
-        <BoxStyled  boxShadow={24} p={4} className="d-flex flex-column align-items-center m-3">
+        <BoxStyled  boxShadow={24} p={4} className="d-flex flex-column position-relative align-items-center m-3">
+            <ChipStyled label={el.period} 
+                sx={{color: chipColor, border: chipBorder, textShadow: chipShadow }}
+            />
             <CityTitleStyled className="d-flex align-items-center">
                 {el.city}
+                
             </CityTitleStyled>
 
             <div className="d-flex align-items-center mt-3">

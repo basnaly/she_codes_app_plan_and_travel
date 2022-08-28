@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Paper from "@mui/material/Paper";
+import Chip from '@mui/material/Chip';
 
 export const cityStyle = {
     color: 'forestgreen',
@@ -340,4 +341,13 @@ export const BoxStyled = styled(Box) ({
     backgroundColor: '#ffffff60',
     boxShadow: 24,
     p: 4,
+})
+
+export const ChipStyled = styled(Chip) ({
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    margin: "2px",
+    fontFamily: "'Aladin', cursive", 
+    fontSize: "18px",
 })
