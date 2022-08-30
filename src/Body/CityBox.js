@@ -25,16 +25,17 @@ const CityBox = ({ el }) => {
     let chipShadow = '1px 1px black';
     let chipBorder = '1px solid lightslategrey';
 
-    if (el.period === 'past') {
+    if (el.period === 'Past') {
         chipColor = 'black'
         chipShadow = '1px 1px white'
-    } else if (el.period === 'future') {
+    } else if (el.period === 'Future') {
         chipColor = 'white';
         chipShadow = '1px 1px black'    
     }
 
     return (
         <BoxStyled  boxShadow={24} p={4} className="d-flex flex-column position-relative align-items-center m-3">
+            
             <ChipStyled label={el.period} 
                 sx={{color: chipColor, border: chipBorder, textShadow: chipShadow }}
             />

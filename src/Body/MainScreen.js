@@ -9,7 +9,11 @@ import { NoTripStyled } from "../styles/MuiStyles";
 import FlipMove from "react-flip-move";
 
 const MainScreen = () => {
-	const listTrips = useSelector((state) => state?.main?.listTrips);
+
+	const filterValue = useSelector((state) => state?.main?.filterValue);
+
+	const listTrips = useSelector((state) => state?.main?.listTrips
+		.filter(el => el.period === filterValue || filterValue === 'All'));
 
 	const isLoadingListTrips = useSelector(
 		(state) => state?.main?.isLoadingListTrips

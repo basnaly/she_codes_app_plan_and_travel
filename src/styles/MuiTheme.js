@@ -228,11 +228,14 @@ export const myTheme = createTheme({
                     fontFamily: 'Aladin, cursive',
                     fontSize: '18px',
                     backgroundColor: 'lightgray',
-                    border: '1px solid forestgreen', ///
+                    border: '1px solid forestgreen',
                     borderTop: '0',
                     "&:first-of-type": {
                         borderTop: '1px solid forestgreen',
-                    }
+                    },
+                    "&&.Mui-selected": {
+                        backgroundColor: 'palegoldenrod',
+                    },   
                 }
             }
         },
@@ -257,7 +260,6 @@ export const myTheme = createTheme({
                         fontSize: '18px',
                         backgroundColor: 'khaki',
                     }, "& .Mui-selected:hover, & .Mui-selected:focus": {
-
                         border: '1px solid khaki',
                     },
                     "& .MuiTypography-root": {

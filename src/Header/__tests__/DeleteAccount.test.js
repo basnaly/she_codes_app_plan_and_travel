@@ -2,7 +2,6 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { Provider } from 'react-redux'; 
 import { combineReducers } from 'redux';
 import { legacy_createStore as createStore} from 'redux';
-import ChangePasswordForm from "../ChangePasswordForm";
 import DeleteAccount from "../DeleteAccount";
 
 const store = () =>

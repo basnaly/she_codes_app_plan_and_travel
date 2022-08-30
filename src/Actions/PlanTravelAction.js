@@ -200,3 +200,10 @@ export const UpdateTripData = (tripId, tripData) => {
 		}
 	};
 };
+
+export const SetFilterValue = (newFilterValue) => {
+	return {
+		type: "SET_FILTER_VALUE",
+		newFilterValue
+	};
+};

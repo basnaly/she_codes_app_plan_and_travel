@@ -6,12 +6,13 @@ const initState = {
 		dateFrom: moment(),
 		dateTo: moment(),
 	},
-	listTrips: [], // [{id:'jjj', city:'new jersey'}]
+	listTrips: [],
 	isLoadingListTrips: false,
 	alertMessage: "",
     alertSeverity: "error",
 	trip: {},
 	isLoadingTrip: false,
+	filterValue: 'All',
 };
 
 const PlanTravelReducer = (state = initState, action) => {
@@ -83,7 +84,13 @@ const PlanTravelReducer = (state = initState, action) => {
 			};
 
 		case "RESET_USER_DATA":
-			return initState
+			return initState;
+		
+		case "SET_FILTER_VALUE":
+			return {
+				...state,
+				filterValue: action.newFilterValue
+			};
 
 		default:
 			return state;

@@ -9,7 +9,11 @@ const AuthenticationButtons = () => {
     const userId = useSelector(state => state?.auth?.userId);
     
     if (userId) {
-        return <UserDropdown />
+        return (
+            <React.Fragment>     
+                <UserDropdown />      
+            </React.Fragment>    
+        )
     }
 
     return (

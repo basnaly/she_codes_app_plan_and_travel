@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { useNavigate, Routes, Route } from "react-router";
 
 import AuthenticationButtons from '../Authentication/AuthenticationButtons';
 import { HeaderStyled, IconStyled, LinkHoverStyled } from "../styles/MuiStyles";
+import FilterTrips from "./FilterTrips";
 
 const HeaderComponent = () => {
 
@@ -38,6 +39,10 @@ const HeaderComponent = () => {
 
             </div>
             <div className="d-flex align-items-center ps-5">
+
+            <Routes>
+                <Route path='/home' element={ <FilterTrips /> } />
+            </Routes>
 
                 <div id="portal" />
 
