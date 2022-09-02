@@ -28,7 +28,7 @@ export const RegisterWithBackend = (username, email, password) => {
 				type: "SET_IS_AUTH_LOADING",
 			});
 
-			const result = await axios.post("/auth/register", {
+			const result = await axios.post(process.env.REACT_APP_BACKEND + "/auth/register", {
 				username,
 				email,
 				password,
@@ -58,7 +58,7 @@ export const LoginWithBackend = (email, password) => {
 				type: "SET_IS_AUTH_LOADING",
 			});
 
-			let result = await axios.post("/auth/login", { email, password });
+			let result = await axios.post(process.env.REACT_APP_BACKEND + "/auth/login", { email, password });
 
 			let token = result?.data?.accessToken;
 			sessionStorage.setItem("authToken", token);
@@ -81,7 +81,7 @@ export const CheckUserWithBackend = () => {
 
 	return async (dispatch, getState) => {
 		try {
-			let result = await axios.get("/auth/check-user", config());
+			let result = await axios.get(process.env.REACT_APP_BACKEND + "/auth/check-user", config());
 
 			let userId = result?.data?.id;
 			let userUsername = result?.data?.username;
@@ -117,7 +117,7 @@ export const ChangePassword = (oldPassword, newPassword) => {
 	return async (dispatch, getState) => {
 
 		try {
-			const result = await axios.post("/auth/change-password",
+			const result = await axios.post(process.env.REACT_APP_BACKEND + "/auth/change-password",
 			{ oldPassword, password: newPassword }, config())
 
 			console.log(result.data)
@@ -136,7 +136,7 @@ export const DeleteUserAccount = () => {
 	return async (dispatch, getState) => {
 
 		try {
-			const result = await axios.delete("auth/delete-account", config())
+			const result = await axios.delete(process.env.REACT_APP_BACKEND + "auth/delete-account", config())
 
 			sessionStorage.removeItem('authToken')
         	dispatch(SaveUser(undefined, undefined, undefined))

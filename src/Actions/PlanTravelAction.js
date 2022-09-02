@@ -22,7 +22,7 @@ export const SaveInitialTrip = (token) => { // pass token for use token before s
 
 		try {
 			const result = await axios.post(
-				"/trip/create",
+				process.env.REACT_APP_BACKEND + "/trip/create",
 				{ trip: preLoginTripData },
 				{ headers: { "x-access-token": token } }
 			);
@@ -75,7 +75,7 @@ export const GetListTrips = () => {
 		});
 
 		try {
-			const result = await axios.get("/trip/list-trips", config()); //config => header with access token
+			const result = await axios.get(process.env.REACT_APP_BACKEND + "/trip/list-trips", config()); //config => header with access token
 			let listTrips = result?.data?.listTrips; // recieve list trips
 
 			dispatch({
@@ -104,7 +104,7 @@ export const AddNewTrip = (newCity) => {
 
 		try {
 			const result = await axios.post(
-				"/trip/create",
+				process.env.REACT_APP_BACKEND + "/trip/create",
 				{ trip: tripData }, // 'trip:' from backend: ...req.body.trip,
 				config() // header with access token
 			);
@@ -130,7 +130,7 @@ export const DeleteTrip = (tripId) => {
 
 		try {
 			const result = await axios.delete(
-				`/trip/delete-trip?tripId=${tripId}`,
+				process.env.REACT_APP_BACKEND + `/trip/delete-trip?tripId=${tripId}`,
 				config()
 			);
             console.log(result.data)
@@ -161,7 +161,7 @@ export const GetTripData = (tripId) => {
 
 		try {
 			const result = await axios.get(
-				`/trip/trip-data?tripId=${tripId}`,
+				process.env.REACT_APP_BACKEND + `/trip/trip-data?tripId=${tripId}`,
 				config()
 			);
 
@@ -184,7 +184,7 @@ export const UpdateTripData = (tripId, tripData) => {
 	return async (dispatch, getState) => {
 		try {
 			const result = await axios.post(
-				`/trip/trip-data?tripId=${tripId}`,
+				process.env.REACT_APP_BACKEND + `/trip/trip-data?tripId=${tripId}`,
 				{ trip: tripData },
 				config()
 			);
