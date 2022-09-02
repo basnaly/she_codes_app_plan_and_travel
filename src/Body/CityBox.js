@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import DeleteDialog from "./DeleteDialog";
 import ViewComponent from "./ViewComponent";
-import { BoxStyled, ChipStyled, CityTitleStyled, GreenButton } from "../styles/MuiStyles";
+import { BoxStyled, ChipStyled, CityTitleStyled, GreenButton, StartingDataStyled } from "../styles/MuiStyles";
 
 import { GetTripData } from "../Actions/PlanTravelAction";
 
@@ -40,9 +40,10 @@ const CityBox = ({ el }) => {
                 sx={{color: chipColor, border: chipBorder, textShadow: chipShadow }}
             />
             <CityTitleStyled className="d-flex align-items-center">
-                {el.city}
-                
+                {el.city}    
             </CityTitleStyled>
+
+            <StartingDataStyled>{el.startingTrip}</StartingDataStyled>
 
             <div className="d-flex align-items-center mt-3">
                 <ViewComponent el={ el }/>

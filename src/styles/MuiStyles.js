@@ -351,3 +351,11 @@ export const ChipStyled = styled(Chip) ({
     fontFamily: "'Aladin', cursive", 
     fontSize: "18px",
 })
+
+export const StartingDataStyled = styled('div')({
+    fontFamily: "'Aladin', cursive",
+    color: 'forestgreen',
+    fontSize: '20px',
+    // textShadow: '0.5px 0.5px black', 
+    marginTop: '5px',
+});
