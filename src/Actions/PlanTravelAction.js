@@ -97,8 +97,8 @@ export const AddNewTrip = (newCity) => {
 		const tripData = {
 			city: newCity, // add city in trip
 			period: {
-				from: moment(),
-				to: moment(),
+				from: moment().startOf('day'),
+				to: moment().endOf('day'),
 			},
 		};
 
