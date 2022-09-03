@@ -1,4 +1,4 @@
-# Build https://shecodesappplanandtravel.basnaly.repl.co/ 
+# Build https://plan-and-travel-app.herokuapp.com/home 
 
 # Getting Started with Create React App
 

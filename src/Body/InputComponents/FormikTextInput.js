@@ -1,12 +1,12 @@
 import React from 'react';
 
-import TextField from '@mui/material/TextField';
+import { TextFieldStyled } from '../../styles/MuiStyles';
 
 const FormikTextInput = ({ field, form, ...props }) => {
 
 	return (
 
-		<TextField
+		<TextFieldStyled
 			id="outlined-basic"
 			className="ms-3"
 			color="success"

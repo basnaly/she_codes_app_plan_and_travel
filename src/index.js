@@ -1,34 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import AppPlanTravel from './AppPlanTravel';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import AppPlanTravel from "./AppPlanTravel";
+import reportWebVitals from "./reportWebVitals";
 
 import "bootstrap/dist/css/bootstrap.css";
 import { applyMiddleware, compose } from "redux";
-import { legacy_createStore as createStore} from 'redux';
-import { Provider} from "react-redux";
-import { createLogger } from 'redux-logger';
+import { legacy_createStore as createStore } from "redux";
+import { Provider } from "react-redux";
+import { createLogger } from "redux-logger";
 import thunk from "redux-thunk";
-import AllReducers from './Reducers/AllRedicers';
+import AllReducers from "./Reducers/AllRedicers";
 
-const logger = createLogger({
-});
+const logger = createLogger({});
 
-const store = createStore(
-  AllReducers,
-  compose(
-    applyMiddleware(logger, thunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
+let store;
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+if (window.navigator.userAgent.includes("Chrome")) {
+	store = createStore(
+		AllReducers,
+		compose(
+			applyMiddleware(logger, thunk),
+			window.__REDUX_DEVTOOLS_EXTENSION__ &&
+				window.__REDUX_DEVTOOLS_EXTENSION__()
+		)
+	);
+} else {
+	store = createStore(AllReducers, compose(applyMiddleware(logger, thunk)));
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <Provider store={ store }>
-      <AppPlanTravel />
-    </Provider>
-  </React.StrictMode>
+	<React.StrictMode>
+		<Provider store={store}>
+			<AppPlanTravel />
+		</Provider>
+	</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
