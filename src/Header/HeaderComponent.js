@@ -42,6 +42,7 @@ const HeaderComponent = () => {
 
             <Routes>
                 <Route path='/home' element={ <FilterTrips /> } />
+                <Route path="*" element={ <React.Fragment/> } />
             </Routes>
 
                 <div id="portal" />
