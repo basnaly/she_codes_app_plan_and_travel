@@ -54,7 +54,7 @@ const PreLoginScreen = () => {
                     />
 
                     <div className="d-flex align-items-center mt-3 mb-1">
-                        Approximaly travel period:
+                        Approximate travel period:
                     </div>
                     <div className="d-flex align-items-center">
 

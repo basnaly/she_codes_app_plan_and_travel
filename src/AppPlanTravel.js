@@ -1,5 +1,4 @@
 import React, { useEffect} from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import FooterComponent from "./Footer/FooterComponent";
@@ -9,19 +8,14 @@ import ContentRouting from "./Body/ContentRouting";
 import {myTheme} from "./styles/MuiTheme";
 import { ThemeProvider } from "@mui/material/styles";
 import { Main } from "./styles/MuiStyles";
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
 
-import { SetAlertMessage } from "./Actions/PlanTravelAction";
 import { CheckUserWithBackend } from "./Actions/AuthenticationAction";
+import AlertMessage from "./Body/AlertMessage";
+import { useDispatch } from "react-redux";
 
 const AppPlanTravel = () => {
 
-    const alertMessage = useSelector(state => state?.main?.alertMessage) 
-
     const dispatch = useDispatch();
-
-    const alertSeverity = useSelector(state => state?.main?.alertSeverity)
 
     useEffect(() => {
 
@@ -36,20 +30,12 @@ const AppPlanTravel = () => {
                     
                     <HeaderComponent />
 
-                    { alertMessage &&
-                        <Alert severity={alertSeverity} 
-                            className="mx-auto my-1"
-                            onClose={() => dispatch(SetAlertMessage())}
-                            elevation={6}
-                        >
-                            <AlertTitle>{alertSeverity}</AlertTitle>
-                            {alertMessage}
-                        </Alert>
-                    }    
+                    <AlertMessage />   
 
                     <ContentRouting />
                     
                     <FooterComponent />
+                    
                 </Router>
             </Main>
         </ThemeProvider>

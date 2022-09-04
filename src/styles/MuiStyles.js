@@ -365,12 +365,12 @@ export const StartingDataStyled = styled("div")({
 export const TextFieldStyled = styled(TextField)({
 	/* Chrome, Safari, Edge, Opera */
 	"input::-webkit-outer-spin-button, input::-webkit-inner-spin-button": {
-		"-webkit-appearance": "none",
+		"WebkitAppearance": "none",
 		margin: 0,
 	},
 
 	/* Firefox */
 	"input[type=number]": {
-		"-moz-appearance": "textfield",
+		"MozAppearance": "textfield",
 	},
 });
