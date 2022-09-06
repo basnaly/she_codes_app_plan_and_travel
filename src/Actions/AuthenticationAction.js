@@ -155,3 +155,22 @@ export const DeleteUserAccount = () => {
 		}
 	}
 }
+
+export const SaveContactForm = (username, email, subject, textarea) => {
+
+	return async (dispatch, getState) => {
+
+		try {
+			const result = await axios.post(process.env.REACT_APP_BACKEND + "/auth/save-contact-form",
+			{ username, email, subject, textarea })
+
+			console.log(result.data)
+            	dispatch(SetAlertMessage(result?.data?.message, 'success'));
+
+		} catch(error) {
+				console.log(error);
+				dispatch(SetAlertMessage(error?.response?.data?.message));
+			};
+	}
+
+}

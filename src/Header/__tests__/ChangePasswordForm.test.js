@@ -5,7 +5,7 @@ import { legacy_createStore as createStore} from 'redux';
 import ChangePasswordForm from "../ChangePasswordForm";
 
 const store = () =>
-	createStore(
+	createStore (
 		combineReducers({
 			auth: (state = {}, action) => state,
 		})

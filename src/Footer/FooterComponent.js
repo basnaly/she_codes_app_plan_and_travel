@@ -1,5 +1,6 @@
 import React from "react";
 import { Footer, FooterLink, FooterText, MeStyled } from "../styles/MuiStyles";
+import ContactForm from "./ContactForm";
 
 const FooterComponent = () => {
 
@@ -12,6 +13,8 @@ const FooterComponent = () => {
                 target='_blank'>
                 https://github.com/basnaly
             </FooterLink>
+
+            <ContactForm />
 
             <FooterText>
                 Israel-2022
