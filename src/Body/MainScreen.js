@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import CityBox from "./CityBox";
-import AddCity from "./AddCity";
+import TripBox from "./TripBox";
+import AddTrip from "./AddTrip";
 import { useDispatch, useSelector } from "react-redux";
 import { GetListTrips } from "../Actions/PlanTravelAction";
 import { CircularProgress } from "@mui/material";
@@ -44,19 +44,19 @@ const MainScreen = () => {
 
 	return (
 		<div className="d-flex flex-column align-items-center overflow-auto">
-			<AddCity setSortUp={setSortUp} sortUp={sortUp} />
+			<AddTrip setSortUp={setSortUp} sortUp={sortUp} />
 
 			{isLoadingListTrips && <CircularProgress color="success" />}
             
 			<FlipMove className="overflow-auto d-flex flex-wrap align-items-center justify-content-evenly">
 				{sortedListTrips.map((el) => (
 					<div key={el.id}>
-						<CityBox el={el} />
+						<TripBox el={el} />
 					</div>
 				))}
 			</FlipMove>
 
-			{listTrips.length !== 0 ? (
+			{listTrips.length !== 0 || isLoadingListTrips ? (
 				""
 			) : (
 				<NoTripStyled>

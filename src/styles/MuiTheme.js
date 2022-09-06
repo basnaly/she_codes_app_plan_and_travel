@@ -259,7 +259,7 @@ export const myTheme = createTheme({
                         fontWeight: 'bold',
                         fontSize: '18px',
                         backgroundColor: 'khaki',
-                    }, "& .Mui-selected:hover, & .Mui-selected:focus": {
+                    }, "&:hover .Mui-selected, &:focus .Mui-selected": {
                         border: '1px solid khaki',
                     },
                     "& .MuiTypography-root": {

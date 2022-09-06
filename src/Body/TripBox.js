@@ -7,8 +7,11 @@ import ViewComponent from "./ViewComponent";
 import { BoxStyled, ChipStyled, CityTitleStyled, GreenButton, StartingDataStyled } from "../styles/MuiStyles";
 
 import { GetTripData } from "../Actions/PlanTravelAction";
+import { LIST_COUNTRIES } from "../constants";
 
-const CityBox = ({ el }) => {
+const TripBox = ({ el }) => {
+
+    let countryObj = LIST_COUNTRIES.find(country => country.name === el.country);
 
     const navigate = useNavigate();
 
@@ -39,9 +42,9 @@ const CityBox = ({ el }) => {
             <ChipStyled label={el.period} 
                 sx={{color: chipColor, border: chipBorder, textShadow: chipShadow }}
             />
-            <CityTitleStyled className="d-flex align-items-center">
-                {el.city}    
-            </CityTitleStyled>
+                <CityTitleStyled className="d-flex align-items-center">
+                    {el.city} {countryObj?.unicodeFlag}   
+                </CityTitleStyled>
 
             <StartingDataStyled>{el.startingTrip}</StartingDataStyled>
 
@@ -61,4 +64,4 @@ const CityBox = ({ el }) => {
     )
 }
 
-export default CityBox;
+export default TripBox;

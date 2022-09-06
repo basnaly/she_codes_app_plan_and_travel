@@ -3,6 +3,7 @@ import moment from "moment";
 const initState = {
 	preLoginTrip: {
 		city: "",
+		country: "",
 		dateFrom: moment(),
 		dateTo: moment(),
 	},
@@ -36,6 +37,15 @@ const PlanTravelReducer = (state = initState, action) => {
 				preLoginTrip: {
 					...state.preLoginTrip,
 					city: action.newCity,
+				},
+			};
+
+		case "CHANGE_PRELOGIN_TRIP_COUNTRY":
+			return {
+				...state,
+				preLoginTrip: {
+					...state.preLoginTrip,
+					country: action.country,
 				},
 			};
 

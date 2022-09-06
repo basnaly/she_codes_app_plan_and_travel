@@ -114,7 +114,9 @@ const ContactForm = () => {
                         options={listOptions}
                         value={subject}
                         sx={{ width: 300 }}
+						onChange={(_, text) => setSubject(text)}
                         renderInput={(params) => 
+
                             <TextField 
                                 {... params}
                                 className="mb-4"

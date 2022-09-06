@@ -4,7 +4,7 @@ import SortIcon from "@mui/icons-material/Sort";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 
-const SortCities = ({ onClick, sortUp }) => {
+const SortTrips = ({ onClick, sortUp }) => {
 	return (
 		<div>
 			<Tooltip title="Sort" placement="left" >
@@ -27,4 +27,4 @@ const SortCities = ({ onClick, sortUp }) => {
 	);
 };
 
-export default SortCities;
+export default SortTrips;

@@ -14,6 +14,7 @@ export const SaveInitialTrip = (token) => { // pass token for use token before s
 		}
 		const preLoginTripData = {
 			city: preLoginTrip.city,
+			country: preLoginTrip.country,
 			period: {
 				from: preLoginTrip.dateFrom.startOf('day'),
 				to: preLoginTrip.dateTo.endOf('day'),
@@ -50,6 +51,13 @@ export const ChangePreLoginTripCity = (newCity) => {
 	return {
 		type: "CHANGE_PRELOGIN_TRIP_CITY",
 		newCity,
+	};
+};
+
+export const ChangePreLoginTripCountry = (country) => {
+	return {
+		type: "CHANGE_PRELOGIN_TRIP_COUNTRY",
+		country,
 	};
 };
 
@@ -90,12 +98,13 @@ export const GetListTrips = () => {
 	};
 };
 
-export const AddNewTrip = (newCity) => {
+export const AddNewTrip = (newCity, country) => {
 
 	return async (dispatch, getState) => {
 
 		const tripData = {
 			city: newCity, // add city in trip
+			country,
 			period: {
 				from: moment().startOf('day'),
 				to: moment().endOf('day'),
