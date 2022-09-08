@@ -2,12 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import DeleteDialog from "./DeleteDialog";
-import ViewComponent from "./ViewComponent";
-import { BoxStyled, ChipStyled, CityTitleStyled, GreenButton, StartingDataStyled } from "../styles/MuiStyles";
+import DeleteDialog from "../DeleteDialog";
+import ViewComponent from "../ViewComponent";
+import { BoxStyled, ChipStyled, CityTitleStyled, GreenButton, StartingDataStyled } from "../../styles/MuiStyles";
 
-import { GetTripData } from "../Actions/PlanTravelAction";
-import { LIST_COUNTRIES } from "../constants";
+import { GetTripData } from "../../Actions/PlanTravelAction";
+import { LIST_COUNTRIES } from "../../constants";
 
 const TripBox = ({ el }) => {
 

@@ -6,7 +6,7 @@ import Tooltip from "@mui/material/Tooltip";
 
 const SortTrips = ({ onClick, sortUp }) => {
 	return (
-		<div>
+		<div className="mx-2">
 			<Tooltip title="Sort" placement="left" >
 				<IconButton
 					sx={{ backgroundColor: "#ffffff60" }}
@@ -15,8 +15,9 @@ const SortTrips = ({ onClick, sortUp }) => {
 					<SortIcon
 						sx={{
 							fontSize: "40px",
-							color: "forestgreen",
-							textShadow: "1px 1px black",
+							color: "black",
+							WebkitFilter: "drop-shadow( 1px 1px 1px white)",
+  							filter: "drop-shadow( 1px 1px 1px white)",
 							transform: sortUp ? "rotate(180deg)" : "rotate(0deg)",
 							transitionProperty: 'all',
 						}}

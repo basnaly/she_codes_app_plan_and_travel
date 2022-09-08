@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 
-import TripBox from "./TripBox";
-import AddTrip from "./AddTrip";
+import FlipMove from "react-flip-move";
+
 import { useDispatch, useSelector } from "react-redux";
+
 import { GetListTrips } from "../Actions/PlanTravelAction";
 import { CircularProgress } from "@mui/material";
 import { NoTripStyled } from "../styles/MuiStyles";
-import FlipMove from "react-flip-move";
+
+import TripBox from "./AddTrip/TripBox";
+import AddTripComponent from "./AddTrip/AddTripComponent";
 
 const MainScreen = () => {
 
@@ -44,7 +47,7 @@ const MainScreen = () => {
 
 	return (
 		<div className="d-flex flex-column align-items-center overflow-auto">
-			<AddTrip setSortUp={setSortUp} sortUp={sortUp} />
+			<AddTripComponent setSortUp={setSortUp} sortUp={sortUp} />
 
 			{isLoadingListTrips && <CircularProgress color="success" />}
             

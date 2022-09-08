@@ -165,6 +165,17 @@ export const GrayButton = styled(Button)({
 	fontFamily: "Aladin",
 });
 
+export const BlackButton = styled(Button)({
+	textTransform: "none",
+	color: "black",
+	textShadow: "1px 1px white",
+	border: "1px solid black",
+	fontSize: "20px",
+	backgroundColor: "lightgray",
+	padding: "3 12px",
+	fontFamily: "Aladin",
+});
+
 export const HeaderBox = styled(Box)({
 	borderBottom: 1,
 	borderColor: "divider",
@@ -373,4 +384,10 @@ export const TextFieldStyled = styled(TextField)({
 	"input[type=number]": {
 		"MozAppearance": "textfield",
 	},
+});
+
+export const TripInputStyled = styled("div")({
+	color: "black",
+	fontSize: "20px",
+	textShadow: '1px 1px white',
 });

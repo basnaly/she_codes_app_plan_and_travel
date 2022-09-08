@@ -5,6 +5,7 @@ import { googleMapApiKey } from "../../config";
 const MapViewComponent = ( {place} ) => {
 
     const city = useSelector(state => state?.main?.trip?.city);
+    const country = useSelector(state => state?.main?.trip?.country);
 
     return (
 
@@ -15,7 +16,7 @@ const MapViewComponent = ( {place} ) => {
             frameBorder="0" style={{border:0 }}
             className="flex-shrink-0"
             referrerPolicy="no-referrer-when-downgrade"
-            src={`https://www.google.com/maps/embed/v1/place?key=${googleMapApiKey}&q=${place},${city}`}
+            src={`https://www.google.com/maps/embed/v1/place?key=${googleMapApiKey}&q=${place},${city},${country}`}
             allowFullScreen>
         </iframe>
     )
