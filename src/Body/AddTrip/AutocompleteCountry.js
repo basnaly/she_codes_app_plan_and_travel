@@ -6,7 +6,7 @@ import { Autocomplete } from "@mui/material";
 import { COUNTRY_NAMES } from "../../constants";
 
 
-const AutocompleteCountry = ( { country, setCountry } ) => {
+const AutocompleteCountry = ( { country, setCountry, sx={}, style={} } ) => {
 
 	const [countryText, setCountryText] = useState("");
 
@@ -17,10 +17,12 @@ const AutocompleteCountry = ( { country, setCountry } ) => {
 				sx={{
 					width: 250,
 					backgroundColor: "#ffffff60",
+					...sx
 				}}
                 value={country}
 				onChange={(_, selectedCountry) => setCountry(selectedCountry)} // select the country from list
 				renderInput={(params) => (
+
 
 					<TextField
 						{...params}
@@ -31,6 +33,7 @@ const AutocompleteCountry = ( { country, setCountry } ) => {
 							style: {
 								fontSize: "24px",
 								textShadow: "0.5px 0.5px white",
+								...style
 							},
 						}}
 						label="Country"

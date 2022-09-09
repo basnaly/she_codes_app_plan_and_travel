@@ -50,6 +50,11 @@ export const PalmStyled = styled("div")({
 export const LinkStyled = styled("a")({
 	fontSize: "26px",
 	color: "forestgreen",
+	textShadow: "0.5px 0.5px white",
+	"&:hover": {
+		color: "yellow",
+		textShadow: "1px 1px black",
+	},
 });
 
 export const CityStyled = styled("span")({
@@ -174,6 +179,11 @@ export const BlackButton = styled(Button)({
 	backgroundColor: "lightgray",
 	padding: "3 12px",
 	fontFamily: "Aladin",
+	"&.Mui-disabled": {
+		backgroundColor: "#fff6",
+		color: "dimgray",
+		border: "1px solid dimgray",
+	}
 });
 
 export const HeaderBox = styled(Box)({

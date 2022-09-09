@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +8,6 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
 import {
-	cityStyle,
 	CityStyled,
 	LinkStyled,
 	PalmStyled,
@@ -23,11 +22,14 @@ import {
 } from "../Actions/PlanTravelAction";
 import { Autocomplete } from "@mui/material";
 import { COUNTRY_NAMES } from "../constants";
+import AutocompleteCountry from "./AddTrip/AutocompleteCountry";
+import AutocompleteCity from "./AddTrip/AutocompleteCity";
 
 const PreLoginScreen = () => {
 
 	const city = useSelector((state) => state?.main?.preLoginTrip?.city);
     const country = useSelector((state) => state?.main?.preLoginTrip?.country);
+
 	const from = useSelector((state) => state?.main?.preLoginTrip?.dateFrom);
 	const to = useSelector((state) => state?.main?.preLoginTrip?.dateTo);
 	const userId = useSelector((state) => state?.auth?.userId);
@@ -42,11 +44,12 @@ const PreLoginScreen = () => {
 		}
 	}, [userId]);
 
-	const handleChangeFrom = (newFrom) =>
-		dispatch(ChangePreLoginTripDateFrom(newFrom));
-	const handleChangeTo = (newTo) => dispatch(ChangePreLoginTripDateTo(newTo));
+	const handleChangeFrom = newFrom => dispatch(ChangePreLoginTripDateFrom(newFrom));
+	const handleChangeTo = newTo => dispatch(ChangePreLoginTripDateTo(newTo));
 
-	let formatedCity = city.toLowerCase().trim().replace(/\s/g, "_");
+	const setCountry = newCountry => dispatch(ChangePreLoginTripCountry(newCountry));
+	const setCity = newCity => dispatch(ChangePreLoginTripCity(newCity));
+
 
 	return (
 		<LocalizationProvider dateAdapter={AdapterMoment}>
@@ -61,40 +64,14 @@ const PreLoginScreen = () => {
 					</div>
 
 					<div className="d-flex align-items-center justify-content-evenly w-100 m-2">
-						<TextField
-                            autoFocus
-							id="city-prelogin"
-                            sx={{ width: 250 }}
-							label="City"
-                            variant="outlined"
-							color="success"
-							size="small"
-							inputProps={{ style: cityStyle }}
-							value={city}
-							onChange={(e) =>
-								dispatch(ChangePreLoginTripCity(e.target.value))
-							}
+						<AutocompleteCountry country={country} setCountry={setCountry}
+							sx={{ backgroundColor: "none" }} 
+							style={{ color: 'black', textShadow: '0.5px 0.5px white' }}
 						/>
 
-						<Autocomplete
-							options={COUNTRY_NAMES}
-							sx={{ width: 250 }}
-                            onChange={(_, text) => dispatch(ChangePreLoginTripCountry(text))}
-							renderInput={(params) => (
-
-								<TextField
-									{...params}
-									autoFocus
-                                    inputProps={{ ...params.inputProps, style: cityStyle }}
-									label="Country"
-									id="country-prelogin"
-                                    size="small"
-									type="text"
-									color="success"
-									onChange={(e) => 
-                                        dispatch(ChangePreLoginTripCountry(e.target.value))}
-								/>
-							)}
+						<AutocompleteCity country={country} city={city} setCity={setCity}
+							sx={{backgroundColor: "none" }} 
+							style={{ color: 'black', textShadow: '0.5px 0.5px white' }}
 						/>
 					</div>
 
@@ -141,7 +118,7 @@ const PreLoginScreen = () => {
 					) : (
 						<LinkStyled
 							className="m-2"
-							href={`https://www.holiday-weather.com/${formatedCity}/averages/`}
+							href={`https://www.holiday-weather.com/${city.toLowerCase()}/averages/`}
 							target="_blank"
 						>
 							Check the weather for

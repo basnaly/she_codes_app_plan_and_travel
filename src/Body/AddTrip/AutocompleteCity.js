@@ -7,7 +7,7 @@ import { Autocomplete } from "@mui/material";
 
 const requestURL = "https://countriesnow.space/api/v0.1/countries/cities";
 
-const AutocompleteCity = ({country, city, setCity}) => {
+const AutocompleteCity = ({country, city, setCity, sx={}, style={} }) => {
 
 	const [listCities, setListCities] = useState([]);
 
@@ -47,6 +47,7 @@ const AutocompleteCity = ({country, city, setCity}) => {
 				sx={{
 					width: 250,
 					backgroundColor: "#ffffff60",
+					...sx
 				}}
 				value={city}
 				onChange={(_, text) => setCity(text)} // select the city from list
@@ -60,6 +61,7 @@ const AutocompleteCity = ({country, city, setCity}) => {
 							style: {
 								fontSize: "24px",
 								textShadow: "0.5px 0.5px white",
+								...style
 							},
 						}}
 						label="City"
