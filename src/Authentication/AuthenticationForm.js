@@ -34,6 +34,7 @@ const AuthenticationForm = ({Submit, title, children, validatePassword = () => t
         setEmail('');
         setPassword('');
         dispatch(SetAuthError(''));
+        navigate('/')
     }
 
     const setPasswordWithValidation = password => { 
@@ -100,9 +101,10 @@ const AuthenticationForm = ({Submit, title, children, validatePassword = () => t
 
                 <RedButton 
                     data-testid="cancel-button"
-                    onClick={Cancel}
                     variant={'outlined'}
-                    className="mt-4 mx-3">
+                    className="mt-4 mx-3"
+                    onClick={Cancel}
+                >
                     Cancel
                 </RedButton>
             </div>

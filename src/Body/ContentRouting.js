@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import LoginComponent from "../Authentication/LoginComponent";
 import RegisterComponent from "../Authentication/RegisterComponent";
-import PreLoginScreen from "./PreLoginScreen";
+import PreLoginScreen from "./PreLogin/PreLoginScreen";
 import MainScreen from "./MainScreen";
 
 import EditTripMainScreen from "./EditTripMainScreen";

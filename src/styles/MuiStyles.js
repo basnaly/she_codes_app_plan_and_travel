@@ -177,7 +177,7 @@ export const BlackButton = styled(Button)({
 	border: "1px solid black",
 	fontSize: "20px",
 	backgroundColor: "lightgray",
-	padding: "3 12px",
+	padding: "0 5px",
 	fontFamily: "Aladin",
 	"&.Mui-disabled": {
 		backgroundColor: "#fff6",
@@ -400,4 +400,42 @@ export const TripInputStyled = styled("div")({
 	color: "black",
 	fontSize: "20px",
 	textShadow: '1px 1px white',
+});
+
+export const DivStyled = styled("div")({
+	"& div": {
+		height: '50px'
+	}
+});
+
+export const WeatherTitleStyled = styled("div")({
+	fontFamily: "'Aladin', cursive",
+	color: "black",
+	fontSize: "20px",
+	textShadow: '1px 1px white',
+});
+
+export const DateTitleStyled = styled("div")({
+	fontFamily: "'Aladin', cursive",
+	color: "black",
+	fontSize: "20px",
+	textShadow: '1px 1px white',
+	fontWeight: "bold",
+	borderBottom: '1px solid lightslategrey'
+});
+
+export const WeatherDataStyled = styled("div")({
+	fontFamily: "'Aladin', cursive",
+	color: "forestgreen",
+	fontSize: "20px",
+	textShadow: '1px 1px white',
+});
+
+export const DateDataStyled = styled("div")({
+	fontFamily: "'Aladin', cursive",
+	color: "forestgreen",
+	fontSize: "20px",
+	textShadow: '1px 1px white',
+	fontWeight: "bold",
+	borderBottom: '1px solid lightslategrey'
 });

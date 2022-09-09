@@ -5,7 +5,9 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 
 const SortTrips = ({ onClick, sortUp }) => {
+
 	return (
+		
 		<div className="mx-2">
 			<Tooltip title="Sort" placement="left" >
 				<IconButton
