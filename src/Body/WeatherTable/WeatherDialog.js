@@ -9,7 +9,7 @@ import Slide from "@mui/material/Slide";
 import WeatherData from "./WeatherData";
 import WeatherTitle from "./WeatherTitle";
 
-import { BlackButton, CityTitleStyled } from "../../styles/MuiStyles";
+import { BlackSmallButton, CityTitleStyled } from "../../styles/MuiStyles";
 import { DialogActions } from "@mui/material";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -39,7 +39,7 @@ const WeatherDialog = ({ weatherData, isDialogOpen, setIsDialogOpen }) => {
 					component="h2"
 					className="pb-1 m-1 text-center"
 				>
-					The average weather for 3 first days in
+					The average weather in
 					<CityTitleStyled className="ps-2 d-inline-block">
 						{city}
 					</CityTitleStyled>
@@ -52,14 +52,14 @@ const WeatherDialog = ({ weatherData, isDialogOpen, setIsDialogOpen }) => {
 				</DialogContent>
 
 				<DialogActions>
-					<BlackButton
+					<BlackSmallButton
 						variant={"outlined"}
 						className="mx-auto mt-0 mb-3"
 						onClick={closeDeleteDialog}
 						size="small"
 						>
 						Close
-					</BlackButton>
+					</BlackSmallButton>
 				</DialogActions>
 
 			</Dialog>

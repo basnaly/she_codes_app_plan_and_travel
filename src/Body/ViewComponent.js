@@ -18,6 +18,7 @@ import PreparationsViewList from './ViewInternalComponents/PreparationsViewList'
 import CommentsViewList from './ViewInternalComponents/CommentsViewList';
 import ExpencesViewList from './ViewInternalComponents/ExpencesViewList';
 import CalculateExpences from './ViewInternalComponents/CalculateExpences/CalculateExpences';
+import ViewWeather from './ViewInternalComponents/ViewWeather';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="down" ref={ref} {...props} />;
@@ -87,6 +88,8 @@ const ViewComponent = ({ el }) => {
 					<DialogContent className='d-flex flex-column align-items-center pt-1 pb-3'>
 
 						<ViewTripDates period={trip?.period} />
+
+						<ViewWeather />
 
 						<PreparationsViewList preparations={trip?.preparations} />
 

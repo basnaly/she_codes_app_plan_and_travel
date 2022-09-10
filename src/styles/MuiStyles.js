@@ -170,7 +170,23 @@ export const GrayButton = styled(Button)({
 	fontFamily: "Aladin",
 });
 
-export const BlackButton = styled(Button)({
+export const BlackBigButton = styled(Button)({
+	textTransform: "none",
+	color: "black",
+	textShadow: "1px 1px white",
+	border: "1px solid black",
+	fontSize: "20px",
+	backgroundColor: "lightgray",
+	padding: "3 12px",
+	fontFamily: "Aladin",
+	"&.Mui-disabled": {
+		backgroundColor: "#fff6",
+		color: "dimgray",
+		border: "1px solid dimgray",
+	}
+});
+
+export const BlackSmallButton = styled(Button)({
 	textTransform: "none",
 	color: "black",
 	textShadow: "1px 1px white",

@@ -5,6 +5,8 @@ import axios from "axios";
 import TextField from "@mui/material/TextField";
 import { Autocomplete } from "@mui/material";
 
+import { filterOptions } from "../../constants";
+
 const requestURL = "https://countriesnow.space/api/v0.1/countries/cities";
 
 const AutocompleteCity = ({country, city, setCity, sx={}, style={} }) => {
@@ -42,6 +44,7 @@ const AutocompleteCity = ({country, city, setCity, sx={}, style={} }) => {
 	return (
 		<div className="mx-3">
 			<Autocomplete
+				filterOptions={filterOptions}
 				options={listCities}
 				noOptionsText="Please select country first"
 				sx={{

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { BlackButton } from "../../styles/MuiStyles";
+import { BlackBigButton } from "../../styles/MuiStyles";
 
 import { AddNewTrip } from "../../Actions/PlanTravelAction";
 import SortTrips from "./SortTrips";
@@ -38,7 +38,7 @@ const AddTripComponent = ({ setSortUp, sortUp }) => {
 				<AutocompleteCity country={country} city={city} setCity={setCity}/>
 			</div>
 
-			<BlackButton
+			<BlackBigButton
 				data-testid="add-button-element"
 				variant={"outlined"}
 				className="ms-2"
@@ -46,7 +46,7 @@ const AddTripComponent = ({ setSortUp, sortUp }) => {
 				onClick={AddTripData}
 			>
 				Add new trip
-			</BlackButton>
+			</BlackBigButton>
 		</div>
 	);
 };

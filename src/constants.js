@@ -1,3 +1,5 @@
+import { createFilterOptions } from '@mui/material/Autocomplete';
+
 export const validatePassword = (password) => {
 		
     var regularExpression =
@@ -1635,4 +1637,8 @@ export const LIST_COUNTRIES = [
     }
   ]
 
-export const COUNTRY_NAMES = LIST_COUNTRIES.map(el => el.name);
+export const COUNTRY_NAMES = LIST_COUNTRIES.map(el => el.name).sort();
+
+export const filterOptions = createFilterOptions({
+	matchFrom: 'start',
+});

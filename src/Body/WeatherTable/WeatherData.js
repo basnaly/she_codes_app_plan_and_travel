@@ -2,7 +2,7 @@ import { Tooltip } from "@mui/material";
 import React from "react";
 import { DateDataStyled, DivStyled, WeatherDataStyled } from "../../styles/MuiStyles";
 
-const WeatherData = ({ weatherData }) => {
+const WeatherData = ({ weatherData = [] }) => {
 
 	return (
 
@@ -10,7 +10,7 @@ const WeatherData = ({ weatherData }) => {
 			{weatherData.map((el) => (
 				<DivStyled
 					className="d-flex flex-column align-items-center"
-					key={el}
+					key={el.date}
 				>
 					<DateDataStyled className="d-flex align-items-end px-3 mb-3">
 						{el.date}

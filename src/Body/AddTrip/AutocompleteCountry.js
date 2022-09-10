@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { Autocomplete } from "@mui/material";
 
-import { COUNTRY_NAMES } from "../../constants";
-
+import { COUNTRY_NAMES, filterOptions } from "../../constants";
 
 const AutocompleteCountry = ( { country, setCountry, sx={}, style={} } ) => {
 
@@ -13,6 +12,7 @@ const AutocompleteCountry = ( { country, setCountry, sx={}, style={} } ) => {
 	return (
 		<div className="mx-3">
 			<Autocomplete
+				filterOptions={filterOptions}
 				options={COUNTRY_NAMES}
 				sx={{
 					width: 250,
@@ -20,6 +20,7 @@ const AutocompleteCountry = ( { country, setCountry, sx={}, style={} } ) => {
 					...sx
 				}}
                 value={country}
+				
 				onChange={(_, selectedCountry) => setCountry(selectedCountry)} // select the country from list
 				renderInput={(params) => (
 

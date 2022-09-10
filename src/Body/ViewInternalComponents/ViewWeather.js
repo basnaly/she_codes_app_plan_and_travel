@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BlackSmallButton, PeriodView } from "../../styles/MuiStyles";
 
 import axios from "axios";
 
@@ -6,30 +7,28 @@ import { weatherApiKey } from "../../config";
 
 import { useSelector } from "react-redux";
 
-import { GreenButton } from "../../styles/MuiStyles";
 import moment from "moment";
-import WeatherDialog from "./WeatherDialog";
 
-const WeatherComponent = () => {
+import WeatherData from "../WeatherTable/WeatherData";
+import WeatherTitle from "../WeatherTable/WeatherTitle";
 
-	const city = useSelector((state) => state?.main?.preLoginTrip?.city);
-	const country = useSelector((state) => state?.main?.preLoginTrip?.country);
-	const from = useSelector((state) => state?.main?.preLoginTrip?.dateFrom);
+const ViewWeather = () => {
+	const city = useSelector((state) => state?.main?.trip?.city);
+	const country = useSelector((state) => state?.main?.trip?.country);
+	const from = useSelector((state) =>
+		moment(state?.main?.trip?.period?.from)
+	);
 
 	const [url, setUrl] = useState("");
 
 	const [weatherData, setWeatherData] = useState([]);
 	const [loading, setLoading] = useState(false);
-	const [isDialogOpen, setIsDialogOpen] = useState(false);
-	
-	const openDialog = () => setIsDialogOpen(true);
 
 	const requestWeather = async () => {
-
-		let startDate = moment(); // today
+		let startDate = moment();
 
 		if (from.isAfter(startDate)) {
-			startDate = from
+			startDate = from;
 		}
 
 		let endDate = moment(startDate).add(2, "days").format("YYYY-MM-DD");
@@ -39,10 +38,9 @@ const WeatherComponent = () => {
 		const requestURL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city} ${country}/${startDate}/${endDate}?unitGroup=metric&key=${weatherApiKey}&contentType=json`;
 
 		if (url === requestURL) {
-			openDialog()
-			return
-		} 
-		setUrl(requestURL)
+			return;
+		}
+		setUrl(requestURL);
 		setLoading(true);
 
 		try {
@@ -64,30 +62,38 @@ const WeatherComponent = () => {
 			}));
 
 			setWeatherData(weatherResult);
-			openDialog();
-
+			setLoading(false);
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
+	if (weatherData.length !== 0) {
+		return (
+			<React.Fragment>
+				<PeriodView className="mt-2 mb-2">
+					The average weather:
+				</PeriodView>
+
+				<div className="d-flex align-items-center pb-0">
+					<WeatherTitle />
+
+					<WeatherData weatherData={weatherData} />
+				</div>
+			</React.Fragment>
+		);
+	}
+
 	return (
-		<div className="d-flex flex-column align-items-center mt-3">
-			<GreenButton
-				variant={"outlined"}
-				className="ms-2"
-				onClick={requestWeather}
-			>
-				Get weather
-			</GreenButton>
-
-            <WeatherDialog weatherData={weatherData}
-				isDialogOpen={isDialogOpen}
-				setIsDialogOpen={setIsDialogOpen}
-			/>
-
-		</div>
+		<BlackSmallButton
+			variant={"outlined"}
+			className="mx-auto my-3"
+			onClick={requestWeather}
+			size="small"
+		>
+			Get weather
+		</BlackSmallButton>
 	);
 };
 
-export default WeatherComponent;
+export default ViewWeather;
