@@ -23,6 +23,7 @@ import AccommodationsComponent from './Tabs/AccommodationsComponent';
 import VisitingsComponent from './Tabs/VisitingsComponent';
 import CommentsComponent from './Tabs/CommentsComponent';
 import ExpencesComponent from './Tabs/ExpencesComponent';
+import { LIST_COUNTRIES } from '../constants';
 
 const EditTripMainScreen = () => {
 
@@ -30,6 +31,8 @@ const EditTripMainScreen = () => {
     const trip = useSelector(state => state?.main?.trip);
     const isLoadingTrip = useSelector(state => state?.main?.isLoadingTrip);
 
+    let countryFlag = LIST_COUNTRIES.find(el => el.name === trip?.country);
+    
     const location = useLocation();
 
     const params = useParams();
@@ -76,7 +79,7 @@ const EditTripMainScreen = () => {
                 <TabContext value={selectedTab}>
                     <HeaderBox>
                         <TabList onChange={handleChange} aria-label="lab API tabs example">
-                            <Tab label={trip.city} value="city" disabled />
+                            <Tab label={trip.city + ' ' + countryFlag?.unicodeFlag} value="city" disabled />
                             <Tab label="Period" value="period" />
                             <Tab label="Preparations" value="preparations" />
                             <Tab label="Transportations" value="transportations" />

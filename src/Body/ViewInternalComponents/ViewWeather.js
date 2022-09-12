@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BlackSmallButton, PeriodView } from "../../styles/MuiStyles";
+import { BlackSmallButton, PeriodView, TableStyled } from "../../styles/MuiStyles";
 
 import axios from "axios";
 
@@ -75,11 +75,11 @@ const ViewWeather = () => {
 					The average weather:
 				</PeriodView>
 
-				<div className="d-flex align-items-center pb-0">
+				<TableStyled className="d-flex align-items-center pb-0">
 					<WeatherTitle />
 
 					<WeatherData weatherData={weatherData} />
-				</div>
+				</TableStyled>
 			</React.Fragment>
 		);
 	}

@@ -19,6 +19,7 @@ import CommentsViewList from './ViewInternalComponents/CommentsViewList';
 import ExpencesViewList from './ViewInternalComponents/ExpencesViewList';
 import CalculateExpences from './ViewInternalComponents/CalculateExpences/CalculateExpences';
 import ViewWeather from './ViewInternalComponents/ViewWeather';
+import { LIST_COUNTRIES } from '../constants';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="down" ref={ref} {...props} />;
@@ -30,6 +31,8 @@ const ViewComponent = ({ el }) => {
 
 	const trip = useSelector(state => state?.main?.trip);
 	const isLoadingTrip = useSelector(state => state?.main?.isLoadingTrip);
+
+	let countryFlag = LIST_COUNTRIES.find(el => el.name === trip?.country);
 
 	const dispatch = useDispatch();
 
@@ -64,8 +67,9 @@ const ViewComponent = ({ el }) => {
 					<DialogTitle id="modal-modal-title" variant="h6" component="h2"
 						className='pb-1 m-1'>
 						<CityTitleStyled >
-							{trip?.city}
+							{trip?.city} {countryFlag?.unicodeFlag}
 						</CityTitleStyled>
+						
 					</DialogTitle>
 
 					<DialogActions className="d-flex align-items-center my-2">

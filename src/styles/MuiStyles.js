@@ -128,6 +128,7 @@ export const PeriodView = styled("div")({
 	fontSize: "26px",
 	color: "forestgreen",
 	fontWeight: "bold",
+	textDecoration: "underline",
 });
 
 export const YellowButton = styled(Button)({
@@ -453,5 +454,9 @@ export const DateDataStyled = styled("div")({
 	fontSize: "20px",
 	textShadow: '1px 1px white',
 	fontWeight: "bold",
+	borderBottom: '1px solid lightslategrey'
+});
+
+export const TableStyled = styled("div")({
 	borderBottom: '1px solid lightslategrey'
 });

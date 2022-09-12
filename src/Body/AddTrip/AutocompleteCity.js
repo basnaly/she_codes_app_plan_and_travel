@@ -27,8 +27,8 @@ const AutocompleteCity = ({country, city, setCity, sx={}, style={} }) => {
 		try {
 			const result = await axios.post(requestURL, { country: text });
 
-			const listCitiesofCountry = result?.data?.data;
-			setListCities(listCitiesofCountry);
+			const listCitiesOfCountry = result?.data?.data;
+			setListCities(listCitiesOfCountry);
 
 		} catch (error) {
 			console.log(error);
