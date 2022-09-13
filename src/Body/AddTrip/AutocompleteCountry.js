@@ -27,7 +27,6 @@ const AutocompleteCountry = ( { country, setCountry, sx={}, style={} } ) => {
 
 					<TextField
 						{...params}
-						
 						autoFocus
 						inputProps={{
 							...params.inputProps, "data-testid": "country-input",

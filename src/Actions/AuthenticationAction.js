@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import config from "./config";
+import config from "../config";
 import { SaveInitialTrip, SetAlertMessage } from "./PlanTravelAction";
 
 export const SaveUser = (userId, username, userEmail) => {

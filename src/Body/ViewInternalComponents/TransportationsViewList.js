@@ -3,7 +3,6 @@ import React from 'react';
 import moment from 'moment';
 
 import { DataGrid } from '@mui/x-data-grid';
-import DialogContentText from '@mui/material/DialogContentText';
 import { PeriodView } from '../../styles/MuiStyles';
 
 const columns = [

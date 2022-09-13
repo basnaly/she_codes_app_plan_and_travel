@@ -9,7 +9,7 @@ import {
 	ChangePreLoginTripDateTo,
 } from "../../Actions/PlanTravelAction";
 
-const PrelLoginPeriodComponent = () => {
+const PreLoginPeriodComponent = () => {
 
 	const from = useSelector((state) => state?.main?.preLoginTrip?.dateFrom);
 	const to = useSelector((state) => state?.main?.preLoginTrip?.dateTo);
@@ -66,4 +66,4 @@ const PrelLoginPeriodComponent = () => {
 	);
 };
 
-export default PrelLoginPeriodComponent;
+export default PreLoginPeriodComponent;

@@ -6,7 +6,7 @@ import { ChangePreLoginTripCity, ChangePreLoginTripCountry } from "../../Actions
 import AutocompleteCountry from "../AddTrip/AutocompleteCountry";
 import AutocompleteCity from "../AddTrip/AutocompleteCity";
 
-const PrelLoginTripComponent = () => {
+const PreLoginTripComponent = () => {
 
     const city = useSelector((state) => state?.main?.preLoginTrip?.city);
     const country = useSelector((state) => state?.main?.preLoginTrip?.country);
@@ -42,4 +42,4 @@ const PrelLoginTripComponent = () => {
 	);
 };
 
-export default PrelLoginTripComponent;
+export default PreLoginTripComponent;

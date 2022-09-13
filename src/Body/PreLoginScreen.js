@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
-import { PreLoginStyled, TabContentBox } from "../../styles/MuiStyles";
+import { PreLoginStyled, TabContentBox } from "../styles/MuiStyles";
 
-import WeatherComponent from "../WeatherTable/WeatherComponent";
-import PrelLoginPeriodComponent from "./PrelLoginPeriodComponent";
-import PrelLoginTripComponent from "./PrelLoginTripComponent";
+import WeatherComponent from "./WeatherTable/WeatherComponent";
+import PreLoginPeriodComponent from "./PreLogin/PreLoginPeriodComponent";
+import PreLoginTripComponent from "./PreLogin/PrelLoginTripComponent";
 
 const PreLoginScreen = () => {
 	
@@ -33,9 +33,9 @@ const PreLoginScreen = () => {
 			>
 				<PreLoginStyled className="d-flex flex-column align-items-center">
 					
-					<PrelLoginTripComponent />
+					<PreLoginTripComponent />
 
-					<PrelLoginPeriodComponent />
+					<PreLoginPeriodComponent />
 
 					<WeatherComponent />
 					

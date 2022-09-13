@@ -8,7 +8,7 @@ import { GetListTrips } from "../Actions/PlanTravelAction";
 import { CircularProgress } from "@mui/material";
 import { NoTripStyled } from "../styles/MuiStyles";
 
-import TripBox from "./AddTrip/TripBox";
+import TripBox from "./TripBox";
 import AddTripComponent from "./AddTrip/AddTripComponent";
 
 const MainScreen = () => {

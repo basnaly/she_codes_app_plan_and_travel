@@ -12,7 +12,9 @@ const PasswordInputComponent = ({ password, setPassword, label = "Password",
 		mt = 2, dataTestid = "password-input" }) => {
 
 	const [showPassword, setShowPassword] = useState(false);
+
 	const id = useId();
+	
 	const handleClickShowPassword = () => {
 		setShowPassword((prev) => !prev);
 	};

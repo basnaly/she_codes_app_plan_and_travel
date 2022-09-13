@@ -1,7 +1,7 @@
 import axios from "axios";
 import moment from "moment";
 import { CheckTokenError } from "./AuthenticationAction";
-import config from "./config";
+import config from "../config";
 import { LoadedExpencesData } from "./ExpencesAction";
 
 export const SaveInitialTrip = (token) => { // pass token for use token before saving
