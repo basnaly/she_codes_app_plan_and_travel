@@ -28,7 +28,7 @@ const LogoutComponent = () => {
     const handleLogout = () => { 
 
         sessionStorage.removeItem('authToken')
-        dispatch(SaveUser(undefined, undefined)) // no userId, no email
+        dispatch(SaveUser(undefined, undefined, undefined)) // no userId, no email, no password
         dispatch({
             type: "RESET_USER_DATA"
         })

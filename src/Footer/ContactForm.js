@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Autocomplete, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide, TextField } from "@mui/material";
-import { CityTitleStyled, ErrorStyled, FooterText, GreenButton, RedButton, TextareaAutosizeStyled, YellowButton } from "../styles/MuiStyles";
+import { CityTitleStyled, ErrorStyled, GreenButton, RedButton, TextareaAutosizeStyled, YellowButton } from "../styles/MuiStyles";
 import { SaveContactForm } from "../Actions/AuthenticationAction";
+import { CONTACT_FORM_OPTIONS } from "../constants";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="down" ref={ref} {...props} />;
 });
-
-const listOptions = ['General', 'Bug', 'Register issue', 'Login issue', 'Other']
 
 const ContactForm = () => {
 
@@ -111,7 +110,7 @@ const ContactForm = () => {
 					/>
 
                     <Autocomplete
-                        options={listOptions}
+                        options={CONTACT_FORM_OPTIONS}
                         value={subject}
                         sx={{ width: 300 }}
 						onChange={(_, text) => setSubject(text)}

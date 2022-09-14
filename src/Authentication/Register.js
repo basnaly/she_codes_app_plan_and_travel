@@ -109,7 +109,13 @@ const Register = () => {
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
 					/>
+				</Typography>
 
+				<Typography
+					className="d-flex align-items-center justify-content-center" // children
+					id="modal-modal-description"
+					sx={{ mt: 2, width: "100%" }}
+				>
 					<TextField
 						className="regist mx-3"
 						id="outlined-helperText"

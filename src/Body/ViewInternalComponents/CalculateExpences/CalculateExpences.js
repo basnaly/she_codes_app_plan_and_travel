@@ -9,7 +9,6 @@ import PaymentSelection from './PaymentSelection';
 
 const CalculateExpences = () => {
 
-    const selectedCurrency = useSelector(state => state?.expences?.selectedCurrency);
     const total = useSelector(state => state?.expences?.total);
 
     const dispatch = useDispatch();

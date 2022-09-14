@@ -10,6 +10,17 @@ export const validatePassword = (password) => {
     return !!found;
 };
 
+
+export const CONTACT_FORM_OPTIONS = ['General', 'Bug', 'Register issue', 'Login issue', 'Other']
+
+export const PAYMENT_OPTIONS = [
+  'Cash', 'Mastercard', 'American Express', 'Visa', 'Diners'
+];
+
+export const CURRENCY_OPTIONS = [
+  '$', '€', '￡', '₣', '￥', '₪'
+]
+
 export const PREPARATIONS = [
     {
         note: 'Passport',
@@ -119,14 +130,6 @@ export const EXPENCES = [
         notes: 'trip with dinner'
     },
 ];
-
-export const PAYMENT_OPTIONS = [
-    'Cash', 'Mastercard', 'American Express', 'Visa', 'Diners'
-];
-
-export const CURRENCY_OPTIONS = [
-    '$', '€', '￡', '₣', '￥', '₪'
-]
 
 export const LIST_COUNTRIES = [
     {
