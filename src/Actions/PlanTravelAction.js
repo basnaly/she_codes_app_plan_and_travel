@@ -16,7 +16,7 @@ export const SaveInitialTrip = (token) => { // pass token for use token before s
 			city: preLoginTrip.city,
 			country: preLoginTrip.country,
 			period: {
-				from: preLoginTrip.dateFrom.startOf('day'),
+				from: preLoginTrip.dateFrom.startOf('day'), // not from current time
 				to: preLoginTrip.dateTo.endOf('day'),
 			},
 		};

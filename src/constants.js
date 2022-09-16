@@ -44,6 +44,15 @@ export const PREPARATIONS = [
     },
 ];
 
+// Object structure
+// {“Documents”: 
+// [ {checked: false, id: 14, index: 0, note: “Passport”},
+// {checked: true, id: 15, index: 1, note: “Covid certificate”} ],
+// “Clothes”: 
+// [ {checked: false, id: 16, index: 0, note: “Jacket”},
+// {checked: true, id: 17, index: 1, note: “Pants”} ]}
+
+
 export const TRANSPORTATIONS = [
     {
         id: 1,

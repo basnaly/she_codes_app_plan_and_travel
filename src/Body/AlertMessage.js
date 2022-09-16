@@ -9,10 +9,9 @@ import { SetAlertMessage } from "../Actions/PlanTravelAction";
 const AlertMessage = () => {
 
 	const alertMessage = useSelector((state) => state?.main?.alertMessage);
+	const alertSeverity = useSelector((state) => state?.main?.alertSeverity);
 
 	const dispatch = useDispatch();
-
-	const alertSeverity = useSelector((state) => state?.main?.alertSeverity);
 
     useEffect(() => {
 
