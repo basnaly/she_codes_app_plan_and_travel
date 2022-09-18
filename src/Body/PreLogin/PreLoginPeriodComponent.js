@@ -29,6 +29,7 @@ const PreLoginPeriodComponent = () => {
 			<div className="d-flex align-items-center">
 				<DesktopDatePicker
 					className="m-2"
+					maxDate={to}
 					OpenPickerButtonProps={{
 						style: {
 							color: "forestgreen",
@@ -54,6 +55,7 @@ const PreLoginPeriodComponent = () => {
 						},
 					}}
 					label="Date to:"
+					minDate={from}
 					inputFormat="DD/MM/yyyy"
 					value={to}
 					onChange={handleChangeTo}

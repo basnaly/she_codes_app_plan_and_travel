@@ -31,10 +31,10 @@ const AccommodationsComponent = () => {
                                 {(field.value ?? []).map((el, i) => (
 
                                     <div key={el.id} className="d-flex align-items-start my-2">
-                                        <Field name={`accommodations[${i}].dateFrom`}
+                                        <Field name={`accommodations[${i}].dateFrom`} maxField={`accommodations[${i}].dateTo`}
                                             component={FormikDateInput} label='Date from' />
 
-                                        <Field name={`accommodations[${i}].dateTo`}
+                                        <Field name={`accommodations[${i}].dateTo`} minField={`accommodations[${i}].dateFrom`}
                                             component={FormikDateInput} className='ms-3' label='Date to' />
 
                                         <Field name={`accommodations[${i}].accommodation`}

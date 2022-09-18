@@ -21,11 +21,11 @@ const PeriodComponent = () => {
 
                     <div className="d-flex align-items-center">
 
-                        <Field name={'period.from'} component={FormikDateInput} label="Date from" />
+                        <Field name={'period.from'} maxField={'period.to'} component={FormikDateInput} label="Date from" />
                             
                         <PalmStyled className="d-flex">🏝</PalmStyled>
 
-                        <Field name={'period.to'} component={FormikDateInput} label="Date to" />
+                        <Field name={'period.to'} minField={'period.from'} component={FormikDateInput} label="Date to" />
 
                     </div>
                 </div>
